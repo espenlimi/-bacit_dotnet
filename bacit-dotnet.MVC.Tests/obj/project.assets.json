@@ -6549,11 +6549,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dev\\Semine\\bacit-dotnet\\bacit-dotnet.MVC.Tests\\bacit-dotnet.MVC.Tests.csproj",
+      "projectUniqueName": "C:\\Dev\\UIA\\2022\\IS202\\bacit-dotnet\\bacit-dotnet.MVC.Tests\\bacit-dotnet.MVC.Tests.csproj",
       "projectName": "bacit-dotnet.MVC.Tests",
-      "projectPath": "C:\\Dev\\Semine\\bacit-dotnet\\bacit-dotnet.MVC.Tests\\bacit-dotnet.MVC.Tests.csproj",
+      "projectPath": "C:\\Dev\\UIA\\2022\\IS202\\bacit-dotnet\\bacit-dotnet.MVC.Tests\\bacit-dotnet.MVC.Tests.csproj",
       "packagesPath": "C:\\Users\\EspenLimi\\.nuget\\packages\\",
-      "outputPath": "C:\\Dev\\Semine\\bacit-dotnet\\bacit-dotnet.MVC.Tests\\obj\\",
+      "outputPath": "C:\\Dev\\UIA\\2022\\IS202\\bacit-dotnet\\bacit-dotnet.MVC.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6574,8 +6574,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Dev\\Semine\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj": {
-              "projectPath": "C:\\Dev\\Semine\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj"
+            "C:\\Dev\\UIA\\2022\\IS202\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj": {
+              "projectPath": "C:\\Dev\\UIA\\2022\\IS202\\bacit-dotnet\\bacit-dotnet.MVC\\bacit-dotnet.MVC.csproj"
             }
           }
         }

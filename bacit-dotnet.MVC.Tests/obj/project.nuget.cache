@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/JUU/PLVjI4bvQSg/5Q/e8p6b+VDWYFcd4c97Vb0sSjYU1BZoTS0aftFIDF0/09FsxHh47cwPpKv9eZAiZ5JYg==",
+  "dgSpecHash": "9vGHCNFr4Ouh7eTDhdF6OS6r5eq+SlMu8VvReXfO2Qhv58Zd0o+1vhJOXbe47Ly2UNkfWHq3+f8SzCHtMR3vaA==",
   "success": true,
-  "projectFilePath": "C:\\Dev\\Semine\\bacit-dotnet\\bacit-dotnet.MVC.Tests\\bacit-dotnet.MVC.Tests.csproj",
+  "projectFilePath": "C:\\Dev\\UIA\\2022\\IS202\\bacit-dotnet\\bacit-dotnet.MVC.Tests\\bacit-dotnet.MVC.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\EspenLimi\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\EspenLimi\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
