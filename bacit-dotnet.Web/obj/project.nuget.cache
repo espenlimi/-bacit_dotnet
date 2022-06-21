@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "4kcs5moUY76ohdLTolocrEKiLTr3CXPGCqkqWMXn+KrF9w81TUcVFDME1OYcIkrPaZsnMM8iV3f+V3YEeV74qg==",
+  "success": true,
+  "projectFilePath": "C:\\Dev\\Semine\\bacit-dotnet\\bacit-dotnet.Web\\bacit-dotnet.Web.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\EspenLimi\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.15.1\\microsoft.visualstudio.azure.containers.tools.targets.1.15.1.nupkg.sha512"
+  ],
+  "logs": []
+}
