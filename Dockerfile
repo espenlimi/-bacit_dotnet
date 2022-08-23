@@ -7,14 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["bacit-dotnet.MVC/bacit-dotnet.MVC.csproj", "bacit-dotnet.MVC/"]
-RUN dotnet restore "bacit-dotnet.MVC/bacit-dotnet.MVC.csproj"
-COPY . .
-WORKDIR "/src/bacit-dotnet.MVC"
-RUN dotnet build "bacit-dotnet.MVC.csproj" -c Release -o /app/build
+COPY ["bacit-dotnet.MVC", "bacit-dotnet.MVC/"]
+RUN ls /src
+WORKDIR "/src/bacit-dotnet.MVC/"
+RUN ls "/src/bacit-dotnet.MVC/"
+
+RUN dotnet restore 
+RUN dotnet build -c Release  --no-restore
 
 FROM build AS publish
-RUN dotnet publish "bacit-dotnet.MVC.csproj" -c Release -o /app/publish
+RUN dotnet publish -c Release -o /app/publish  --no-restore
 
 FROM base AS final
 WORKDIR /app
