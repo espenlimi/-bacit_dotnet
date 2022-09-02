@@ -18,7 +18,14 @@ namespace bacit_dotnet.MVC.Controllers
 
         public IActionResult Index()
         {
-            return new ContentResult() { Content = "<html><head><title>BACIT</title></head><body><h1>En time til ørsta rådhus</h1></body> </html>", ContentType = "text/html; charset=UTF-8" };
+            return new ContentResult() { 
+                Content = @"<html>
+                            <head>
+                            <title>BACIT</title>    
+                            </head>
+                            <body><h1>En time til ørsta rådhus</h1>
+                            </body> 
+                            </html>", ContentType = "text/html; charset=UTF-8" };
         }
 
         [HttpGet]
