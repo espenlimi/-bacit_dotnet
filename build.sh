@@ -1,20 +1,16 @@
-#!/bin/bash
+@echo off
 
-# Kill running instance of tomcat
-docker kill tomcat
+:: Kill running instance of container
+docker kill webapp
 
-# Compile and packages source code into .war file via maven volume in docker container
-docker run --rm -it --name mavenbuild -v maven-repo:/root/.m2 -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven mvn clean install
+:: Builds image specified in Dockerfile
+docker image build -t webapp .
 
-# Copy and rebuilds tomcat image with latest .war file
-docker image build -t trym/tomcat .
+:: Starts container with web application and maps port 80 (ext) to 80 (internal)
+docker container run --rm -it -d --name webapp --publish 80:80 webapp
 
-# Start tomcat container, making the webapp available.
-docker container run --rm -it -d --name tomcat --publish 8081:8080 trym/tomcat
+echo.
+echo "Link: http://localhost:80/"
+echo.
 
-echo ""
-echo "Link: http://localhost:8081/bacit-web-1.0-SNAPSHOT/"
-echo ""
-
-read -n 1 -s -r -p "Press any key to continue..."
-echo ""
+pause
