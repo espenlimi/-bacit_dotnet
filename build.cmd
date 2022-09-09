@@ -1,15 +1,12 @@
 @echo off
 
-:: Kill running instance of tomcat
+:: Kill running instance of container
 docker kill webapp
 
-:: Compiles and packages source code into .war file via maven volume in docker container
-
-
-:: Copies and rebuilds tomcat image with latest .war file
+:: Builds image specified in Dockerfile
 docker image build -t webapp .
 
-:: Starts tomcat container, making the webapp available.
+:: Starts container with web application and maps port 80 (ext) to 80 (internal)
 docker container run --rm -it -d --name webapp --publish 80:80 webapp
 
 echo.
