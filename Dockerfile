@@ -9,8 +9,8 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["bacit-dotnet.MVC", "bacit-dotnet.MVC/"]
 RUN ls /src
-WORKDIR "/src/bacit-dotnet.MVC/"
-RUN ls "/src/bacit-dotnet.MVC/"
+WORKDIR /src/bacit-dotnet.MVC/
+RUN ls /src/bacit-dotnet.MVC/
 
 RUN dotnet restore 
 RUN dotnet build -c Release  --no-restore
