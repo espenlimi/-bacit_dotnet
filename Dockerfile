@@ -11,7 +11,6 @@ COPY ["bacit-dotnet.MVC", "bacit-dotnet.MVC/"]
 RUN ls /src
 WORKDIR "/src/bacit-dotnet.MVC/"
 RUN ls "/src/bacit-dotnet.MVC/"
-
 RUN dotnet restore 
 RUN dotnet build -c Release  --no-restore
 

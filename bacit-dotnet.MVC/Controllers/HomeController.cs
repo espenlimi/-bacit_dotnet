@@ -16,18 +16,6 @@ namespace bacit_dotnet.MVC.Controllers
             this.sqlConnector = sqlConnector;
         }
 
-        public IActionResult Index()
-        {
-            return new ContentResult() { 
-                Content = @"<html>
-                            <head>
-                            <title>BACIT</title>    
-                            </head>
-                            <body><h1>En time til ørsta rådhus</h1>
-                            </body> 
-                            </html>", ContentType = "text/html; charset=UTF-8" };
-        }
-
         [HttpGet]
         public IActionResult UserData()
         {
@@ -39,13 +27,13 @@ namespace bacit_dotnet.MVC.Controllers
 
         }
         [HttpGet]
-        public IActionResult UsingRazor()
+        public IActionResult Index()
         {
             var model = new RazorViewModel
             {
                 Content = "En time til ørsta rådhus"
             };
-            return View("UsingRazor", model);
+            return View("Index", model);
         }
     }
 }

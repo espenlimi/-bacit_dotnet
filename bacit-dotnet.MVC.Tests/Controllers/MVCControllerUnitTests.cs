@@ -9,35 +9,28 @@ namespace bacit_dotnet.MVC.Tests.Controllers
 
     public class MVCControllerUnitTests
     {
-        [Fact]
-        public void IndexReturnsCorrectContent()
-        {
-            var unitUnderTest = SetupUnitUnderTest();
-            var result = unitUnderTest.Index() as ContentResult; //Safe casting, result will be null if unitUnderTest.Index() returns another type than ContentResult
-            Assert.Same("<html><head><title>BACIT</title></head><body><h1>En time til ørsta rådhus</h1></body> </html>", result.Content); //Check if expected is the same as the returned value
-        }
 
         [Fact]
-        public void UsingRazorReturnsCorrectView() 
+        public void IndexReturnsCorrectContent() 
         {
             var unitUnderTest = SetupUnitUnderTest();
-            var result = unitUnderTest.UsingRazor() as ViewResult;
-            Assert.Same("UsingRazor", result.ViewName);
+            var result = unitUnderTest.Index() as ViewResult;
+            Assert.Same("Index", result.ViewName);
         }
 
         [Fact]
         public void UsingRazorReturnsCorrectModel()
         {
             var unitUnderTest = SetupUnitUnderTest();
-            var result = unitUnderTest.UsingRazor() as ViewResult;
+            var result = unitUnderTest.Index() as ViewResult;
             Assert.IsType<RazorViewModel>(result.Model);
         }
 
         [Fact]
-        public void UsingRazorReturnsCorrectModelContent()
+        public void UsingRazorReturnsCorrectModelContent()  
         {
             var unitUnderTest = SetupUnitUnderTest();
-            var result = unitUnderTest.UsingRazor() as ViewResult;
+            var result = unitUnderTest.Index() as ViewResult;
             var model = result.Model as RazorViewModel;
             Assert.Same("En time til ørsta rådhus", model.Content);
         }
