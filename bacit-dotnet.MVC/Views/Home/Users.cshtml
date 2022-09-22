@@ -1,11 +1,12 @@
 ﻿@model bacit_dotnet.MVC.Models.UsersModel
+<h1>
+   Ansattliste
+</h1>
+
 <ul>
     @foreach (var user in Model.Users)
     {
         <li>
-        <h1>
-            Ansattliste
-        </h1>
             Navn: @user.Name , epost: @user.Email, Tlf: @user.Phone, ID: @user.Id,
         </li>
     }
