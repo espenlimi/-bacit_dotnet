@@ -1,27 +1,39 @@
-﻿<form action="/suggestions/save" method="post">
-<ul>
-    <li>
-<label for="Title">Tittel</label>
-<input type="text" name="Title" />
-</li>
-<li>
-<label for="Name">Navn</label>
-<input type="text" name="Name" />
-</li>
-<li>
-<label for="Team">Team</label>
-<input type="text" name="Team" />
-</li>
-<li>
-<label for="Description">Beskrivelse</label>
-<input type="text" name="Description" />
-</li>
-<li>
-<label for="TimeStamp">Tidspunkt</label>
-<input type="datetime" name="TimeStamp" />
-</li>
-<li>
-<input type="submit" value="Lagre" />
-</li>
-</ul>
+﻿<form asp-action="save" asp-controller="suggestions" <!--action="/suggestions/save"--> method="post">
+    <ul>
+        <li>
+            <label for="Title">Tittel</label>
+            <input type="text" name="Title" required />
+        </li>
+        <li>
+            <label for="Name">Navn</label>
+            <input type="text" name="Name" required placeholder="Navn" />
+        </li>
+        <li>
+            <label for="Team">Team</label>
+            <input type="text" name="Team" required placeholder="Team" />
+        </li>
+        <li>
+            <label for="Description">Beskrivelse</label>
+            <input type="text" name="Description" required placeholder="Beskrivelse" />
+        </li>
+        <li>
+            <label for="TimeStamp">Tidspunkt</label>
+            <input type="datetime" name="TimeStamp" required placeholder="Dagens dato" />
+        </li>
+        <li>
+            <label for="Status">Velg status</label>
+            <select required>
+                <option value="Plan">Plan</option>
+                <option value="Study">Study</option>
+                <option value="Do">Do</option>
+            </select>
+        </li>
+        <li>
+            <label for="Deadline">Tidsfrist</label>
+            <input type="datetime" name="Deadline" placeholder="Dato" />
+        </li>
+        <li>
+            <input type="submit" value="Lagre" />
+        </li>
+    </ul>
 </form> 
