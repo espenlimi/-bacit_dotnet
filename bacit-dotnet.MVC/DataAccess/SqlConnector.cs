@@ -14,23 +14,27 @@ namespace bacit_dotnet.MVC.DataAccess
 
         public IEnumerable<User> GetUsers()
         {
-            var reader = ReadData("Select id, name, email, phone from users;");
-
-            var users = new List<User>();
-            while (reader.Read())
+            using (var connection = new MySqlConnection(config.GetConnectionString("MariaDb")))
             {
-                var user = new User();
-                user.Id = reader.GetInt32("id");
-                user.Name = reader.GetString(1);
-                user.Email = reader.GetString(2);
-                user.Phone = reader.GetString(3);
+                var reader = ReadData("Select id, name, email, phone from users;", connection);
+
+                var users = new List<User>();
+                while (reader.Read())
+                {
+                    var user = new User();
+                    user.Id = reader.GetInt32("id");
+                    user.Name = reader.GetString(1);
+                    user.Email = reader.GetString(2);
+                    user.Phone = reader.GetString(3);
+                }
+                connection.Close();
+                return users;
+
             }
-            return users;
         }
 
-        private MySqlDataReader ReadData(string query)
+        private MySqlDataReader ReadData(string query, MySqlConnection connection)
         {
-            using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
             using var command = connection.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
