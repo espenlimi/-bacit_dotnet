@@ -4,5 +4,6 @@
     {
         void Save(UserEntity user);
         List<UserEntity> GetUsers();
+        void Delete(string email);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using bacit_dotnet.MVC.DataAccess;
 using bacit_dotnet.MVC.Models;
+using bacit_dotnet.MVC.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -8,24 +9,14 @@ namespace bacit_dotnet.MVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ISqlConnector sqlConnector;
+        private readonly IUserRepository userRepository;
 
-        public HomeController(ILogger<HomeController> logger, ISqlConnector sqlConnector)
+        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository)
         {
             _logger = logger;
-            this.sqlConnector = sqlConnector;
+            this.userRepository = userRepository;
         }
 
-        [HttpGet]
-        public IActionResult UserData()
-        {
-
-            var data = sqlConnector.GetUsers();
-            var model = new UsersModel();
-            model.Users = data;
-            return View("Users", model);
-
-        }
         [HttpGet]
         public IActionResult Index()
         {

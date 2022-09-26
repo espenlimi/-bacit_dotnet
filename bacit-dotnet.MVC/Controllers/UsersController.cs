@@ -12,15 +12,33 @@ namespace bacit_dotnet.MVC.Controllers
         {
             this.userRepository = userRepository;
         }
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Index(string? email)
+        {
+            var model = new UserViewModel();
+            model.Users = userRepository.GetUsers();
+            if (email != null)
+            {
+                var currentUser = model.Users.FirstOrDefault(x => x.Email == email);
+                if (currentUser != null)
+                {
+                    model.EmployeeNumber = currentUser.EmployeeNumber;
+                    model.Email = currentUser.Email;
+                    model.Name = currentUser.Name;
+                    model.Role = currentUser.Role;
+                    model.Password = currentUser.Password;
+                    model.Team = currentUser.Team;
+                }
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Save(UserViewModel model)
         {
 
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Save(UserViewModel model) {
-
-            UserEntity newUser = new UserEntity { 
+            UserEntity newUser = new UserEntity
+            {
                 Name = model.Name,
                 Email = model.Email,
                 EmployeeNumber = model.EmployeeNumber,
@@ -29,7 +47,14 @@ namespace bacit_dotnet.MVC.Controllers
                 Team = model.Team
             };
             userRepository.Save(newUser);
-            return View("Index");
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(string email)
+        {
+            userRepository.Delete(email);
+            return RedirectToAction("Index");
         }
     }
 }

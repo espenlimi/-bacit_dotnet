@@ -12,9 +12,9 @@ public class Program
         // Add services to the container.
         builder.Services.AddControllersWithViews();
         builder.Services.AddTransient<ISqlConnector, SqlConnector>();
-        builder.Services.AddTransient<IUserRepository, InMemoryUserRepository>();
+        builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
         var app = builder.Build();
-
+         
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {
