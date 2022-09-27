@@ -1,4 +1,5 @@
-﻿using bacit_dotnet.MVC.Models.Users;
+﻿using bacit_dotnet.MVC.Entities;
+using bacit_dotnet.MVC.Models.Users;
 using bacit_dotnet.MVC.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
