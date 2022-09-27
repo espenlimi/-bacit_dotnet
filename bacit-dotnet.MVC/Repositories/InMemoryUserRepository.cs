@@ -1,4 +1,6 @@
-﻿namespace bacit_dotnet.MVC.Repositories
+﻿using bacit_dotnet.MVC.Entities;
+
+namespace bacit_dotnet.MVC.Repositories
 {
     public class InMemoryUserRepository : IUserRepository
     {
@@ -45,16 +47,5 @@
                              .FirstOrDefault(user =>
                              user.Email.Equals(email, StringComparison.InvariantCultureIgnoreCase));
         }
-    }
-
-    public class UserEntity
-    {
-        public string Name { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string EmployeeNumber { get; set; }
-        public string Team { get; set; }
-        public string Role { get; set; }
-
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace bacit_dotnet.MVC.Repositories
+﻿using bacit_dotnet.MVC.Entities;
+
+namespace bacit_dotnet.MVC.Repositories
 {
     public interface IUserRepository
     {
