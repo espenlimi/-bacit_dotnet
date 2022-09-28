@@ -45,7 +45,7 @@ namespace bacit_dotnet.MVC.Controllers
                 EmployeeNumber = model.EmployeeNumber,
                 Password = model.Password,
                 Role = model.Role,
-                Team = model.Team
+                Team = model.Team,
             };
             userRepository.Save(newUser);
             return RedirectToAction("Index");

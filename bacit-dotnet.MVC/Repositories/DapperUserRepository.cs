@@ -32,7 +32,7 @@ namespace bacit_dotnet.MVC.Repositories
         {
             using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
             {
-                return connection.QueryFirstOrDefault<UserEntity>("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users where email like @param ", param: email);
+                return connection.QueryFirstOrDefault<UserEntity>("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users where email like @emailParameter; ", new { emailParameter = email });
             }
         }
 
@@ -52,9 +52,13 @@ namespace bacit_dotnet.MVC.Repositories
             {
                 if (existingUser != null)
                 {
-                    connection.Update(user);
+                    user.Id = existingUser.Id; // set this so the update-magic knows what record to update. 
+                    connection.Update<UserEntity>(user); //Dapper.Contrib
                 }
-                connection.Insert(user); //Dapper.Contrib
+                else
+                {
+                    connection.Insert<UserEntity>(user); //Dapper.Contrib
+                }
             }
         }
     }

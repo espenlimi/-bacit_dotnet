@@ -19,8 +19,8 @@ public class Program
         builder.Services.AddDbContext<DataContext>(options => options.UseMySql(ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("SqlConnectionString"))));
         //builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
         //builder.Services.AddSingleton<IUserRepository, EFUserRepository>();
-        builder.Services.AddSingleton<IUserRepository, SqlUserRepository>();
-        //builder.Services.AddSingleton<IUserRepository, DapperUserRepository>();
+        //builder.Services.AddSingleton<IUserRepository, SqlUserRepository>();
+        builder.Services.AddSingleton<IUserRepository, DapperUserRepository>();
 
         var app = builder.Build();
          
