@@ -28,7 +28,7 @@ Compile and pacakge source code with maven in docker.
 
 ##### 3. Enter the database and create the database and table for this skeleton:    
 `docker exec -it mariadb mysql -p`    
-When prompted enter the password (`12345`), then type or copy in the SQL from [this file](databaseskript/create-user.sql) (line by line).
+When prompted enter the password (`12345`), then type or copy in the SQL from [this file](CreateDb.sql) (line by line).
 
 ##### 4. Test out the code at http://localhost:80/
 
