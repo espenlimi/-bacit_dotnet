@@ -23,13 +23,12 @@ namespace bacit_dotnet.MVC.Repositories
         {
             using (var connection = sqlConnector.GetDbConnection())
             {
-                var reader = ReadData("Select id, name, email, phone from users;", connection);
+                var reader = ReadData("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users;", connection);
                 var users = new List<UserEntity>();
                 while (reader.Read())
                 {
-                    var user = new UserEntity();
-                    user.Name = reader.GetString(1);
-                    user.Email = reader.GetString(2);
+                    UserEntity user = MapUserFromReader(reader);
+                    users.Add(user);
                 }
                 connection.Close();
                 return users;
@@ -37,17 +36,57 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
 
+        private static UserEntity MapUserFromReader(IDataReader reader)
+        {
+            var user = new UserEntity();
+            user.Id = reader.GetInt32(0);
+            user.Name = reader.GetString(1);
+            user.Email = reader.GetString(2);
+            user.Password = reader.GetString(3);
+            user.EmployeeNumber = reader.GetString(4);
+            user.Team = reader.GetString(5);
+            user.Role = reader.GetString(6);
+            return user;
+        }
 
         public void Save(UserEntity user)
         {
-            var sql = $"insert into users (name, email) values '{user.Name}','{user.Email}';";
-            RunCommand(sql);
+            UserEntity existingUser = null;
+            using (var connection = sqlConnector.GetDbConnection())
+            {
+                var reader = ReadData("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users;", connection);
+               
+                while (reader.Read())
+                {
+                    existingUser = MapUserFromReader(reader);
+                }
+                connection.Close();
+            }
+            if (existingUser!=null)
+            {
+                var sql = $@"update users 
+                                set 
+                                   Name = '{user.Name}', 
+                                   Password='{user.Password}',
+                                   EmployeeNumber = '{user.EmployeeNumber}',
+                                   Team ='{user.Team}', 
+                                   Role ='{user.Role}' 
+                                where email = '{user.Email}';";
+                RunCommand(sql);
+            }
+            else 
+            {
+                var sql = $"insert into users(Name, Email, Password,EmployeeNumber,Team, Role ) values('{user.Name}', '{user.Email}', '{user.Password}', '{user.EmployeeNumber}','{user.Team}','{user.Role}');";
+                RunCommand(sql);
+            }
+            
         }
 
         private void RunCommand(string sql)
         {
             using (var connection = sqlConnector.GetDbConnection())
             {
+                connection.Open();
                 var command = connection.CreateCommand();
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
@@ -65,3 +104,4 @@ namespace bacit_dotnet.MVC.Repositories
         }
     }
 }
+

@@ -19,9 +19,20 @@ namespace bacit_dotnet.MVC.Repositories
         }
         public void Delete(string email)
         {
+            var user = GetUserByEmail(email);
+            if (user == null)
+                return;
             using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
             {
-                var users = connection.QueryFirstOrDefault<UserEntity>("Select id, name, email, phone from users where email like @param ", param: email); 
+                connection.Delete<UserEntity>(user);
+            }
+        }
+
+        private UserEntity GetUserByEmail(string email)
+        {
+            using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
+            {
+                return connection.QueryFirstOrDefault<UserEntity>("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users where email like @param ", param: email);
             }
         }
 
@@ -29,16 +40,21 @@ namespace bacit_dotnet.MVC.Repositories
         {
             using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
             {
-                var users = connection.Query<UserEntity>("Select id, name, email, phone from users;"); //Regular Dapper
+                var users = connection.Query<UserEntity>("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users;"); //Regular Dapper
                 return users.ToList();
             }
         }
 
         public void Save(UserEntity user)
         {
+            var existingUser = GetUserByEmail(user.Email);
             using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
             {
-                var users = connection.Insert(user); //Dapper.Contrib
+                if (existingUser != null)
+                {
+                    connection.Update(user);
+                }
+                connection.Insert(user); //Dapper.Contrib
             }
         }
     }

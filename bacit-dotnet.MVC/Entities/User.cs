@@ -1,5 +1,8 @@
-﻿namespace bacit_dotnet.MVC.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace bacit_dotnet.MVC.Entities
 {
+    [Table("Users")]
     public class UserEntity
     {
         public int Id { get; set; }
