@@ -8,12 +8,12 @@ CREATE OR REPLACE TABLE users (
 );
 
 CREATE OR REPLACE TABLE suggestions (
-    Id int primary key auto_increment,
-    Title varchar(20),
-    Name varchar(20),
-    Team varchar(20),
-    Description varchar(500),
-    TimeStamp datetime
+    id int primary key auto_increment,
+    title varchar(20),
+    name varchar(20),
+    team varchar(20),
+    description varchar(500),
+    timeStamp varchar(255)
 );
 
 
