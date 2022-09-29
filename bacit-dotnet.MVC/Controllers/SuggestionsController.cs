@@ -23,12 +23,8 @@ namespace bacit_dotnet.MVC.Controllers
         [HttpPost]
         public IActionResult Save(SuggestionViewModel model) 
         {
-           /* if (!ModelState.IsValid)
-                throw new Exception("Dette gikk dårlig");
-            if (string.IsNullOrWhiteSpace(model.Name))
-                throw new ArgumentException();*/
-            sqlConnector.SetSuggestions();
-            return null;
+            sqlConnector.SetSuggestionsParam(model);
+            return View(model);
         }
     }
 }

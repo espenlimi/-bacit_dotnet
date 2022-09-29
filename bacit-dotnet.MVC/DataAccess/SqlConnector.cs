@@ -1,5 +1,6 @@
 ﻿using bacit_dotnet.MVC.Entities;
 using MySqlConnector;
+using bacit_dotnet.MVC.Models.Suggestions;
 
 namespace bacit_dotnet.MVC.DataAccess
 {
@@ -34,9 +35,9 @@ namespace bacit_dotnet.MVC.DataAccess
             return users;
         }
 
-        private MySqlDataReader ReadData(string query,MySqlConnection conn)
+        private MySqlDataReader ReadData(string query, MySqlConnection conn)
         {
-            
+
             using var command = conn.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
@@ -44,19 +45,35 @@ namespace bacit_dotnet.MVC.DataAccess
         }
 
         private void SaveSuggestions(MySqlConnection conn)
-       {
-        string query = "insert into suggestions (Title, Name, Team, Description) values (\"Tittel\", \"Navn\", 5, \"Dette er en beskrivelse av mitt problem\")";
-        using var command = conn.CreateCommand();
-        command.CommandType = System.Data.CommandType.Text;
-        command.CommandText = query; 
-        command.ExecuteNonQuery();
-       } 
+        {
+            string query = "insert into suggestions (Title, Name, Team, Description) values (\"Tittel\", \"Navn\", 5, \"Dette er en beskrivelse av mitt problem\")";
+            using var command = conn.CreateCommand();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = query;
+            command.ExecuteNonQuery();
+        }
 
-       public void SetSuggestions()
-       {
-        using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
-        connection.Open();
-        SaveSuggestions(connection);
-       }
+        public void SetSuggestionsParam(SuggestionViewModel model)
+        {
+            using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection.Open();
+            var query = "insert into suggestions (Title, Name, Team, Description,TimeStamp) values (@Title, @Name, @Team, @Description, @TimeStamp)";
+            InsertSuggestions(query, connection, model);
+        }
+
+        private void InsertSuggestions(string query, MySqlConnection conn, SuggestionViewModel model)
+        {
+            using var command = conn.CreateCommand();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = query;
+            command.Parameters.AddWithValue("@Title", model.Title); 
+            command.Parameters.AddWithValue("@Name", model.Name);
+            command.Parameters.AddWithValue("@Team", model.Team);
+            command.Parameters.AddWithValue("@Description", model.Description);
+            command.Parameters.AddWithValue("@TimeStamp", model.TimeStamp);
+            command.ExecuteNonQuery();
+        }
+
+
     }
 }
