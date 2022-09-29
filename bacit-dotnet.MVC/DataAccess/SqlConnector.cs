@@ -45,7 +45,7 @@ namespace bacit_dotnet.MVC.DataAccess
 
         private void SaveSuggestions(MySqlConnection conn)
        {
-        string query = "insert into suggestions (Id, Title, Name, Team, Description) values (7, \"Tittel\", \"Navn\", 5, \"Dette er en beskrivelse av mitt problem\")";
+        string query = "insert into suggestions (Title, Name, Team, Description) values (\"Tittel\", \"Navn\", 5, \"Dette er en beskrivelse av mitt problem\")";
         using var command = conn.CreateCommand();
         command.CommandType = System.Data.CommandType.Text;
         command.CommandText = query; 

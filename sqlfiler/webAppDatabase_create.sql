@@ -8,7 +8,7 @@ CREATE OR REPLACE TABLE users (
 );
 
 CREATE OR REPLACE TABLE suggestions (
-    Id int primary key,
+    Id int primary key auto_increment,
     Title varchar(20),
     Name varchar(20),
     Team varchar(20),
