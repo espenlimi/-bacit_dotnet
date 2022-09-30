@@ -12,8 +12,6 @@ I recommend getting familiar with executing docker commands in the terminal befo
 To make this work, you need to have [Docker](https://www.docker.com/) installed and running on your system.    
 
 ### Via commandline with docker (Recommended):
-Compile and pacakge source code with maven in docker.
-
 > Note: On Unix and Unix-like systems (Mac and Linux) you might need to run the commands with `sudo` to make them work.
 
 ##### 1. Build then start the docker container with the web application:    
@@ -47,5 +45,4 @@ The scripts allow us to build and deploy our application faster, which can be be
 <br>
 
 #### PS
-Remember to recompile your code with maven after code changes. :)
 Have fun and experiment :)
