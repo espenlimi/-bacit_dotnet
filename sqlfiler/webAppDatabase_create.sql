@@ -7,6 +7,7 @@ drop table suggestions;
 drop table subTeam;
 drop table team;
 
+
 CREATE TABLE users (
     userId INT auto_increment PRIMARY KEY,
     name VARCHAR(20),

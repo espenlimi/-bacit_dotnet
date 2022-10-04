@@ -13,6 +13,8 @@ values
 
 select * from users;
 
+delete from suggestions;
+
 insert into suggestions (title, description)
 values 
 ('Vask opp', 'Dere må vaske opp i kantina'),
@@ -20,6 +22,8 @@ values
 ('Lyspære', 'Må bytte lyspære ved inngangen');
 
 select * from suggestions; 
+
+delete from userSuggestions;
 
 insert into userSuggestions (userId, sugId)
 values 
@@ -38,6 +42,8 @@ values
 
 select * from team; 
 
+delete from teamUser;
+
 insert into teamUser (teamId, userId)
 values 
 (2, 1),
@@ -48,6 +54,8 @@ values
 (1, 4);
 
 select * from teamUser; 
+
+delete from subTeam;
 
 insert into subTeam (teamId, subTeamName)
 values
