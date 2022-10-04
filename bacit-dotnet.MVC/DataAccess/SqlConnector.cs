@@ -63,6 +63,7 @@ namespace bacit_dotnet.MVC.DataAccess
 
         private void InsertSuggestions(string query, MySqlConnection conn, SuggestionViewModel model)
         {
+            DateTime date1 = DateTime.Now; 
             using var command = conn.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
@@ -70,7 +71,7 @@ namespace bacit_dotnet.MVC.DataAccess
             command.Parameters.AddWithValue("@Name", model.Name);
             command.Parameters.AddWithValue("@Team", model.Team);
             command.Parameters.AddWithValue("@Description", model.Description);
-            command.Parameters.AddWithValue("@TimeStamp", model.TimeStamp);
+            command.Parameters.AddWithValue("@TimeStamp", date1);
             command.ExecuteNonQuery();
         }
 
