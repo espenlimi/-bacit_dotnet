@@ -1,5 +1,6 @@
 USE webAppDatabase;
 
+
 delete from users;
 
 insert into users (name, email, phone) 
