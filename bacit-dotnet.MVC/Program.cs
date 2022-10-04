@@ -15,14 +15,13 @@ public class Program
         // Add services to the container.
         builder.Services.AddControllersWithViews();
         builder.Services.AddTransient<ISqlConnector, SqlConnector>();
-        
+        /*
         builder.Services.AddDbContext<DataContext>(options => {
             options.UseMySql(builder.Configuration.GetConnectionString("MariaDb"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MariaDb")));
         });
-        //builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
-        builder.Services.AddScoped<IUserRepository, EFUserRepository>();
-        //builder.Services.AddSingleton<IUserRepository, SqlUserRepository>();
-        //builder.Services.AddSingleton<IUserRepository, DapperUserRepository>();
+        */
+        builder.Services.AddSingleton<IEmployeeRepository, DapperEmployeeRepository>();
+      
 
         var app = builder.Build();
          

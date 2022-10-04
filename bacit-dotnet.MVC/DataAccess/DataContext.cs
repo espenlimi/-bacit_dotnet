@@ -14,10 +14,10 @@ namespace bacit_dotnet.MVC.DataAccess
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserEntity>().HasKey(x => x.Id);
+            modelBuilder.Entity<EmployeeEntity>().HasKey(x => x.emp_id);
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<UserEntity> Users { get; set; }
+        public DbSet<EmployeeEntity> Users { get; set; }
     }
 }
