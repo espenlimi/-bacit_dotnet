@@ -1,0 +1,5 @@
+FØRST KJØR StartDB.cmd (Usikker på hva gustav gjør på mac, skal finne ut av det)
+kjør så "mysql -u root -p"
+skriv inn passordet ditt (I fila så er det 12345 men hvis du har endra det er det annerledes)
+kjør "source /bin/setupDB.sql"
+kjør "source /bin/genmockdata.sql"
