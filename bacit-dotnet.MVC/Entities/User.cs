@@ -7,4 +7,14 @@
         public string Email { get; set; }
         public string Phone { get; set; }
     }
+
+    public class Suggestion
+    {
+       public string Title { get; set; }
+        public string Name { get; set; }
+        public string Team { get; set; }
+        public string Description { get; set; }
+    }
+
+
 }

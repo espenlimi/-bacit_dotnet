@@ -26,6 +26,7 @@ CREATE TABLE suggestions (
     FOREIGN KEY (team) REFERENCES team(teamId)
 );
 
+
 CREATE TABLE team (
     teamId INT auto_increment primary key, 
     teamName VARCHAR(20)
