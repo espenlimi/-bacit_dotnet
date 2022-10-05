@@ -1,0 +1,19 @@
+@model bacit_dotnet.MVC.Models.SuggestionModel
+<h1>
+   Forslags liste
+</h1>
+
+<ul>
+    @foreach (var user in Model.Sug)
+    {
+        <li>
+            <div>
+            <h1 style="color: red;"> @user.Title</h1>
+            <p>Navn: @user.Name</p> 
+            <p>Team: @user.Team, </p> 
+            <p>Beskrivelse: @user.Description</p>
+            <button type="button">Rediger</button>
+            </div>
+        </li>
+    }
+</ul>

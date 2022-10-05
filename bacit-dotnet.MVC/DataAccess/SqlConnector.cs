@@ -41,7 +41,9 @@ namespace bacit_dotnet.MVC.DataAccess
             using var command = conn.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
-            return command.ExecuteReader();
+            var result = command.ExecuteReader();
+            Console.WriteLine(result);
+            return result;
         }
 
         private void SaveSuggestions(MySqlConnection conn)
@@ -74,7 +76,28 @@ namespace bacit_dotnet.MVC.DataAccess
             command.Parameters.AddWithValue("@TimeStamp", date1);
             command.ExecuteNonQuery();
         }
+       
+        public  IEnumerable<Suggestion> FetchSug() {
+            using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection.Open();
 
+            var Suggestions = new List<Suggestion>();
+            var reader = ReadData("select id, Title, Name, Team, Description from Suggestions", connection);
+            while (reader.Read())
+            {
+                var user = new Suggestion();
+                Console.WriteLine(reader.GetInt32("id"));
+                user.Title = reader.GetString("Title");
+                user.Name = reader.GetString("Name");
+                user.Team = reader.GetString("Team");
+                user.Description = reader.GetString("Description");
+                Suggestions.Add(user);
+            }
+            connection.Close();
+            return Suggestions;
+
+
+        }
 
     }
 }
