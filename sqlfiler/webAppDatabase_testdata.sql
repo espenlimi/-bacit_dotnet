@@ -19,14 +19,6 @@ values
 
 select * from suggestions; 
 
-insert into userSuggestions (userId, sugId)
-values 
-(1, 3), 
-(4, 1), 
-(6, 2);
-
-select * from userSuggestions;
-
 delete from team; 
 
 insert into team (teamName) 
