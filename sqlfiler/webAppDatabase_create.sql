@@ -1,9 +1,8 @@
 USE webAppDatabase;
 
-drop table userSuggestions;
 drop table teamUser;
-drop table users;
 drop table suggestions;
+drop table users;
 drop table subTeam;
 drop table team;
 
@@ -17,20 +16,16 @@ CREATE TABLE users (
 CREATE TABLE suggestions (
     sugId int auto_increment primary key,
     title varchar(20),
+    teamId INT,
     description varchar(500),
-    timeStamp TIMESTAMP
+    timeAdded TIMESTAMP,
+    userId INT,
+    CONSTRAINT userFK
+    FOREIGN KEY (userId) REFERENCES users(userId),
+    CONSTRAINT teamFK
+    FOREIGN KEY (teamId) REFERENCES team(teamId)
 );
 
-CREATE TABLE userSuggestions (
-    userId INT, 
-    sugId INT, 
-    CONSTRAINT userSugPK
-    PRIMARY KEY (userId, sugId),
-    CONSTRAINT userSugFK
-    FOREIGN KEY (userID) REFERENCES users(userId),
-    CONSTRAINT sugUserFk
-    FOREIGN KEY (sugId) REFERENCES suggestions(sugId)
-);
 
 CREATE TABLE team (
     teamId INT auto_increment primary key, 
