@@ -11,13 +11,7 @@ values
 
 select * from users;
 
-insert into suggestions (title, description)
-values 
-('Vask opp', 'Dere må vaske opp i kantina'),
-('Kost gulvet', 'Dere må koste gulvet i møterom 1'),
-('Lyspære', 'Må bytte lyspære ved inngangen');
 
-select * from suggestions; 
 
 delete from team; 
 
@@ -27,6 +21,14 @@ values
 ('HR'); 
 
 select * from team; 
+
+insert into suggestions (title, description, teamId, userId)
+values 
+('Vask opp', 'Dere må vaske opp i kantina', 1, 3),
+('Kost gulvet', 'Dere må koste gulvet i møterom 1', 2, 2),
+('Lyspære', 'Må bytte lyspære ved inngangen', 1, 5);
+
+select * from suggestions; 
 
 insert into teamUser (teamId, userId)
 values 
