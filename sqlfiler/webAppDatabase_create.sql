@@ -18,7 +18,7 @@ CREATE TABLE suggestions (
     sugId int auto_increment primary key,
     title varchar(20),
     description varchar(500),
-    timeStamp TIMESTAMP(255)
+    timeStamp TIMESTAMP
 );
 
 CREATE TABLE userSuggestions (
