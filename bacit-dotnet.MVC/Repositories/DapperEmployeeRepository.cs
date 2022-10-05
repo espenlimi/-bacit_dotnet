@@ -24,7 +24,7 @@ namespace bacit_dotnet.MVC.Repositories
         {
             using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
             {
-                var users = connection.Query<EmployeeEntity>("Select * from employee;"); //Regular Dapper
+                var users = connection.Query<EmployeeEntity>("Select * from Employee;"); //Regular Dapper
                 return users.ToList();
             }
         }
