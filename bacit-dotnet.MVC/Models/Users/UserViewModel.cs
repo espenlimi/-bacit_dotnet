@@ -15,6 +15,6 @@ namespace bacit_dotnet.MVC.Models.Users
         public List<string> AvailableRoles { get; set; }
         public string ValididationErrorMessage { get; set; }
 
-        public List<UserEntity> Users { get; set; }
+        public IEnumerable<UserEntity> Users { get; set; }
     }
 }

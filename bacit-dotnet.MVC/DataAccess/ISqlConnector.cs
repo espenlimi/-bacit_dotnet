@@ -5,6 +5,8 @@ namespace bacit_dotnet.MVC.DataAccess
 {
     public interface ISqlConnector
     {
+        IEnumerable<UserEntity> GetUsers();
         IDbConnection GetDbConnection();
+
     }
 }

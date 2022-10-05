@@ -1,0 +1,9 @@
+﻿@model bacit_dotnet.MVC.Models.Users.UserViewModel
+<ul>
+    @foreach (var user in Model.Users)
+            {
+                <li>
+                    Navn: @user.Name , e-post: @user.Email , team: @user.Team , role: @user.Role
+                </li>
+            }
+</ul>
