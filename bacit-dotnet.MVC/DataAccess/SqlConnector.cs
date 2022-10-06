@@ -59,7 +59,7 @@ namespace bacit_dotnet.MVC.DataAccess
         {
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
-            var query = "insert into suggestions (Title, Name, Team, Description,TimeStamp) values (@Title, @Name, @Team, @Description, @TimeStamp)";
+            var query = "insert into suggestions (Title, UserId, TeamId, Description, TimeAdded) values (@Title, @UserId, @TeamId, @Description, @TimeStamp)";
             InsertSuggestions(query, connection, model);
         }
 
@@ -70,8 +70,8 @@ namespace bacit_dotnet.MVC.DataAccess
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
             command.Parameters.AddWithValue("@Title", model.Title); 
-            command.Parameters.AddWithValue("@Name", model.Name);
-            command.Parameters.AddWithValue("@Team", model.Team);
+            command.Parameters.AddWithValue("@UserId", model.Name);
+            command.Parameters.AddWithValue("@TeamId", model.Team);
             command.Parameters.AddWithValue("@Description", model.Description);
             command.Parameters.AddWithValue("@TimeStamp", date1);
             command.ExecuteNonQuery();
@@ -82,14 +82,14 @@ namespace bacit_dotnet.MVC.DataAccess
             connection.Open();
 
             var Suggestions = new List<Suggestion>();
-            var reader = ReadData("select id, Title, Name, Team, Description from Suggestions", connection);
+            var reader = ReadData("select id, Title, UserId, TeamId, Description from Suggestions", connection);
             while (reader.Read())
             {
                 var user = new Suggestion();
                 Console.WriteLine(reader.GetInt32("id"));
                 user.Title = reader.GetString("Title");
-                user.Name = reader.GetString("Name");
-                user.Team = reader.GetString("Team");
+                user.Name = reader.GetString("UserId");
+                user.Team = reader.GetString("TeamId");
                 user.Description = reader.GetString("Description");
                 Suggestions.Add(user);
             }
