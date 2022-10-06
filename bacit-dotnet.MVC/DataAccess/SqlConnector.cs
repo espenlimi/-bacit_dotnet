@@ -82,14 +82,14 @@ namespace bacit_dotnet.MVC.DataAccess
             connection.Open();
 
             var Suggestions = new List<Suggestion>();
-            var reader = ReadData("select id, Title, UserId, TeamId, Description from Suggestions", connection);
+            var reader = ReadData("select sugId, Title, UserId, TeamId, Description from suggestions", connection);
             while (reader.Read())
             {
                 var user = new Suggestion();
-                Console.WriteLine(reader.GetInt32("id"));
+                Console.WriteLine(reader.GetInt32("sugId"));
                 user.Title = reader.GetString("Title");
                 user.Name = reader.GetString("UserId");
-                user.Team = reader.GetString("TeamId");
+                user.Team = reader.GetInt32("TeamId");
                 user.Description = reader.GetString("Description");
                 Suggestions.Add(user);
             }
