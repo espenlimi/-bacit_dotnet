@@ -3,6 +3,8 @@ USE webAppDatabase;
 drop table teamUser;
 drop table suggestions;
 drop table users;
+drop table teamleader;
+drop table administrator;
 drop table subTeam;
 drop table team;
 
@@ -13,23 +15,22 @@ CREATE TABLE users (
     phone VARCHAR(12)
 );
 
-CREATE TABLE suggestions (
-    sugId int auto_increment primary key,
-    title varchar(20),
-    teamId INT,
-    description varchar(500),
-    timeAdded TIMESTAMP,
-    userId INT,
-    CONSTRAINT userFK
-    FOREIGN KEY (userId) REFERENCES users(userId),
-    CONSTRAINT teamFK
-    FOREIGN KEY (teamId) REFERENCES team(teamId)
-);
-
-
 CREATE TABLE team (
     teamId INT auto_increment primary key, 
     teamName VARCHAR(20)
+);
+
+CREATE TABLE suggestions (
+    sugId int auto_increment primary key,
+    title varchar(20),
+    teamId INT NOT NULL DEFAULT 1,
+    description varchar(500),
+    timeAdded TIMESTAMP,
+    userId varchar(20),
+    /*CONSTRAINT userFK
+    FOREIGN KEY (userId) REFERENCES users(userId),
+    CONSTRAINT teamFK
+    FOREIGN KEY (teamId) REFERENCES team(teamId)*/
 );
 
 CREATE TABLE teamUser (
@@ -50,4 +51,18 @@ CREATE TABLE subTeam (
     teamId INT, 
     CONSTRAINT subTeamFK
     FOREIGN KEY (teamId) REFERENCES team(teamId)
+);
+
+CREATE TABLE teamleader (
+    leaderId INT auto_increment PRIMARY KEY,
+    userId INT,
+    CONSTRAINT userLeaderFK 
+    FOREIGN KEY (userId) REFERENCES users(userId)
+);
+
+CREATE TABLE administrator (
+    adminId INT auto_increment PRIMARY KEY,
+    userId INT,
+    CONSTRAINT userAdminFK 
+    FOREIGN KEY (userId) REFERENCES users(userId)
 );
