@@ -46,9 +46,8 @@ CREATE TABLE Suggestion(
 suggestion_id int NOT NULL PRIMARY KEY AUTO_INCREMENT, 
 title varchar(100) NOT NULL, 
 description text NOT NULL, 
-status enum("Plan", "Do", "Study", "Act") NOT NULL,
+status enum("Plan", "Do", "Study", "Act", "Finished") NOT NULL,
 isJustDoIt BOOLEAN NOT NULL,
-isFinished BOOLEAN NOT NULL, 
 ownership_emp_id int NOT NULL, 
 poster_emp_id int NOT NULL, 
 timestamp_id int NOT NULL, 
@@ -187,16 +186,16 @@ INSERT INTO SuggestionTimestamp() VALUES();
 
 /*GENERER FORSLAG*/
 
-INSERT INTO Suggestion(title, description, status, isJustDoIt, isFinished, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Egen stand", "Vi burde ha egen stand for destillert vann der truckene står for lading. Nå er det litt kaos med vannet og ofte finner vi det ikke når vi behøver det.", "Plan", False, False, 2, 2, 3);
-INSERT INTO Suggestion(title, description, status, isJustDoIt, isFinished, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Flytte installasjonsbordet", "Installasjonsbordet som står ved EL-skapet bør flyttes til den andre siden av EL-skapet. Det er vanskelig å få tilgang til EL-skapet sånn som bordet står nå.", "Plan", False, False, 3, 3, 4);
-INSERT INTO Suggestion(title, description, status, isJustDoIt, isFinished, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Flytte euro", "Europallene ble flyttet ut til høyre for inngangen til Hall A og ikke inne. De stod i veien.", "Act", True, True, 4, 4, 2); 
-INSERT INTO Suggestion(title, description, status, isJustDoIt, isFinished, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Ingen røyking!", "Askebegeret må flyttes fra inngangen til Hall A til andre siden av parkeringsplassen under eiketreet. Ingen røyking på arbeidsplassen!", "Study", False, False, 5, 4, 5);
-INSERT INTO Suggestion(title, description, status, isJustDoIt, isFinished, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Heve/senke sengene", "Kan vi få mulighet til å heve å senke sengene? De sliter litt på kroppen når de ikke er grei høyde.", "Do", False, False, 8, 1, 7);
-INSERT INTO Suggestion(title, description, status, isJustDoIt, isFinished, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Vi vil ha kjøttbollene tilbake!", "Kan vi får tilbake kjøttbollene i kantina? Jeg er så lei av alt det vegandrittet. #reddkjøttbollene!", "Plan", False, False, 9, 9, 3);
-INSERT INTO Suggestion(title, description, status, isJustDoIt, isFinished, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Ny mekanisk rampe", "Ny mekanisk rampe til Hall B. Den som vi har nå har sluttet å fungere for lenge siden og vi har stadig problemer når biler kommer for å tømmes eller lastes. Last blir skadet og kan derfor ikke brukes! Koster vel mindre enn å fikse med tanke på hvor herpa den er.", "Study", False, False, 7, 1, 2);
-INSERT INTO Suggestion(title, description, status, isJustDoIt, isFinished, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Zoner i hall B", "Male eller teipe gulvet på nytt i Hall B så at zonene blir mer tydelige.",  "Act", False, False, 6, 6, 9);
-INSERT INTO Suggestion(title, description, status, isJustDoIt, isFinished, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Blomster i asfalten?", "Siden vi ikke gidder å asfaltere parkeringsplassen bak Hall B, kan vi da plante blomster i hullene i asfalten? Parkeringsplassen blir mer koselig da og hullene blir mer synlig så at vi ikke kjører ned i de.", "Plan", False, False, 9, 9, 4);
-INSERT INTO Suggestion(title, description, status, isJustDoIt, isFinished, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Vinsjer i taket", "Installere vinsjer i taket for å flytte på det vi jobber med enklere og raskere enn trallene vi bruker nå", "Act", False, True, 6, 2, 8);
+INSERT INTO Suggestion(title, description, status, isJustDoIt, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Egen stand", "Vi burde ha egen stand for destillert vann der truckene står for lading. Nå er det litt kaos med vannet og ofte finner vi det ikke når vi behøver det.", "Plan", False, 2, 2, 3);
+INSERT INTO Suggestion(title, description, status, isJustDoIt, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Flytte installasjonsbordet", "Installasjonsbordet som står ved EL-skapet bør flyttes til den andre siden av EL-skapet. Det er vanskelig å få tilgang til EL-skapet sånn som bordet står nå.", "Plan", False, 3, 3, 4);
+INSERT INTO Suggestion(title, description, status, isJustDoIt, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Flytte euro", "Europallene ble flyttet ut til høyre for inngangen til Hall A og ikke inne. De stod i veien.", "Act", True, 4, 4, 2); 
+INSERT INTO Suggestion(title, description, status, isJustDoIt, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Ingen røyking!", "Askebegeret må flyttes fra inngangen til Hall A til andre siden av parkeringsplassen under eiketreet. Ingen røyking på arbeidsplassen!", "Study", False, 5, 4, 5);
+INSERT INTO Suggestion(title, description, status, isJustDoIt, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Heve/senke sengene", "Kan vi få mulighet til å heve å senke sengene? De sliter litt på kroppen når de ikke er grei høyde.", "Do", False, 8, 1, 7);
+INSERT INTO Suggestion(title, description, status, isJustDoIt, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Vi vil ha kjøttbollene tilbake!", "Kan vi får tilbake kjøttbollene i kantina? Jeg er så lei av alt det vegandrittet. #reddkjøttbollene!", "Plan", False, 9, 9, 3);
+INSERT INTO Suggestion(title, description, status, isJustDoIt, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Ny mekanisk rampe", "Ny mekanisk rampe til Hall B. Den som vi har nå har sluttet å fungere for lenge siden og vi har stadig problemer når biler kommer for å tømmes eller lastes. Last blir skadet og kan derfor ikke brukes! Koster vel mindre enn å fikse med tanke på hvor herpa den er.", "Study", False, 7, 1, 2);
+INSERT INTO Suggestion(title, description, status, isJustDoIt, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Zoner i hall B", "Male eller teipe gulvet på nytt i Hall B så at zonene blir mer tydelige.",  "Act", False, 6, 6, 9);
+INSERT INTO Suggestion(title, description, status, isJustDoIt, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Blomster i asfalten?", "Siden vi ikke gidder å asfaltere parkeringsplassen bak Hall B, kan vi da plante blomster i hullene i asfalten? Parkeringsplassen blir mer koselig da og hullene blir mer synlig så at vi ikke kjører ned i de.", "Plan", False, 9, 9, 4);
+INSERT INTO Suggestion(title, description, status, isJustDoIt, ownership_emp_id, poster_emp_id, timestamp_id) VALUES ("Vinsjer i taket", "Installere vinsjer i taket for å flytte på det vi jobber med enklere og raskere enn trallene vi bruker nå", "Act", True, 6, 2, 8);
 
 
 
