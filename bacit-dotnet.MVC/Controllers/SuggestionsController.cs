@@ -4,19 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-
+    [Authorize(Roles = "Administrator")]
     public class SuggestionsController : Controller
     {
-        [Authorize(Roles = "Administrator")]
         public IActionResult Index()
         {
             return View();
-        }
-
-        public IActionResult GetStuff()
-        {
-
-            return View("Index");
         }
 
         [HttpPost]
