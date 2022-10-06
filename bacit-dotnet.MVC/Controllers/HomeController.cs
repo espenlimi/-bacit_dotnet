@@ -11,10 +11,10 @@ namespace bacit_dotnet.MVC.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IEmployeeRepository employeeRepository;
 
-        public HomeController(ILogger<HomeController> logger, IEmployeeRepository userRepository)
+        public HomeController(ILogger<HomeController> logger, IEmployeeRepository employeeRepository)
         {
             _logger = logger;
-            this.employeeRepository= userRepository;
+            this.employeeRepository= employeeRepository;
         }
 
         public IActionResult Index()
@@ -23,5 +23,7 @@ namespace bacit_dotnet.MVC.Controllers
             model.employees = employeeRepository.GetAll();
             return View(model);
         }
+
+
     }
 }

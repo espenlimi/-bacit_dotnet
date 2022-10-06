@@ -1,0 +1,11 @@
+﻿@using bacit_dotnet.MVC.Entities
+@using bacit_dotnet.MVC.Models;
+@model bacit_dotnet.MVC.Models.SuggestionViewModel
+<h1>HEI OG VELKOMMEN TIL VÅRT GRUPPEPROSJEKT I IS-202</h1>
+
+@foreach (SuggestionEntity suggestion in Model.suggestions)
+{
+    <h1>@suggestion.title</h1>
+    <h2>@suggestion.description</h2>
+    <h2>@suggestion.status</h2>
+}

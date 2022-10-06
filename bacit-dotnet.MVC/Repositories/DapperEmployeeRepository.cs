@@ -20,11 +20,12 @@ namespace bacit_dotnet.MVC.Repositories
             throw new NotImplementedException();
         }
 
+
         public List<EmployeeEntity> GetAll()
         {
             using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
             {
-                var users = connection.Query<EmployeeEntity>("Select * from Employee;"); //Regular Dapper
+                var users = connection.Query<EmployeeEntity>("SELECT * FROM Employee;"); //Regular Dapper
                 return users.ToList();
             }
         }

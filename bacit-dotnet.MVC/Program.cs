@@ -21,6 +21,7 @@ public class Program
         });
         */
         builder.Services.AddSingleton<IEmployeeRepository, DapperEmployeeRepository>();
+        builder.Services.AddSingleton<ISuggestionRepository, DapperSuggestionRepository>();
       
 
         var app = builder.Build();
