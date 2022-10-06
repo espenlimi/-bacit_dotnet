@@ -16,3 +16,19 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.brandLink {
+    position: relative;
+    height: 100%;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    flex-flow: row wrap;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    text-align: left;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+}
