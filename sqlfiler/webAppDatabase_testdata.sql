@@ -40,11 +40,11 @@ select * from team;
 
 delete from suggestions;
 
-insert into suggestions (title, description, teamId, userId)
+insert into suggestions (title, description, userId)
 values 
-('Vask opp', 'Dere må vaske opp i kantina', 1, 3),
-('Kost gulvet', 'Dere må koste gulvet i møterom 1', 2, 2),
-('Lyspære', 'Må bytte lyspære ved inngangen', 1, 5);
+('Vask opp', 'Dere må vaske opp i kantina', '3'),
+('Kost gulvet', 'Dere må koste gulvet i møterom 1', '2'),
+('Lyspære', 'Må bytte lyspære ved inngangen', '5');
 
 select * from suggestions; 
 

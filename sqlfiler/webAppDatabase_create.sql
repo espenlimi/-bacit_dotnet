@@ -23,7 +23,7 @@ CREATE TABLE team (
 CREATE TABLE suggestions (
     sugId int auto_increment primary key,
     title varchar(20),
-    teamId INT,
+    teamId INT NOT NULL DEFAULT 1,
     description varchar(500),
     timeAdded TIMESTAMP,
     userId varchar(20),
