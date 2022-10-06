@@ -1,5 +1,7 @@
 USE webAppDatabase;
 
+delete from users;
+
 insert into users (name, email, phone) 
 values 
 ('Sandra', 'email@email.com', '42424242'),
@@ -11,7 +13,21 @@ values
 
 select * from users;
 
+delete from teamleader;
 
+insert into teamleader (userId)
+values
+(1);
+
+select * from teamleader;
+
+delete from administrator;
+
+insert into administrator (userId)
+values
+(2);
+
+select * from administrator;
 
 delete from team; 
 
@@ -22,6 +38,8 @@ values
 
 select * from team; 
 
+delete from suggestions;
+
 insert into suggestions (title, description, teamId, userId)
 values 
 ('Vask opp', 'Dere må vaske opp i kantina', 1, 3),
@@ -29,6 +47,8 @@ values
 ('Lyspære', 'Må bytte lyspære ved inngangen', 1, 5);
 
 select * from suggestions; 
+
+delete from teamUser;
 
 insert into teamUser (teamId, userId)
 values 
@@ -40,6 +60,8 @@ values
 (1, 4);
 
 select * from teamUser; 
+
+delete from subTeam;
 
 insert into subTeam (teamId, subTeamName)
 values
