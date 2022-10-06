@@ -1,15 +1,15 @@
 ﻿using bacit_dotnet.MVC.DataAccess;
 using bacit_dotnet.MVC.Entities;
-using MySqlConnector;
+using Microsoft.AspNetCore.Identity;
 using System.Data;
 
 namespace bacit_dotnet.MVC.Repositories
 {
-    public class SqlUserRepository : IUserRepository
+    public class SqlUserRepository : UserRepositoryBase, IUserRepository
     {
         private readonly ISqlConnector sqlConnector;
 
-        public SqlUserRepository(ISqlConnector sqlConnector)
+        public SqlUserRepository(ISqlConnector sqlConnector, UserManager<IdentityUser> userManager) : base(userManager)
         {
             this.sqlConnector = sqlConnector;
         }
@@ -49,22 +49,14 @@ namespace bacit_dotnet.MVC.Repositories
             return user;
         }
 
-        public void Save(UserEntity user)
+        public void Update(UserEntity user, List<string> roles)
         {
-            UserEntity existingUser = null;
-            using (var connection = sqlConnector.GetDbConnection())
+            UserEntity existingUser = GetUser(user.Email);
+            if (existingUser == null)
             {
-                var reader = ReadData("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users;", connection);
-               
-                while (reader.Read())
-                {
-                    existingUser = MapUserFromReader(reader);
-                }
-                connection.Close();
+                throw new Exception("User does not exist");
             }
-            if (existingUser!=null)
-            {
-                var sql = $@"update users 
+            var sql = $@"update users 
                                 set 
                                    Name = '{user.Name}', 
                                    Password='{user.Password}',
@@ -72,14 +64,37 @@ namespace bacit_dotnet.MVC.Repositories
                                    Team ='{user.Team}', 
                                    Role ='{user.Role}' 
                                 where email = '{user.Email}';";
-                RunCommand(sql);
-            }
-            else 
+            RunCommand(sql);
+            SetRoles(user.Email, roles);
+        }
+
+        public void Add(UserEntity user)
+        {
+            UserEntity existingUser = GetUser(user.Email);
+            if (existingUser != null)
             {
-                var sql = $"insert into users(Name, Email, Password,EmployeeNumber,Team, Role ) values('{user.Name}', '{user.Email}', '{user.Password}', '{user.EmployeeNumber}','{user.Team}','{user.Role}');";
-                RunCommand(sql);
+                throw new Exception("User already exists");
             }
-            
+
+            var sql = $"insert into users(Name, Email, Password,EmployeeNumber,Team, Role ) values('{user.Name}', '{user.Email}', '{user.Password}', '{user.EmployeeNumber}','{user.Team}','{user.Role}');";
+            RunCommand(sql);
+        }
+
+        private UserEntity GetUser(string email)
+        {
+            UserEntity existingUser = null;
+            using (var connection = sqlConnector.GetDbConnection())
+            {
+                var reader = ReadData($"Select id, Name, Email, Password,EmployeeNumber,Team, Role from users where email = {email};", connection);
+
+                while (reader.Read())
+                {
+                    existingUser = MapUserFromReader(reader);
+                }
+                connection.Close();
+            }
+
+            return existingUser;
         }
 
         private void RunCommand(string sql)

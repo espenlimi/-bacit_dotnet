@@ -2,6 +2,7 @@
 using bacit_dotnet.MVC.Entities;
 using Dapper;
 using Dapper.Contrib.Extensions;
+using Microsoft.AspNetCore.Identity;
 using MySqlConnector;
 
 namespace bacit_dotnet.MVC.Repositories
@@ -9,13 +10,15 @@ namespace bacit_dotnet.MVC.Repositories
     /// <summary>
     /// Using packages Dapper and Dapper.Contrib
     /// </summary>
-    public class DapperUserRepository : IUserRepository
+    public class DapperUserRepository : UserRepositoryBase, IUserRepository
     {
         private readonly ISqlConnector sqlConnector;
 
-        public DapperUserRepository(ISqlConnector sqlConnector)
+
+        public DapperUserRepository(ISqlConnector sqlConnector, UserManager<IdentityUser> userManager) : base(userManager)
         {
             this.sqlConnector = sqlConnector;
+
         }
         public void Delete(string email)
         {
@@ -45,15 +48,29 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
 
-        public void Save(UserEntity user)
+        public void Update(UserEntity user, List<string> roles)
+        {
+            var existingUser = GetUserByEmail(user.Email);
+            using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
+            {
+                if (existingUser == null)
+                {
+                    throw new Exception("User not found");
+                }
+                user.Id = existingUser.Id; // set this so the update-magic knows what record to update. 
+                connection.Update<UserEntity>(user); //Dapper.Contrib
+            }
+            SetRoles(user.Email, roles);
+        }
+
+        public void Add(UserEntity user)
         {
             var existingUser = GetUserByEmail(user.Email);
             using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
             {
                 if (existingUser != null)
                 {
-                    user.Id = existingUser.Id; // set this so the update-magic knows what record to update. 
-                    connection.Update<UserEntity>(user); //Dapper.Contrib
+                    throw new Exception("User already exits");
                 }
                 else
                 {

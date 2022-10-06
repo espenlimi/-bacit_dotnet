@@ -16,5 +16,6 @@ namespace bacit_dotnet.MVC.Models.Users
         public string ValididationErrorMessage { get; set; }
 
         public List<UserEntity> Users { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

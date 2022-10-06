@@ -1,10 +1,13 @@
 ﻿using bacit_dotnet.MVC.Entities;
 using bacit_dotnet.MVC.Models.Users;
 using bacit_dotnet.MVC.Repositories;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private readonly IUserRepository userRepository;
@@ -27,8 +30,8 @@ namespace bacit_dotnet.MVC.Controllers
                     model.Email = currentUser.Email;
                     model.Name = currentUser.Name;
                     model.Role = currentUser.Role;
-                    model.Password = currentUser.Password;
                     model.Team = currentUser.Team;
+                    model.IsAdmin = userRepository.IsAdmin(currentUser.Email);
                 }
             }
             return View(model);
@@ -43,11 +46,14 @@ namespace bacit_dotnet.MVC.Controllers
                 Name = model.Name,
                 Email = model.Email,
                 EmployeeNumber = model.EmployeeNumber,
-                Password = model.Password,
                 Role = model.Role,
                 Team = model.Team,
             };
-            userRepository.Save(newUser);
+            var roles = new List<string>();
+            if (model.IsAdmin)
+                roles.Add("Administrator");
+            userRepository.Update(newUser, roles);
+            
             return RedirectToAction("Index");
         }
 

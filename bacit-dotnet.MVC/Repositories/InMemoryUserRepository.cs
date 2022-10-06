@@ -1,11 +1,12 @@
 ﻿using bacit_dotnet.MVC.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace bacit_dotnet.MVC.Repositories
 {
-    public class InMemoryUserRepository : IUserRepository
+    public class InMemoryUserRepository : UserRepositoryBase, IUserRepository
     {
         private List<UserEntity> users;
-        public InMemoryUserRepository()
+        public InMemoryUserRepository(UserManager<IdentityUser> userManager) : base(userManager)
         {
             users = new List<UserEntity>();
         }
@@ -22,9 +23,35 @@ namespace bacit_dotnet.MVC.Repositories
                 existingUser.EmployeeNumber = user.EmployeeNumber;
                 existingUser.Name = user.Name;
                 existingUser.Role = user.Role;
-                existingUser.Password = user.Password;
                 existingUser.Team = user.Team;
             }
+
+
+        }
+
+        public void Add(UserEntity user)
+        {
+            var existingUser = GetUserByEmail(user.Email);
+            if (existingUser != null)
+            {
+                throw new Exception("User already exists");
+            }
+            users.Add(user);
+        }
+        public void Update(UserEntity user, List<string> roles)
+        {
+            var existingUser = GetUserByEmail(user.Email);
+            if (existingUser == null)
+            {
+                throw new Exception("User does not exist");
+            }
+
+            existingUser.Email = user.Email;
+            existingUser.EmployeeNumber = user.EmployeeNumber;
+            existingUser.Name = user.Name;
+            existingUser.Role = user.Role;
+            existingUser.Team = user.Team;
+            SetRoles(user.Email, roles);
         }
 
         public List<UserEntity> GetUsers()
@@ -47,5 +74,7 @@ namespace bacit_dotnet.MVC.Repositories
                              .FirstOrDefault(user =>
                              user.Email.Equals(email, StringComparison.InvariantCultureIgnoreCase));
         }
+
+
     }
 }
