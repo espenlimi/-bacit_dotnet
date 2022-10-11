@@ -1,2 +1,2 @@
-# gruppe 10
-Base project for IS202 in dotnet
+# gruppe 10 IS202 prosjekt
+## gruppens arbeid med nordicdoor prosjektet HØST 2022
