@@ -10,23 +10,23 @@ drop table team;
 
 CREATE TABLE users (
     userId INT auto_increment PRIMARY KEY,
-    name VARCHAR(20),
-    email VARCHAR(30),
-    phone VARCHAR(12)
+    name VARCHAR(20) NOT NULL,
+    email VARCHAR(30) NOT NULL,
+    phone VARCHAR(12) NOT NULL
 );
 
 CREATE TABLE team (
     teamId INT auto_increment primary key, 
-    teamName VARCHAR(20)
+    teamName VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE suggestions (
     sugId int auto_increment primary key,
-    title varchar(20),
+    title varchar(20) NOT NULL,
     teamId INT NOT NULL DEFAULT 1,
-    description varchar(500),
+    description varchar(500) NOT NULL,
     timeAdded TIMESTAMP,
-    userId varchar(20),
+    userId varchar(20) NOT NULL,
     /*CONSTRAINT userFK
     FOREIGN KEY (userId) REFERENCES users(userId),
     CONSTRAINT teamFK
@@ -47,7 +47,7 @@ CREATE TABLE teamUser (
 
 CREATE TABLE subTeam (
     subTeamId INT auto_increment primary key, 
-    subTeamName VARCHAR(20),
+    subTeamName VARCHAR(20) NOT NULL,
     teamId INT, 
     CONSTRAINT subTeamFK
     FOREIGN KEY (teamId) REFERENCES team(teamId)
