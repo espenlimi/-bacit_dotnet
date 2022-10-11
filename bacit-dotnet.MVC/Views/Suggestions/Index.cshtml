@@ -2,15 +2,15 @@
     <ul>
         <li>
             <label for="Title">Tittel</label>
-            <input type="text" name="Title" />
+            <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst skriv en ordentlig tittel')" oninput="this.setCustomValidity('')"name="Title" />
         </li>
         <li>
             <label for="Name">Navn</label>
-            <input type="text" name="Name" />
+            <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst fyll inn navn :-)')" oninput="this.setCustomValidity('')"name="Name" />
         </li>
         <li>
             <label for="Description">Beskrivelse</label>
-            <input type="text" name="Description" />
+            <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst beskriv forslaget')" oninput="this.setCustomValidity('')" name="Description" />
         </li>
         <li>
             <label for="Team">Team</label>
