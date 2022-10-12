@@ -12,7 +12,9 @@
             <p>Navn: @user.Name</p> 
             <p>Team: @user.Team </p> 
             <p>Beskrivelse: @user.Description</p>
-            <button type="button">Rediger</button>
+            <a class="btn btn-primary btn-sm" href="/Suggestions/Edit?id=@user.sugId">Rediger</a>
+            <a class="btn btn-primary btn-sm" href="/Suggestions/Delete?id=@user.sugId">Slett</a>
+
             </div>
         </li>
     }

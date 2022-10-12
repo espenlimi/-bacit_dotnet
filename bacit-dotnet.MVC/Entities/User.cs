@@ -10,7 +10,8 @@
 
     public class Suggestion
     {
-       public string Title { get; set; }
+        public int sugId { get; set; }
+        public string Title { get; set; }
         public string Name { get; set; }
         public int Team { get; set; }
         public string Description { get; set; }
