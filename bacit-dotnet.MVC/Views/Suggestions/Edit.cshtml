@@ -1,0 +1,32 @@
+@model bacit_dotnet.MVC.Models.SuggestionModel
+
+<form method="post">
+    @foreach (var user in @Model.Sug)
+    {
+    <input type="hidden" name="id" value=@user.sugId>
+    <ul>
+        <li>
+            <label for="Title">Tittel</label>
+            <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst skriv en ordentlig tittel')" oninput="this.setCustomValidity('')"name="Title" value="@user.Title" />
+        </li>
+        <li>
+            <label for="Name">Navn</label>
+            <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst fyll inn navn :-)')" oninput="this.setCustomValidity('')"name="Name" value="@user.Name" />
+        </li>
+        <li>
+            <label for="Description">Beskrivelse</label>
+            <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst beskriv forslaget')" oninput="this.setCustomValidity('')" name="Description" value="@user.Description"/>
+        </li>
+        <li>
+            <label for="Team">Team</label>
+            <select name=Team id=Team>
+                <option value="Salg og marked">Salg og marked</option>
+                <option value="Produksjon">Produksjon</option>
+                <option value="Teknisk">Teknisk</option>
+                <option value="Logistikk">Logistikk</option> 
+        </li>
+    </ul>
+    <input type="submit" value="Lagre" />        
+    }
+
+</form> 

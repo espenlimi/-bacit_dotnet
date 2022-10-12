@@ -45,7 +45,17 @@ namespace bacit_dotnet.MVC.DataAccess
             Console.WriteLine(result);
             return result;
         }
+        private MySqlDataReader ReadSpeData(string query, MySqlConnection conn, int id)
+        {
 
+            using var command = conn.CreateCommand();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = query;
+            command.Parameters.AddWithValue("@id", id);
+            var result = command.ExecuteReader();
+            Console.WriteLine(result);
+            return result;
+        }
         private void SaveSuggestions(MySqlConnection conn)
         {
             string query = "insert into suggestions (Title, Name, Team, Description) values (\"Tittel\", \"Navn\", 5, \"Dette er en beskrivelse av mitt problem\")";
@@ -86,7 +96,7 @@ namespace bacit_dotnet.MVC.DataAccess
             while (reader.Read())
             {
                 var user = new Suggestion();
-                Console.WriteLine(reader.GetInt32("sugId"));
+                user.sugId = reader.GetInt32("sugId");
                 user.Title = reader.GetString("Title");
                 user.Name = reader.GetString("UserId");
                 user.Team = reader.GetInt32("TeamId");
@@ -95,9 +105,26 @@ namespace bacit_dotnet.MVC.DataAccess
             }
             connection.Close();
             return Suggestions;
-
-
         }
 
+         public  IEnumerable<Suggestion> FetSpeSug(int id) {
+            using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection.Open();
+
+            var Suggestions = new List<Suggestion>();
+            var reader = ReadSpeData("select sugId, Title, UserId, TeamId, Description from suggestions where sugId = @id", connection, id);
+            while (reader.Read())
+            {
+                var user = new Suggestion();
+                user.sugId = reader.GetInt32("sugId");
+                user.Title = reader.GetString("Title");
+                user.Name = reader.GetString("UserId");
+                user.Team = reader.GetInt32("TeamId");
+                user.Description = reader.GetString("Description");
+                Suggestions.Add(user);
+            }
+            connection.Close();
+            return Suggestions;
+        }
     }
 }

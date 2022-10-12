@@ -38,5 +38,17 @@ namespace bacit_dotnet.MVC.Controllers
             return View(model);
 
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+
+            var data = sqlConnector.FetSpeSug(id);
+            var model = new SuggestionModel();
+            model.Sug = data;
+
+            return View(model);
+
+        }
     }
 }
