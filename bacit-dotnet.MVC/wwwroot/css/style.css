@@ -1,0 +1,69 @@
+body {
+    background-color: #e4d3bf;
+}
+
+h1, h2, h3, p, a {
+    color: #030404;
+}
+
+a{
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+h2 {
+    text-align: center;
+}
+
+.logo {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
+}
+
+.forslag:hover{
+    background-color: #bb9a6f;
+    box-shadow: 5px 5px #947955;
+}
+
+.knappIndex {
+    font-size: 150%;
+}
+
+.forslag{
+    font-weight: bold;
+    color: #303131;
+    background-color: #b9bfc8;
+    border: none;
+    padding: 10px;
+    box-shadow: 5px 5px #939ca9;
+    width: 30%;
+    height: 10%;
+}
+
+#en{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#to {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#tre {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}

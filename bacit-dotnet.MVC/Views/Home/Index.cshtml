@@ -1,12 +1,13 @@
-﻿@{
+﻿ <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-@model bacit_dotnet.MVC.Models.RazorViewModel
-<h2> Hva er det beste dørselskapet i hele verden? </h2>
-@{
-    
-    <h1>
-    @Model.Content
-    </h1> 
-}
+<img class="logo" src="~/bilder/logo.png" alt="logo nordic door">
+
+
+<a class="knappIndex" asp-area="" asp-controller="Suggestions" asp-action="Index"><button class="forslag" id="en" >Legg til nytt forslag</button></a>
+<a class="knappIndex" asp-area="" asp-controller="" asp-action=""><button class="forslag" id="tre">Se mine forslag</button></a>
+<a class="knappIndex" asp-area="" asp-controller="Suggestions" asp-action="ViewSug"><button class="forslag" id="to">Se forslag</button></a>

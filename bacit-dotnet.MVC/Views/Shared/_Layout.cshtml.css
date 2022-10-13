@@ -7,6 +7,10 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+body {
+  background-color: #e4d3bf;
+}
+
 a {
   color: #0077cc;
 }
@@ -46,3 +50,4 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+
