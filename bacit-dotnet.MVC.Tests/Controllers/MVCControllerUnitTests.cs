@@ -26,15 +26,6 @@ namespace bacit_dotnet.MVC.Tests.Controllers
             Assert.IsType<RazorViewModel>(result.Model);
         }
 
-        [Fact]
-        public void UsingRazorReturnsCorrectModelContent()  
-        {
-            var unitUnderTest = SetupUnitUnderTest();
-            var result = unitUnderTest.Index() as ViewResult;
-            var model = result.Model as RazorViewModel;
-            Assert.Same("En time til ørsta rådhus", model.Content);
-        }
-
         private static HomeController SetupUnitUnderTest()
         {
             var fakeLogger = Substitute.For<ILogger<HomeController>>(); //Set up a fake for dependency (this works with all interfaces)

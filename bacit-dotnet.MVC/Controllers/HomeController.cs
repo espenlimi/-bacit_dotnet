@@ -29,11 +29,7 @@ namespace bacit_dotnet.MVC.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var model = new RazorViewModel
-            {
-                Content = "nordicdoor"
-            };
-            return View("Index", model);
+            return View("Index");
         }
     }
 }
