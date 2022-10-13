@@ -1,6 +1,6 @@
 @model bacit_dotnet.MVC.Models.SuggestionModel
 
-<form action="/suggestions/save" method="post">
+<form action="/suggestions/EditSave" method="post">
     @foreach (var user in @Model.Sug)
     {
     <input type="hidden" name="id" value=@user.sugId>

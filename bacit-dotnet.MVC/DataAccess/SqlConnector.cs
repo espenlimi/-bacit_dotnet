@@ -127,32 +127,29 @@ namespace bacit_dotnet.MVC.DataAccess
             return Suggestions;
         }
 
-        public void UpdateValueSetSug(Suggestion user, int id)
+        public void UpdateValueSetSug(SuggestionViewModel model, int id)
         {
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
             
-            var reader = ReadSpeData("UPDATE suggestion SET Title=@Title, UserId = @Name, TeamId = @Team, Description = @Description from suggestions where sugId = @id", connection, id);
-            while (reader.Read())
-            {
-                string query = Convert.ToString(reader.Read());
-                UpdateSuggestions(query, connection, user);
-            }
+            var query = "update suggestions set title=@Title,userid=@Name,teamId = @Team,description=@Description where sugId =  @id;";
+            UpdateSuggestions(query, connection, model, id);
+            
         }
 
-        private void UpdateSuggestions(String query, MySqlConnection conn, Suggestion user)
+        private void UpdateSuggestions(String query, MySqlConnection conn, SuggestionViewModel user, int id)
         {
-            DateTime date1 = DateTime.Now; 
+            Console.WriteLine(id);
             
             using var command = conn.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
-            command.Parameters.AddWithValue("@id", user.sugId);
             command.Parameters.AddWithValue("@Title", user.Title); 
-            command.Parameters.AddWithValue("@UserId", user.Name);
-            command.Parameters.AddWithValue("@TeamId", user.Team);
+            command.Parameters.AddWithValue("@Name", user.Name);
+            command.Parameters.AddWithValue("@Team", user.Team);
             command.Parameters.AddWithValue("@Description", user.Description);
-            command.Parameters.AddWithValue("@TimeStamp", date1);
+            command.Parameters.AddWithValue("@id", id);
+          
             command.ExecuteNonQuery();
         }
     }
