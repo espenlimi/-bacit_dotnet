@@ -46,3 +46,5 @@ The scripts allow us to build and deploy our application faster, which can be be
 
 #### PS
 Have fun and experiment :)
+
+Code can be copied freely
