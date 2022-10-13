@@ -126,5 +126,31 @@ namespace bacit_dotnet.MVC.DataAccess
             connection.Close();
             return Suggestions;
         }
+
+        public void UpdateValueSetSug(SuggestionViewModel model, int id)
+        {
+            using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection.Open();
+            
+            var query = "update suggestions set title=@Title,userid=@Name,teamId = @Team,description=@Description where sugId =  @id;";
+            UpdateSuggestions(query, connection, model, id);
+            
+        }
+
+        private void UpdateSuggestions(String query, MySqlConnection conn, SuggestionViewModel user, int id)
+        {
+            Console.WriteLine(id);
+            
+            using var command = conn.CreateCommand();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = query;
+            command.Parameters.AddWithValue("@Title", user.Title); 
+            command.Parameters.AddWithValue("@Name", user.Name);
+            command.Parameters.AddWithValue("@Team", user.Team);
+            command.Parameters.AddWithValue("@Description", user.Description);
+            command.Parameters.AddWithValue("@id", id);
+          
+            command.ExecuteNonQuery();
+        }
     }
 }

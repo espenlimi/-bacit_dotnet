@@ -48,7 +48,13 @@ namespace bacit_dotnet.MVC.Controllers
             model.Sug = data;
 
             return View(model);
+        }
 
+        [HttpPost]
+        public IActionResult EditSave(SuggestionViewModel model, int id)
+        {
+            sqlConnector.UpdateValueSetSug(model, id);
+            return View("Save",model);
         }
     }
 }
