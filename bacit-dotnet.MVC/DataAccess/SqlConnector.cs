@@ -126,5 +126,34 @@ namespace bacit_dotnet.MVC.DataAccess
             connection.Close();
             return Suggestions;
         }
+
+        public void UpdateValueSetSug(Suggestion user, int id)
+        {
+            using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection.Open();
+            
+            var reader = ReadSpeData("UPDATE suggestion SET Title=@Title, UserId = @Name, TeamId = @Team, Description = @Description from suggestions where sugId = @id", connection, id);
+            while (reader.Read())
+            {
+                string query = Convert.ToString(reader.Read());
+                UpdateSuggestions(query, connection, user);
+            }
+        }
+
+        private void UpdateSuggestions(String query, MySqlConnection conn, Suggestion user)
+        {
+            DateTime date1 = DateTime.Now; 
+            
+            using var command = conn.CreateCommand();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = query;
+            command.Parameters.AddWithValue("@id", user.sugId);
+            command.Parameters.AddWithValue("@Title", user.Title); 
+            command.Parameters.AddWithValue("@UserId", user.Name);
+            command.Parameters.AddWithValue("@TeamId", user.Team);
+            command.Parameters.AddWithValue("@Description", user.Description);
+            command.Parameters.AddWithValue("@TimeStamp", date1);
+            command.ExecuteNonQuery();
+        }
     }
 }

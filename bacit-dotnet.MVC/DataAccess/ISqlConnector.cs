@@ -8,6 +8,6 @@ namespace bacit_dotnet.MVC.DataAccess
         IEnumerable<User> GetUsers();
         IEnumerable<Suggestion> FetchSug();
         void SetSuggestionsParam(SuggestionViewModel model);
-         IEnumerable<Suggestion> FetSpeSug(int id);
+        IEnumerable<Suggestion> FetSpeSug(int id);
     }
 }
