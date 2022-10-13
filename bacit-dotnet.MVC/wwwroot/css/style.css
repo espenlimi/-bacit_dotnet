@@ -61,7 +61,7 @@ h2 {
 
 #to {
     position: absolute;
-    top: 55%;
+    top: 70%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -69,7 +69,7 @@ h2 {
 
 #tre {
     position: absolute;
-    top: 70%;
+    top: 55%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
