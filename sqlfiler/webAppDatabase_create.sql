@@ -66,3 +66,6 @@ CREATE TABLE administrator (
     CONSTRAINT userAdminFK 
     FOREIGN KEY (userId) REFERENCES users(userId)
 );
+
+ALTER table Suggestions Rename column timeAdded TO TimeStamp;
+ALTER TABLE Suggestions ADD Status varchar(30) DEFAULT "Pending";

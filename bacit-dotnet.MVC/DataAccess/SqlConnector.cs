@@ -92,7 +92,7 @@ namespace bacit_dotnet.MVC.DataAccess
             connection.Open();
 
             var Suggestions = new List<Suggestion>();
-            var reader = ReadData("select sugId, Title, UserId, TeamId, Description from suggestions", connection);
+            var reader = ReadData("select sugId, Title, UserId, TeamId, Description, TimeStamp, Status from suggestions", connection);
             while (reader.Read())
             {
                 var user = new Suggestion();
@@ -101,6 +101,8 @@ namespace bacit_dotnet.MVC.DataAccess
                 user.Name = reader.GetString("UserId");
                 user.Team = reader.GetInt32("TeamId");
                 user.Description = reader.GetString("Description");
+                user.TimeStamp = reader.GetDateTime("TimeStamp");
+                user.Status = reader.GetString("Status");
                 Suggestions.Add(user);
             }
             connection.Close();
