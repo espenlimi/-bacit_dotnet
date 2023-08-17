@@ -51,11 +51,7 @@ namespace bacit_dotnet.MVC.Repositories
             }
 
             existingUser.Email = user.Email;
-            existingUser.EmployeeNumber = user.EmployeeNumber;
             existingUser.Name = user.Name;
-            existingUser.Role = user.Role;
-            existingUser.Team = user.Team;
-
             dataContext.SaveChanges();
             SetRoles(user.Email, roles);
         }

@@ -6,10 +6,6 @@ create table if not EXISTS users
     Id int not null unique auto_increment,
     Name varchar(255),
     Email varchar(255) UNIQUE,
-    Password varchar(255),
-    EmployeeNumber varchar(255),
-    Team varchar(255),
-    Role varchar(255),
    
     CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
 );

@@ -7,21 +7,20 @@ using System.Diagnostics;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-    [Authorize]
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IUserRepository userRepository;
 
-        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            this.userRepository = userRepository;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
+            _logger.LogInformation("Index method called");
             var model = new RazorViewModel
             {
                 Content = "En time til ørsta rådhus"

@@ -20,13 +20,8 @@ namespace bacit_dotnet.MVC.Repositories
             else
             {
                 existingUser.Email = user.Email;
-                existingUser.EmployeeNumber = user.EmployeeNumber;
                 existingUser.Name = user.Name;
-                existingUser.Role = user.Role;
-                existingUser.Team = user.Team;
             }
-
-
         }
 
         public void Add(UserEntity user)
@@ -47,10 +42,7 @@ namespace bacit_dotnet.MVC.Repositories
             }
 
             existingUser.Email = user.Email;
-            existingUser.EmployeeNumber = user.EmployeeNumber;
             existingUser.Name = user.Name;
-            existingUser.Role = user.Role;
-            existingUser.Team = user.Team;
             SetRoles(user.Email, roles);
         }
 
@@ -70,11 +62,8 @@ namespace bacit_dotnet.MVC.Repositories
 
         private UserEntity? GetUserByEmail(string email)
         {
-            return users
-                             .FirstOrDefault(user =>
+            return users.FirstOrDefault(user =>
                              user.Email.Equals(email, StringComparison.InvariantCultureIgnoreCase));
         }
-
-
     }
 }

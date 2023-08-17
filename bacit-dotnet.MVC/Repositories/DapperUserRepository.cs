@@ -35,7 +35,7 @@ namespace bacit_dotnet.MVC.Repositories
         {
             using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
             {
-                return connection.QueryFirstOrDefault<UserEntity>("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users where email like @emailParameter; ", new { emailParameter = email });
+                return connection.QueryFirstOrDefault<UserEntity>("Select id, Name, Email from users where email like @emailParameter; ", new { emailParameter = email });
             }
         }
 
@@ -43,7 +43,7 @@ namespace bacit_dotnet.MVC.Repositories
         {
             using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
             {
-                var users = connection.Query<UserEntity>("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users;"); //Regular Dapper
+                var users = connection.Query<UserEntity>("Select id, Name, Email from users;"); //Regular Dapper
                 return users.ToList();
             }
         }

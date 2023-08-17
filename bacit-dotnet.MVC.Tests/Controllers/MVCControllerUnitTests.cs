@@ -38,7 +38,7 @@ namespace bacit_dotnet.MVC.Tests.Controllers
         private static HomeController SetupUnitUnderTest()
         {
             var fakeLogger = Substitute.For<ILogger<HomeController>>(); //Set up a fake for dependency (this works with all interfaces)
-            var unitUnderTest = new HomeController(fakeLogger,null); //Create the class we want to test
+            var unitUnderTest = new HomeController(fakeLogger); //Create the class we want to test
             return unitUnderTest;
         }
     }

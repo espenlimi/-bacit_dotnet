@@ -42,10 +42,6 @@ namespace bacit_dotnet.MVC.Repositories
             user.Id = reader.GetInt32(0);
             user.Name = reader.GetString(1);
             user.Email = reader.GetString(2);
-            user.Password = reader.GetString(3);
-            user.EmployeeNumber = reader.GetString(4);
-            user.Team = reader.GetString(5);
-            user.Role = reader.GetString(6);
             return user;
         }
 
@@ -59,10 +55,6 @@ namespace bacit_dotnet.MVC.Repositories
             var sql = $@"update users 
                                 set 
                                    Name = '{user.Name}', 
-                                   Password='{user.Password}',
-                                   EmployeeNumber = '{user.EmployeeNumber}',
-                                   Team ='{user.Team}', 
-                                   Role ='{user.Role}' 
                                 where email = '{user.Email}';";
             RunCommand(sql);
             SetRoles(user.Email, roles);
@@ -76,7 +68,7 @@ namespace bacit_dotnet.MVC.Repositories
                 throw new Exception("User already exists");
             }
 
-            var sql = $"insert into users(Name, Email, Password,EmployeeNumber,Team, Role ) values('{user.Name}', '{user.Email}', '{user.Password}', '{user.EmployeeNumber}','{user.Team}','{user.Role}');";
+            var sql = $"insert into users(Name, Email) values('{user.Name}', '{user.Email}');";
             RunCommand(sql);
         }
 
@@ -85,7 +77,7 @@ namespace bacit_dotnet.MVC.Repositories
             UserEntity existingUser = null;
             using (var connection = sqlConnector.GetDbConnection())
             {
-                var reader = ReadData($"Select id, Name, Email, Password,EmployeeNumber,Team, Role from users where email = {email};", connection);
+                var reader = ReadData($"Select id, Name, Email from users where email = {email};", connection);
 
                 while (reader.Read())
                 {
@@ -113,7 +105,7 @@ namespace bacit_dotnet.MVC.Repositories
         {
             connection.Open();
             using var command = connection.CreateCommand();
-            command.CommandType = System.Data.CommandType.Text;
+            command.CommandType = CommandType.Text;
             command.CommandText = query;
             return command.ExecuteReader();
         }
