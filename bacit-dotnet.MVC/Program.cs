@@ -1,21 +1,11 @@
-
 using bacit_dotnet.MVC.DataAccess;
 using bacit_dotnet.MVC.Repositories;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Options;
-using System.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using bacit_dotnet.MVC.Entities;
-using Google.Protobuf.WellKnownTypes;
-using Microsoft.Extensions.Hosting;
 
 public class Program
 {
-
     static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
@@ -28,13 +18,12 @@ public class Program
         {
             options.UseMySql(builder.Configuration.GetConnectionString("MariaDb"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MariaDb")));
         });
-        //builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
-        builder.Services.AddScoped<IUserRepository, EFUserRepository>();
+        builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
+        //builder.Services.AddScoped<IUserRepository, EFUserRepository>();
         //builder.Services.AddSingleton<IUserRepository, SqlUserRepository>();
         //builder.Services.AddSingleton<IUserRepository, DapperUserRepository>();
 
         //Setup for Authentication 
-
         builder.Services.Configure<IdentityOptions>(options =>
         {
             // Default Lockout settings.
