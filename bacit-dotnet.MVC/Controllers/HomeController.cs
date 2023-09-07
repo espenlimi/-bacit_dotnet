@@ -21,9 +21,11 @@ namespace bacit_dotnet.MVC.Controllers
         public IActionResult Index()
         {
             _logger.LogInformation("Index method called");
+
             var model = new RazorViewModel
             {
-                Content = "En time til ørsta rådhus"
+                Content = "En time til ørsta rådhus",
+                AdditionalData = "blablabla"
             };
             return View("Index", model);
         }
