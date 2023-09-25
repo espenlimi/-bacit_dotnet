@@ -1,11 +1,15 @@
-﻿namespace bacit_dotnet.MVC.Models.ServiceOrdre
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace bacit_dotnet.MVC.Models.ServiceOrdre
 {
     public class ServiceOrderViewModel
     {
+        [Required]
         public string Mechanic { get; set; }
         public bool IsAdministrator { get; set; }
         public string SerialNumber { get; set; }
         public DateTime CreatedDate { get; set; }
+        [Range(0,100000,ErrorMessage ="Hei sveis, denne verdien er rar, bruk heltall mellom 0 og 100 000")]
         public decimal ConsumedHours { get; set; }
         public string ImageUrl { get; set; }
         public string MechanicComment { get; set; }

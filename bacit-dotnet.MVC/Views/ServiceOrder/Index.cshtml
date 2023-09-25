@@ -1,8 +1,8 @@
 ﻿@model bacit_dotnet.MVC.Models.ServiceOrdre.ServiceOrderViewModel
 
 <h1>Saksnummer @Model.ServiceOrderId</h1>
-
-@foreach(var jobGroup in Model.JobGroups)
+@if( Model.JobGroups!= null){
+foreach(var jobGroup in Model.JobGroups)
 {
     <h3>@jobGroup.Name</h3>
     <ul>
@@ -15,3 +15,16 @@
     }
     </ul>
 }
+}
+
+<form asp-action="Save" asp-controller="ServiceOrder" method="post">
+    @Html.ValidationSummary();
+    <label asp-for="Mechanic"></label>
+    <input asp-for="Mechanic" type="text" /><br/>
+
+    <label asp-for="ConsumedHours"></label>
+    <input asp-for="ConsumedHours" type="number" />
+    @Html.ValidationMessageFor(x=>x.ConsumedHours)<br/>
+    <input type="submit" />
+
+</form>
