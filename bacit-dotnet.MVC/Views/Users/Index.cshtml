@@ -1,8 +1,7 @@
 ﻿@using bacit_dotnet.MVC.Models.Users
 @model UserViewModel
 <h3>Rediger registrerte brukere</h3>
-@if(Model.Email!=null)
-{
+
     <form asp-action="save" asp-controller="users" method="post">
         <ul>
             <li>
@@ -23,7 +22,7 @@
             </li>
         </ul>
     </form>
-}
+
 <table>
     <tr>
         <td>Name</td>

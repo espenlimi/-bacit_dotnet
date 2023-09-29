@@ -37,9 +37,30 @@ namespace bacit_dotnet.MVC.Tests.Controllers
 
         private static HomeController SetupUnitUnderTest()
         {
-            var fakeLogger = Substitute.For<ILogger<HomeController>>(); //Set up a fake for dependency (this works with all interfaces)
+            var fakeLogger = Substitute.For<ILogger<HomeController>>();
+            
+            fakeLogger.IsEnabled(Arg.Any<LogLevel>()).Returns(true);
+
             var unitUnderTest = new HomeController(fakeLogger); //Create the class we want to test
             return unitUnderTest;
+        }
+    }
+    public class FakeLogger<T> : ILogger<T>
+    {
+        
+        public IDisposable? BeginScope<TState>(TState state) where TState : notnull
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsEnabled(LogLevel logLevel)
+        {
+            return true;
+        }
+
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
+        {
+           
         }
     }
 }

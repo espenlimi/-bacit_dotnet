@@ -1,12 +1,11 @@
 ﻿using bacit_dotnet.MVC.Entities;
-using Microsoft.AspNetCore.Identity;
 
 namespace bacit_dotnet.MVC.Repositories
 {
-    public class InMemoryUserRepository : UserRepositoryBase, IUserRepository
+    public class InMemoryUserRepository :  IUserRepository
     {
         private List<UserEntity> users;
-        public InMemoryUserRepository(UserManager<IdentityUser> userManager) : base(userManager)
+        public InMemoryUserRepository() 
         {
             users = new List<UserEntity>();
         }
@@ -46,6 +45,11 @@ namespace bacit_dotnet.MVC.Repositories
             SetRoles(user.Email, roles);
         }
 
+        private void SetRoles(string email, List<string> roles)
+        {
+            //I dont do anything
+        }
+
         public List<UserEntity> GetUsers()
         {
             return users;
@@ -64,6 +68,11 @@ namespace bacit_dotnet.MVC.Repositories
         {
             return users.FirstOrDefault(user =>
                              user.Email.Equals(email, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        public bool IsAdmin(string email)
+        {
+            return email.ToLower().Contains("admin");
         }
     }
 }
