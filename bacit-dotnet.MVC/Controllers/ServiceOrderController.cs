@@ -1,4 +1,4 @@
-﻿using bacit_dotnet.MVC.Models.ServiceOrdre;
+﻿using bacit_dotnet.MVC.Models.ServiceOrder;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
@@ -23,7 +23,8 @@ namespace bacit_dotnet.MVC.Controllers
                 IsAdministrator=false,
                 JobGroups = new List<ServiceOrderJobGroupModel> { 
                     new ServiceOrderJobGroupModel {Name ="Mekanisk", Jobs=new List<string>{"Skru på ting", "Bytte slureflapp"} },
-                    new ServiceOrderJobGroupModel{ Name="Elektrisk", Jobs=new List<string>{"Sikringer","Greier" } },
+                    new ServiceOrderJobGroupModel {Name="Elektrisk", Jobs=new List<string>{"Sikringer","Greier" } },
+                    new ServiceOrderJobGroupModel {Name="Hydraulisk", Jobs = new List<string>{"Rør", "Olje"} }
                     
                 
                 },
