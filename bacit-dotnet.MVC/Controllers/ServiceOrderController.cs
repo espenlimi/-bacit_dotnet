@@ -1,4 +1,4 @@
-﻿using bacit_dotnet.MVC.Models.ServiceOrdre;
+﻿using bacit_dotnet.MVC.Models.ServiceOrder;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers

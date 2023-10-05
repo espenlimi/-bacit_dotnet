@@ -1,4 +1,4 @@
-﻿namespace bacit_dotnet.MVC.Models.ServiceOrdre
+﻿namespace bacit_dotnet.MVC.Models.ServiceOrder
 {
     public class ServiceOrderViewModel
     {
