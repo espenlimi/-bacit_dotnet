@@ -1,0 +1,57 @@
+@model bacit_dotnet.MVC.Models.ServiceOrder.NewServiceOrderViewModel
+
+@{
+    ViewData["Title"] = "Register ny serviceordre";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Serviceskjema</title>
+</head>
+<body>
+<div>
+    <form asp-action="Save" asp-controller="NewServiceOrder" method="post">
+        <label for="kunde">Kunde:</label>
+        <input type="text" id="kunde" name="Kunde">
+        <label for="mottatt_dato">Mottatt dato:</label>
+        <input type="date" id="mottatt_dato" name="Mottatt dato">
+        <br><br>
+        <label for="adresse">Adresse:</label>
+        <input type="text" id="adresse" name="Adresse">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="Email">
+        <br><br>
+        <label for="ordrenummer">Ordrenummer:</label>
+        <input type="number" id="ordrenummer" name="Ordrenummer">
+        <label for="telefon">Telefon:</label>
+        <input type="number" id="telefon" name="Telefon">
+        <br><br>
+        <label for="produkttype">Produkttype:</label>
+        <input type="text" id="produkttype" name="Produktype">
+        <label for="årsmodell">Årsmodell:</label>
+        <input type="number" id="årsmodell" name="Årsmodell">
+        <br><br>
+        <label for="garanti">Service/rep: <br/>Garanti: </label>
+        <input type="text" id="garanti" name="Service/rep Garanti">
+        <label for="serienummer">Serienummer:</label>
+        <input type="text" id="serienummer" name="Serienummer">
+        <br><br>
+        <label for="avtale">Hva er avtalt med kunden:</label>
+        <br>
+        <textarea id="avtale" name="avtale" rows="6" cols="60"></textarea>
+        <br><br>
+        <label for="reparasjonsbeskrivelse">Reparasjonsbeskrivelse:</label>
+        <br>
+        <textarea id="reparasjonsbeskrivelse"  name="reparasjonsbeskrivelse" rows="6" cols="60"></textarea>
+        <br/><br/>
+        <label for="medgåtte_deler">Medgåtte deler:</label>
+        <br>
+        <textarea id="medgåtte_deler" name="medgåtte_deler" rows="6" cols="60"></textarea>
+        <br><br>
+        <input type="submit">
+    </form>
+</div>
+</body>
+</html>
