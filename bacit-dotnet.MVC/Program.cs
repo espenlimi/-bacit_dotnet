@@ -9,13 +9,14 @@ public class Program
     static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
+        builder.WebHost.ConfigureKestrel(x => x.AddServerHeader = false);
+        
         // Add services to the container.
         builder.Services.AddControllersWithViews();
         
         SetupDataConnections(builder);
 
-        // SetupAuthentication(builder);
+        SetupAuthentication(builder);
 
         var app = builder.Build();
 
@@ -31,7 +32,7 @@ public class Program
 
         app.UseRouting();
 
-        //UseAuthentication(app);
+        UseAuthentication(app);
 
         app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
         app.MapControllers();
@@ -45,14 +46,14 @@ public class Program
 
     private static void SetupDataConnections(WebApplicationBuilder builder)
     {
-        //builder.Services.AddTransient<ISqlConnector, SqlConnector>();
+        builder.Services.AddTransient<ISqlConnector, SqlConnector>();
 
-        //builder.Services.AddDbContext<DataContext>(options =>
-        //{
-        //    options.UseMySql(builder.Configuration.GetConnectionString("MariaDb"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MariaDb")));
-        //});
-        builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
-        //builder.Services.AddScoped<IUserRepository, EFUserRepository>();
+        builder.Services.AddDbContext<DataContext>(options =>
+        {
+            options.UseMySql(builder.Configuration.GetConnectionString("MariaDb"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MariaDb")));
+        });
+        //builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
+        builder.Services.AddScoped<IUserRepository, EFUserRepository>();
         //builder.Services.AddSingleton<IUserRepository, SqlUserRepository>();
         //builder.Services.AddSingleton<IUserRepository, DapperUserRepository>();
     }

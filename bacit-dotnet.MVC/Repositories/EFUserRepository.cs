@@ -32,6 +32,14 @@ namespace bacit_dotnet.MVC.Repositories
             return dataContext.Users.ToList();
         }
 
+        public List<UserEntity> GetEspens()
+        { 
+            return dataContext.Users
+                .Where(user=> user.Name.Contains("Espen") && 
+                    user.Email.Contains("@"))
+                .ToList();
+        }
+
         public void Add(UserEntity user)
         {
             var existingUser = GetUserByEmail(user.Email);

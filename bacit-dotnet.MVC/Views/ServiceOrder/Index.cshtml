@@ -18,7 +18,8 @@ foreach(var jobGroup in Model.JobGroups)
 }
 
 <form asp-action="Save" asp-controller="ServiceOrder" method="post">
-    @Html.ValidationSummary();
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
     <label asp-for="Mechanic"></label>
     <input asp-for="Mechanic" type="text" /><br/>
 
