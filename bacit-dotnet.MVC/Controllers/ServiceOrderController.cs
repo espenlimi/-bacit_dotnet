@@ -1,40 +1,23 @@
 ﻿using bacit_dotnet.MVC.Models.ServiceOrder;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace bacit_dotnet.MVC.Controllers
+namespace bacit_dotnet.MVC.Controllers;
+
+public class ServiceOrderController : Controller
 {
-    public class ServiceOrderController : Controller
+    public IActionResult Index()
     {
-        public IActionResult Index()
+        return View();
+    }
+    
+    [HttpPost]
+    public IActionResult Save(ServiceOrderViewModel model) {
+        if(ModelState.IsValid)
         {
-            var model = new ServiceOrderViewModel
-            {
-                ConsumedHours = 0,
-                CreatedDate = new DateTime(2023, 9,7),
-                CustomerCity="Kristiansand",
-                CustomerComment="Hei og hå, jeg er en kundekommentar",
-                CustomerEmail="customer@thesystem.no",
-                CustomerName="Sattosk Rev",
-                CustomerStreet="Gata 13",
-                CustomerTelephoneNumber="1337",
-                CustomerZipcode="1234",
-                FutureMaintenance="Ingenting å bemerke",
-                ImageUrl="",
-                IsAdministrator=false,
-                JobGroups = new List<ServiceOrderJobGroupModel> { 
-                    new ServiceOrderJobGroupModel {Name ="Mekanisk", Jobs=new List<string>{"Skru på ting", "Bytte slureflapp"} },
-                    new ServiceOrderJobGroupModel {Name="Elektrisk", Jobs=new List<string>{"Sikringer","Greier" } },
-                    new ServiceOrderJobGroupModel {Name="Hydraulisk", Jobs = new List<string>{"Rør", "Olje"} }
-                    
-                
-                },
-                Mechanic="Espen",
-                MechanicComment="ingen kommentar",
-                SerialNumber="pirepioj123åojå",
-                ServiceOrderId = 1
-            };
+            var s = "ineedabreakpoint";
 
-            return View(model);
         }
+        return View("Index", model);
     }
 }

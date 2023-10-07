@@ -1,21 +1,31 @@
 ﻿@model bacit_dotnet.MVC.Models.ServiceOrder.ServiceOrderViewModel
 
 @{
-    ViewData["Title"] = "ServiceOrder";
+    ViewBag.Title = "Service Order Form";
 }
 
-<h1>Saksnummer @Model.ServiceOrderId</h1>
+<h2>Service Order Form</h2>
 
-@foreach(var jobGroup in Model.JobGroups)
+@using (Html.BeginForm("Save", "ServiceOrder", FormMethod.Post))
 {
-    <h3>@jobGroup.Name</h3>
-    <ul>
-    @foreach (var group in jobGroup.Jobs)
-    {
-        <li>
-            @group <input type="checkbox">
-        </li>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     
-    }
-    </ul>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ServiceOrderId)
+        @Html.TextBoxFor(model => model.ServiceOrderId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ServiceOrderId, "", new { @class = "text-danger" })
+    </div>
+    
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.CreatedDate)
+        @Html.TextBoxFor(model => model.CreatedDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
+    </div>
+    
+    <!-- Add similar form fields for other properties -->
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
 }
