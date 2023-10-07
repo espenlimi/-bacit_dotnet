@@ -30,7 +30,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="wwwroot\css\CheckList.css" />
+	  <None Include="wwwroot\css\serviceskjema.css" />
 	</ItemGroup>
 
 </Project>
