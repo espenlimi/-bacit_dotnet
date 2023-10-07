@@ -1,4 +1,4 @@
-
+@model bacit_dotnet.MVC.Models.ServiceForm.ServiceFormViewModel
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serviceskjema</title>
-    <link rel="stylesheet" href="/css/serviceskjema.css"> <!-- Link to the external stylesheet (index.css) -->
+    <link rel="stylesheet" href="/css/serviceskjema.css">
 </head>
 
 <body>
@@ -97,7 +97,6 @@
     </div>
 </div>
     
-    
 <div class="form-row">
     <div class="form-col">
         <label for="repairDescription">Reparasjonsbeskrivelse:</label>
@@ -109,7 +108,6 @@
     </div>
 </div>
     
-
 <div class="form-row">
     <div class="form-col">
         <label for="usedParts">Medgåtte deler:</label>
@@ -155,9 +153,9 @@
 </div>
     
     <!-- Rest of your form fields here -->
-    <button type="submit">Send</button>
+    <button type="submit" id="sendButton">Send</button>
 </div>
-
+<script src="/js/serviceForm.js"></script>
 </body>
 
 </html>
