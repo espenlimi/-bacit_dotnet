@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers;
 
-public class CheckListController : Controller
+public class ServiceFormController : Controller
 {
     // GET
     public IActionResult Index()
