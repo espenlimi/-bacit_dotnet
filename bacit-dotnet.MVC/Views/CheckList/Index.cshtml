@@ -1,18 +1,32 @@
 @model bacit_dotnet.MVC.Models.CheckList.CheckListViewModel
 
 @{
-    Layout = null;
+    ViewData["Title"] = "CheckList";
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="nb">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sjekkliste</title>
 </head>
 <body>
-<div>
-      
-</div>
+    <h1>Sjekkliste</h1>
+
+    <ul>
+        <li>
+            <input type="checkbox" id="item1" name="item1">
+            <label for="item1">Item 1</label>
+        </li>
+        <li>
+            <input type="checkbox" id="item2" name="item2">
+            <label for="item2">Item 2</label>
+        </li>
+        <li>
+            <input type="checkbox" id="item3" name="item3">
+            <label for="item3">Item 3</label>
+        </li>
+    </ul>
 </body>
 </html>
