@@ -39,6 +39,7 @@ namespace bacit_dotnet.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Save(ServiceOrderViewModel model) {
             if(ModelState.IsValid)
             {
