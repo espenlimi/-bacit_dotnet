@@ -7,12 +7,13 @@ namespace bacit_dotnet.MVC.Controllers
     {
         public IActionResult Index()
         {
+         //Oppprettet instanse 
             var model = new ServiceOrderViewModel
             {
-                ConsumedHours = 0,
-                CreatedDate = new DateTime(2023, 9,7),
+                BrukteTimer = 0,
+                Opprettelsesdato = new DateTime(2023, 9,27),
                 CustomerCity="Kristiansand",
-                CustomerComment="Hei og hå, jeg er en kundekommentar",
+                Kundekommentar= "Hei og hå, jeg er en kundekommentar",
                 CustomerEmail="customer@thesystem.no",
                 CustomerName="Sattosk Rev",
                 CustomerStreet="Gata 13",
@@ -21,16 +22,13 @@ namespace bacit_dotnet.MVC.Controllers
                 FutureMaintenance="Ingenting å bemerke",
                 ImageUrl="",
                 IsAdministrator=false,
-                JobGroups = new List<ServiceOrderJobGroupModel> { 
-                    new ServiceOrderJobGroupModel {Name ="Mekanisk", Jobs=new List<string>{"Skru på ting", "Bytte slureflapp"} },
-                    new ServiceOrderJobGroupModel {Name="Elektrisk", Jobs=new List<string>{"Sikringer","Greier" } },
-                    new ServiceOrderJobGroupModel {Name="Hydraulisk", Jobs = new List<string>{"Rør", "Olje"} }
-                    
+                OrderGroups = new List<ServiceOrderGroupModel> { 
+                    new ServiceOrderGroupModel {Name ="Mekanisk", Orders = new List<string>{"reperasjon"} },
                 
                 },
-                Mechanic="Espen",
-                MechanicComment="ingen kommentar",
-                SerialNumber="pirepioj123åojå",
+                Mekanikker= "Espen",
+                MekanikkerKommentar= "ingen kommentar",
+                Ordrenummer= "pirepioj123åojå",
                 ServiceOrderId = 1
             };
 
