@@ -45,6 +45,46 @@ button:hover {
     background-color: #0056b3;
 }
 
+/* Styles for the "Send" button */
+button[type="submit"] {
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: green;
+}
+
+/* Styles for the "Send" button */
+button[type="submit"] {
+    background-color: #4CAF50; /* Set the background color to green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.animate-send {
+    animation-name: moveRight;
+    animation-duration: 1.25s; /* Adjust the duration as needed */
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1; /* Run the animation once */
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(0); /* Start from the original position */
+    }
+    100% {
+        transform: translateX(680px); 
+    }
+}
+
 .form-row {
     display: flex;
     justify-content: space-between;
@@ -78,5 +118,3 @@ button:hover {
 #usedParts {
     width: 208%; /* You can adjust the width value as needed */
 }
-
-
