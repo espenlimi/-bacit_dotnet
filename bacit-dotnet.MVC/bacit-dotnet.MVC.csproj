@@ -29,4 +29,8 @@
 	  <Folder Include="Migrations\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Include="wwwroot\css\CheckList.css" />
+	</ItemGroup>
+
 </Project>

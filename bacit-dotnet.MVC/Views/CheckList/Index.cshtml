@@ -1,32 +1,162 @@
-@model bacit_dotnet.MVC.Models.CheckList.CheckListViewModel
-
-@{
-    ViewData["Title"] = "CheckList";
-}
-
 <!DOCTYPE html>
-<html lang="nb">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sjekkliste</title>
+    <title>CheckList</title>
+    <link rel="stylesheet" href="/css/CheckList.css"> <!-- Link to the external stylesheet (index.css) -->
 </head>
-<body>
-    <h1>Sjekkliste</h1>
 
-    <ul>
-        <li>
-            <input type="checkbox" id="item1" name="item1">
-            <label for="item1">Item 1</label>
-        </li>
-        <li>
-            <input type="checkbox" id="item2" name="item2">
-            <label for="item2">Item 2</label>
-        </li>
-        <li>
-            <input type="checkbox" id="item3" name="item3">
-            <label for="item3">Item 3</label>
-        </li>
-    </ul>
+<body>
+
+<div class="form-container">
+    <h2>Sjekkliste</h2>
+    <hr class="divider"> <!-- Add a horizontal line with a custom class "divider" -->
+    <div class="form-row">
+        <div class="form-col">
+            <label for="customer">Kunde:</label>
+            <input type="text" id="customer" name="customer">
+        </div>
+
+        <div class="form-col">
+            <label for="dateReceived">Mottatt dato:</label>
+            <input type="date" id="dateReceived" name="dateReceived">
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-col">
+            <label for="address">Adresse:</label>
+            <input type="text" id="address" name="address">
+        </div>
+
+        <div class="form-col">
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email">
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-col">
+            <label for="orderNumber">Ordrenummer:</label>
+            <input type="text" id="orderNumber" name="orderNumber">
+        </div>
+
+        <div class="form-col">
+            <label for="phone">Telefon:</label>
+            <input type="text" id="phone" name="phone">
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-col">
+            <label for="productType">Produkttype:</label>
+            <input type="text" id="productType" name="productType">
+        </div>
+
+        <div class="form-col">
+            <label for="year">Årsmodell:</label>
+            <input type="text" id="year" name="year">
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-col">
+            <label for="service">Service/rep:</label>
+            <input type="text" id="service" name="service">
+        </div>
+
+        <div class="form-col">
+            <label for="warranty">Garanti:</label>
+            <input type="text" id="warranty" name="warranty">
+        </div>
+
+    </div>
+
+    <div class="form-row center-row"> <!-- Add a custom class "center-row" -->
+        <div class="form-col">
+            <label for="serialNumber">Serienummer:</label>
+            <input type="text" id="serialNumber" name="serialNumber">
+        </div>
+    </div>
+    
+<div class="form-row">
+    <div class="form-col">
+        <label for="agreement">Hva er avtalt med kunden?</label>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-col">
+        <textarea id="agreement" name="agreement" rows="4"></textarea>
+    </div>
+</div>
+    
+    
+<div class="form-row">
+    <div class="form-col">
+        <label for="repairDescription">Reparasjonsbeskrivelse:</label>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-col">
+        <textarea id="repairDescription" name="repairDescription" rows="4"></textarea>
+    </div>
+</div>
+    
+
+<div class="form-row">
+    <div class="form-col">
+        <label for="usedParts">Medgåtte deler:</label>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-col">
+        <textarea id="usedParts" name="usedParts" rows="4"></textarea>
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-col">
+        <label for="workHours">Arbeidstimer:</label>
+        <input type="number" id="workHours" name="workHours">
+    </div>
+    <div class="form-col">
+        <label for="completionDate">Ferdigstilt dato:</label>
+        <input type="date" id="completionDate" name="completionDate">
+    </div>
+</div>
+        
+<div class="form-row">
+    <div class="form-col">
+        <label for="replacedPartsReturned">Utskiftet deler returnert:</label>
+        <input type="text" id="replacedPartsReturned" name="replacedPartsReturned">
+    </div>
+    <div class="form-col">
+        <label for="shippingMethod">Forsendelsesmåte:</label>
+        <input type="text" id="shippingMethod" name="shippingMethod">
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-col">
+        <label for="customerSignature">Sign. kunde:</label>
+        <input type="text" id="customerSignature" name="customerSignature">
+    </div>
+    <div class="form-col">
+        <label for="repairerSignature">Sign. reparatør:</label>
+        <input type="text" id="repairerSignature" name="repairerSignature">
+    </div>
+</div>
+    
+    <!-- Rest of your form fields here -->
+    <button type="submit">Send</button>
+</div>
+
 </body>
+
 </html>

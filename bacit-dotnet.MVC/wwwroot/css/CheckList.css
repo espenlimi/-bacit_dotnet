@@ -1,0 +1,82 @@
+/* Checklist.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(16, 24, 32);
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: white;
+}
+
+label {
+    font-weight: bold;
+}
+
+/* Consolidate input selectors */
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0; /* Set border radius to 0 for square corners */
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.form-col {
+    flex-basis: 48%;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.center-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#agreement {
+    width: 208%; /* You can adjust the width value as needed */
+}
+
+#repairDescription {
+    width: 208%; /* You can adjust the width value as needed */
+}
+#usedParts {
+    width: 208%; /* You can adjust the width value as needed */
+}
+
+
