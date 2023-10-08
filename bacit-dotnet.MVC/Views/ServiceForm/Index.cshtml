@@ -1,4 +1,5 @@
 @model bacit_dotnet.MVC.Models.ServiceForm.ServiceFormViewModel
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,75 +87,86 @@
         </div>
     </div>
     
-<div class="form-row">
-    <div class="form-col">
-        <label for="agreement">Hva er avtalt med kunden?</label>
+    <div class="form-row">
+        <div class="form-col">
+            <label for="agreement">Hva er avtalt med kunden?</label>
+        </div>
     </div>
-</div>
-<div class="form-row">
-    <div class="form-col">
-        <textarea id="agreement" name="agreement" rows="4"></textarea>
+    <div class="form-row">
+        <div class="form-col">
+            <textarea id="agreement" name="agreement" rows="4"></textarea>
+        </div>
     </div>
-</div>
     
-<div class="form-row">
-    <div class="form-col">
-        <label for="repairDescription">Reparasjonsbeskrivelse:</label>
+    <div class="form-row">
+        <div class="form-col">
+            <label for="repairDescription">Reparasjonsbeskrivelse:</label>
+        </div>
     </div>
-</div>
-<div class="form-row">
-    <div class="form-col">
-        <textarea id="repairDescription" name="repairDescription" rows="4"></textarea>
+    <div class="form-row">
+        <div class="form-col">
+            <textarea id="repairDescription" name="repairDescription" rows="4"></textarea>
+        </div>
     </div>
-</div>
     
-<div class="form-row">
-    <div class="form-col">
-        <label for="usedParts">Medgåtte deler:</label>
+    <div class="form-row">
+        <div class="form-col">
+            <label for="usedParts">Medgåtte deler:</label>
+        </div>
     </div>
-</div>
-<div class="form-row">
+    <div class="form-row">
+        <div class="form-col">
+            <textarea id="usedParts" name="usedParts" rows="4"></textarea>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-col">
+            <label for="workHours">Arbeidstimer:</label>
+            <input type="number" id="workHours" name="workHours">
+        </div>
+        <div class="form-col">
+            <label for="completionDate">Ferdigstilt dato:</label>
+            <input type="date" id="completionDate" name="completionDate">
+        </div>
+    </div>
+            
+    <div class="form-row">
+        <div class="form-col">
+            <label for="replacedPartsReturned">Utskiftet deler returnert:</label>
+            <input type="text" id="replacedPartsReturned" name="replacedPartsReturned">
+        </div>
+        <div class="form-col">
+            <label for="shippingMethod">Forsendelsesmåte:</label>
+            <input type="text" id="shippingMethod" name="shippingMethod">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-col">
+            <label for="customerSignature">Sign. kunde:</label>
+            <input type="text" id="customerSignature" name="customerSignature">
+        </div>
+        <div class="form-col">  
+            <label for="repairerSignature">Sign. reparatør:</label>
+            <input type="text" id="repairerSignature" name="repairerSignature">
+        </div>
+    </div>
+    
+<!-- Rest of your form fields here -->
+
+<!-- Submit button outside of the form -->
+<div class="form-row center-button">
     <div class="form-col">
-        <textarea id="usedParts" name="usedParts" rows="4"></textarea>
+        <div class="button">
+            <div class="container">
+                <div class="tick"></div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="form-row">
-    <div class="form-col">
-        <label for="workHours">Arbeidstimer:</label>
-        <input type="number" id="workHours" name="workHours">
-    </div>
-    <div class="form-col">
-        <label for="completionDate">Ferdigstilt dato:</label>
-        <input type="date" id="completionDate" name="completionDate">
-    </div>
-</div>
-        
-<div class="form-row">
-    <div class="form-col">
-        <label for="replacedPartsReturned">Utskiftet deler returnert:</label>
-        <input type="text" id="replacedPartsReturned" name="replacedPartsReturned">
-    </div>
-    <div class="form-col">
-        <label for="shippingMethod">Forsendelsesmåte:</label>
-        <input type="text" id="shippingMethod" name="shippingMethod">
-    </div>
-</div>
-
-<div class="form-row">
-    <div class="form-col">
-        <label for="customerSignature">Sign. kunde:</label>
-        <input type="text" id="customerSignature" name="customerSignature">
-    </div>
-    <div class="form-col">
-        <label for="repairerSignature">Sign. reparatør:</label>
-        <input type="text" id="repairerSignature" name="repairerSignature">
-    </div>
-</div>
-    
-    <!-- Rest of your form fields here -->
-    <button type="submit" id="sendButton">Send</button>
-</div>
+</div> <!-- Closing .form-container -->
 <script src="/js/serviceForm.js"></script>
 </body>
 

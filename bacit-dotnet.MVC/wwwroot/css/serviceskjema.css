@@ -32,59 +32,6 @@ textarea {
     border-radius: 0; /* Set border radius to 0 for square corners */
 }
 
-button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Styles for the "Send" button */
-button[type="submit"] {
-    background-color: #4CAF50; /* Green color */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button[type="submit"]:hover {
-    background-color: green;
-}
-
-/* Styles for the "Send" button */
-button[type="submit"] {
-    background-color: #4CAF50; /* Set the background color to green */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.animate-send {
-    animation-name: moveRight;
-    animation-duration: 1.25s; /* Adjust the duration as needed */
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 1; /* Run the animation once */
-}
-
-@keyframes moveRight {
-    0% {
-        transform: translateX(0); /* Start from the original position */
-    }
-    100% {
-        transform: translateX(680px); 
-    }
-}
-
 .form-row {
     display: flex;
     justify-content: space-between;
@@ -108,13 +55,67 @@ button[type="submit"] {
     align-items: center;
 }
 
-#agreement {
-    width: 208%; /* You can adjust the width value as needed */
-}
-
-#repairDescription {
-    width: 208%; /* You can adjust the width value as needed */
-}
+#agreement,
+#repairDescription,
 #usedParts {
     width: 208%; /* You can adjust the width value as needed */
 }
+
+/* Center the button horizontally and vertically */
+.center-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button, .tick {
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.button {
+    width: 150px;
+    height: 50px;
+    margin-top: 15px;
+    margin-left: 105px;
+    background: mediumseagreen;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all .3s cubic-bezier(0.67, 0.17, 0.40, 0.83);
+}
+
+.button__circle {
+    width: 100px;
+    height: 100px;
+    background: darkgreen;
+    border-radius: 50%;
+    transform: rotate(-180deg);
+    margin-left: 130px;
+}
+
+.button, .tick {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.button svg {
+    transform: rotate(180deg);
+    transition: all .5s;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: darkgreen;
+}
+
+
+.tick {
+    color: white;
+    font-size: 2em;
+    transition: all .5s;
+}
+
