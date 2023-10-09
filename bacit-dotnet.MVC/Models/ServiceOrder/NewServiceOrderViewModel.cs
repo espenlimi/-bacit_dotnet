@@ -1,9 +1,11 @@
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.InteropServices.JavaScript;
 
 namespace bacit_dotnet.MVC.Models.ServiceOrder;
 
 public class NewServiceOrderViewModel
 {
+    [Required]
     public string Kunde { get; set; }
     
     public DateTime MottattDato { get; set; }
