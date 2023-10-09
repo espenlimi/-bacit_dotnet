@@ -13,6 +13,11 @@ body {
     border: 1px solid #000;
     border-radius: 10px;
     background-color: white;
+}   
+
+.form-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 label {
