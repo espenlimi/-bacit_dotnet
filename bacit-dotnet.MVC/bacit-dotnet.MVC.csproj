@@ -29,4 +29,12 @@
 	  <Folder Include="Migrations\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Include="wwwroot\css\serviceskjema.css" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <_ContentIncludedByDefault Remove="Views\SignOut\index.cshtml" />
+	</ItemGroup>
+
 </Project>

@@ -15,4 +15,12 @@ html {
 
 body {
   margin-bottom: 60px;
+  font-family: "Publico Text", serif;
 }
+
+.logo {
+  width: 125px;
+  height: auto; 
+}
+
+
