@@ -6,14 +6,21 @@ table {
 }
 
 /* Center the text in the table headers (th) */
-th, h2, table {
+th, h2 {
     text-align: center;
 }
 
 /* Apply other styles to the table, table headers, and table data cells */
 table, th, td {
-    border: 1px solid black;
     border-collapse: collapse;
+    min-width: 350px;
+    padding: 12px 15px;
+    border-bottom: 1px solid #dddddd;
+    font-family: "Publico Text", serif;
+}
+/* table bottom line */
+table tbody tr:last-of-type {
+    border-bottom: 2px solid #3498db;
 }
 
 /* Align text in table data cells to the left */
@@ -21,26 +28,37 @@ td {
     text-align: left;
 }
 
-tr, td, table [data-hred] {
+tr, td, table [data-href] {
     cursor: pointer;
 }
 
+/* Add this style to create spacing between the table and the footer */
 .container {
-    background-color: #white; /* Replace with your desired background color */
-    padding: 20px; /* Adjust the padding as needed */
     max-width: 210mm;
     margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: white;
 }
 
-.table {
-    background-color: white;
-    padding: 20px;
-}
 
 
 body {
     font-family: "Publico Text", serif;
     background-color: rgb(16, 24, 32);
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
 }
+
+/* Style for the table headers */
+th {
+    background-color: #3498db; /* Blue background color for table headers */
+    color: white; /* White text color for table headers */
+    font-weight: bold; /* Make the text bold */
+    padding: 10px 20px; /* Add padding to the headers (adjust values as needed) */
+    text-align: center;
+}
+
+
+
