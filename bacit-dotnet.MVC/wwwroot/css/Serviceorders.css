@@ -6,7 +6,7 @@ table {
 }
 
 /* Center the text in the table headers (th) */
-th, h2 {
+th, h2, table {
     text-align: center;
 }
 
