@@ -28,6 +28,8 @@ tr, td, table [data-hred] {
 .container {
     background-color: #white; /* Replace with your desired background color */
     padding: 20px; /* Adjust the padding as needed */
+    max-width: 210mm;
+    margin: 0 auto;
 }
 
 .table {
