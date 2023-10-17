@@ -52,12 +52,6 @@ tr, td, table [data-href] {
     cursor: pointer;
 }
 
-/* Style for the search input and button */
-.search-order {
-    display: flex;
-    margin: 10px 0;
-}
-
 input[type="text"] {
     width: autos%;
     padding: 10px;
