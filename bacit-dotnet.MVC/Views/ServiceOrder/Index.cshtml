@@ -1,4 +1,4 @@
-﻿@model bacit_dotnet.MVC.Models.ServiceOrder.ServiceOrderViewModel
+﻿@model bacit_dotnet.MVC.Models.Person> 
 
 
 <!DOCTYPE html>
@@ -30,19 +30,22 @@
             </tr>
             </thead>
             <tbody>
-                <td>Id</td>
-                <td>Dato</td>
-                <td>Ordrenummer</td>
-                <td>Navn</td>
-                <td>status</td>
             <tr data-href="https://www.youtube.com/watch?v=6BdKUO2QbA0">
-                <td>xxxxx</td>
-                <td>xxxxx</td>
-                <td>xxxxx</td>
-                <td>xxxxx</td>
-                <td>xxxxx</td>
+            <td>Id</td>
+            <td>Dato</td>
+            <td>Ordrenummer</td>
+            <td>Navn</td>
+            <td>status</td>
             </tr>
-
+             @foreach (var person in Model)
+             {<tr data-href="https://www.youtube.com/watch?v=6BdKUO2QbA0">
+                <td>@person.Id</td>
+                <td>@person.Dato</td>
+                <td>@person.Ordrenummer</td>
+                <td>@person.Kunde</td>
+                <td>@person.Status</td>
+            </tr>
+              }
             </tbody>
         </table>
     </div>

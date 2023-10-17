@@ -1,23 +1,38 @@
-﻿using bacit_dotnet.MVC.Models.ServiceOrder;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.AspNetCore.Mvc;
+using bacit_dotnet.MVC.Models;
 
-namespace bacit_dotnet.MVC.Controllers;
-
-public class ServiceOrderController : Controller
+namespace bacit_dotnet.MVC.Controllers
 {
-    public IActionResult Index()
+    public class ServiceOrderController : Controller
     {
-        return View();
-    }
-    
-    [HttpPost]
-    public IActionResult Save(ServiceOrderViewModel model) {
-        if(ModelState.IsValid)
-        {
-            var s = "ineedabreakpoint";
+        private readonly PersonRepository _repository;
 
+        public ServiceOrderController(PersonRepository repository)
+        {
+            _repository = repository;
         }
-        return View("Index", model);
+
+        public IActionResult Index()
+        {
+            var people = _repository.GetAll();
+            return View(people);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Person person)
+        {
+            if (ModelState.IsValid)
+            {
+                _repository.Insert(person);
+                return RedirectToAction("Index");
+            }
+            return View(person);
+        }
     }
 }

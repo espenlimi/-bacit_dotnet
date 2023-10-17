@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace DapperMariaDBDemo.Models
+namespace bacit_dotnet.MVC.Models
 {
     public class PersonRepository
     {
