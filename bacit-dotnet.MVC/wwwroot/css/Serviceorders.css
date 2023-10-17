@@ -1,8 +1,33 @@
+/* Add this style to the container */
+.container-order {
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Apply styles to the entire body */
+body {
+    font-family: "Publico Text", serif;
+    background-color: rgb(16, 24, 32);
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for the table headers */
+th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+}
+
 /* Center the div with the class "table" horizontally */
 table {
     margin: 0 auto;
     width: 50%; /* You can adjust the width as needed */
-    text-align: center; /* Optional: Center text within the div */
+    text-align: center;
 }
 
 /* Center the text in the table headers (th) */
@@ -11,13 +36,8 @@ th, h2 {
 }
 
 /* Apply other styles to the table, table headers, and table data cells */
-table, th, td {
-    border-collapse: collapse;
-    min-width: 350px;
-    padding: 12px 15px;
-    border-bottom: 1px solid #dddddd;
-    font-family: "Publico Text", serif;
-}
+
+
 /* table bottom line */
 table tbody tr:last-of-type {
     border-bottom: 2px solid #3498db;
@@ -32,48 +52,30 @@ tr, td, table [data-href] {
     cursor: pointer;
 }
 
-/* Add this style to create spacing between the table and the footer */
-.container-order {
-    max-width: 210mm;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #000;
-    border-radius: 10px;
-    background-color: white;
-}
-
-
-
-body {
-    font-family: "Publico Text", serif;
-    background-color: rgb(16, 24, 32);
-    margin: 0 auto;
-    padding: 0;
-}
-
-/* Style for the table headers */
-th {
-    background-color: #3498db; /* Blue background color for table headers */
-    color: white; /* White text color for table headers */
-    font-weight: bold; /* Make the text bold */
-    padding: 10px 20px; /* Add padding to the headers (adjust values as needed) */
-    text-align: center;
-}
-
-.search-container {
+/* Style for the search input and button */
+.search-order {
     display: flex;
+    margin: 10px 0;
 }
 
 input[type="text"] {
-    width: 80%;
-    padding: 5px;
-    margin-right: 5px;
+    width: autos%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 input[type="submit"] {
     background-color: #3498db;
     color: white;
+    padding: 10px 20px;
     border: none;
-    padding: 5px 10px;
     cursor: pointer;
+}
+
+/* Style for links within the table */
+tr[data-href] {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #3498db;
 }
