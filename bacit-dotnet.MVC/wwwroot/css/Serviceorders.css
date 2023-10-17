@@ -60,5 +60,20 @@ th {
     text-align: center;
 }
 
+.search-container {
+    display: flex;
+}
 
+input[type="text"] {
+    width: 80%;
+    padding: 5px;
+    margin-right: 5px;
+}
 
+input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
