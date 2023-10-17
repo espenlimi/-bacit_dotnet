@@ -1,0 +1,472 @@
+﻿@model bacit_dotnet.MVC.Models.CheckList.CheckListViewModel
+
+@{
+    ViewData["Title"] = "Check List";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+ <link rel="stylesheet" href="css/checkList.css"/> 
+    
+</head>
+<body>
+
+<h2>Sjekkliste</h2>
+
+<form>
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" value="John"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" value="Doe">
+</form>
+
+
+<table style="width:100%">
+  <tr>
+    <th>Kategorier</th>
+    <th>Sjekkpunkter</th>
+    <th>OK</th>
+    <th>Bør Skiftes</th>
+    <th>Defekt</th>
+  </tr>
+    <tr>
+        <td rowspan="8">Mekanisk</td> <!--Mekanisk-->
+        <td>Sjekk clutch lameller for slitasje</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+    </tr>
+    <tr>
+        <td>Sjekk bremser. Bånd/ Pal</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Sjekk lager for trommel</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Sjekk PTO og opplagring</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Sjekk kjedestrammer</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Sjekk wire</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Sjekk pinion lager</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Sjekk kile på kjedehjul</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    
+    <tr>
+        <td rowspan="7">Hydraulisk</td>
+        <td>Sjekk hydraulikk sylinder for lekkasje</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Sjekk slanger for skader og lekkasje</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Test hydraulikkblokk i testbenk</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Skift olje i tank</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Skift olje på gir boks</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Sjekk Ringsylinder åpne og skift tetninger</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Sjekk bremse sylinder åpne og skift tetninger</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td rowspan="3">Elektro</td>
+        <td>Sjekk ledningsnett på vinsj</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Sjekk og test radio</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Sjekk og test knappekasse</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td rowspan="3">Trykk settinger</td>
+        <td>xx- Bar</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>??</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>??</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td rowspan="3">Funksjonstest</td>
+        <td>Test vinsj og kjør alle funksjoner</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Trekkkraft KN</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Bremsekraft KN</td>
+        <td>
+            <input type="checkbox" id="OK" name="OK" value="OK" />
+            <label for="OK"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Bør_skiftes" name="bør_skiftes" value="bør_skiftes" />
+            <label for="bør_skiftes"></label>
+        </td>
+        
+        <td>
+            <input type="checkbox" id="Defekt" name="Defekt" value="Defekt"/>
+            <label for="Defekt"></label>        
+        </td>
+        
+    </tr>
+</table>
+
+</body>
+</html>
+
+
