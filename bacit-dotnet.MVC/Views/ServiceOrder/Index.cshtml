@@ -1,31 +1,66 @@
 ﻿@model bacit_dotnet.MVC.Models.ServiceOrder.ServiceOrderViewModel
 
-@{
-    ViewBag.Title = "Service Order Form";
-}
 
-<h2>Service Order Form</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-@using (Html.BeginForm("Save", "ServiceOrder", FormMethod.Post))
-{
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    
-    <div class="form-group">
-        @Html.LabelFor(model => model.ServiceOrderId)
-        @Html.TextBoxFor(model => model.ServiceOrderId, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.ServiceOrderId, "", new { @class = "text-danger" })
-    </div>
-    
-    
-    <div class="form-group">
-        @Html.LabelFor(model => model.CreatedDate)
-        @Html.TextBoxFor(model => model.CreatedDate, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
-    </div>
-    
-    <!-- Add similar form fields for other properties -->
 
-    <div class="form-group">
-        <input type="submit" value="Save" class="btn btn-primary" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceOversikt</title>
+      <link rel="stylesheet" href="/css/Serviceorders.css">
+</head>
+
+<body>
+<form asp-action="Save" asp-controller="ServiceOrder" method="post">
+<div class="container-order">
+    <div class="table">
+        <h2>Ordreoversikt</h2>
+
+        <div class="search-order">
+            <label for="Search">Søk Ordre:</label>
+            <input type="text" id="Search" name="Search">
+            <input type="submit" value="Search">
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th colspan="2">ServiceOrdrer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-href="https://www.youtube.com/watch?v=6BdKUO2QbA0">
+                <td>Dato</td>
+                <td>.....</td>
+            </tr>
+            <tr data-href="">
+                <td>Ordrenummer</td>
+                <td>...</td>
+            </tr>
+            <tr data-href="">
+                <td>Kunde</td>
+                <td>......</td>
+            </tr>
+            <tr data-href="https://www.komplett.no/">
+                <td>Status</td>
+                <td>....</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-}
+</div>
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const rows = document.querySelectorAll("tr[data-href]");
+
+            rows.forEach(row => {
+                row.addEventListener("click", () => {
+                    window.location.href = row.dataset.href;
+                });
+            });
+        });
+    </script>
+</form>
+</body>
+</html>
