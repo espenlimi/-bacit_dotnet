@@ -1,8 +1,7 @@
 @model bacit_dotnet.MVC.Models.LogIn.LogInViewModel;
 
 @{
-    //ViewData["Title"] = "Log In";
-    Layout = null;
+    ViewData["Title"] = "Log In";
 }
 
 <!DOCTYPE html>
@@ -10,12 +9,13 @@
 <html>
 <head>
     <title>Logg Inn</title>
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
 <div>
     <h2>Trykk på knappen for å logge inn</h2>
     <form>
-        <input type="button" onclick="location.href = 'https://localhost:7064/Home/';" value="Logg Inn"/>
+        <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-primary">Logg Inn</button></a>
     </form>
 </div>
 </body>
