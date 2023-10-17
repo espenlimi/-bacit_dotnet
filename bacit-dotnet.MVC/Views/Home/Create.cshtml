@@ -1,18 +1,19 @@
-@model TModel
+@model bacit_dotnet.Models.Person
 
-@{
-    Layout = null;
-}
+<h2>Create Person</h2>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label">First Name:</label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName" class="control-label">Last Name:</label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
