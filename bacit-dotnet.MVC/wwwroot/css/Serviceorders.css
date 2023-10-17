@@ -33,7 +33,7 @@ tr, td, table [data-href] {
 }
 
 /* Add this style to create spacing between the table and the footer */
-.container {
+.container-order {
     max-width: 210mm;
     margin: 0 auto;
     padding: 20px;
