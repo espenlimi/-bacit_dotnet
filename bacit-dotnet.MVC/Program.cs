@@ -9,7 +9,7 @@ public class Program
     static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        var ConnectionString = "Server=localhost;Port=3306;User ID=root;Password=dotnet;Database=NostedDB;CharSet=utf8";
+        var ConnectionString = "Server=localhost;Port=3306;User ID=root;Password=123;Database=ReficioDB;CharSet=utf8";
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
