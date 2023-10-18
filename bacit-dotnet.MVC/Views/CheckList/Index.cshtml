@@ -1,0 +1,481 @@
+﻿@model bacit_dotnet.MVC.Models.CheckList.CheckListViewModel
+
+@{
+    ViewData["Title"] = "Check List";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <link rel="stylesheet" href="css/checkList.css"/>
+    
+</head>
+<body>
+
+<h2>Sjekkliste</h2>
+
+<form asp-action="Save" asp-controller="CheckList" method="post">
+    <table style="width:100%">
+      <tr>
+        <th>Kategorier</th>
+        <th>Sjekkpunkter</th>
+        <th>OK</th>
+        <th>Bør Skiftes</th>
+        <th>Defekt</th>
+      </tr>
+        <tr>
+            <td rowspan="8">Mekanisk</td> <!--Mekanisk-->
+            <td>Sjekk clutch lameller for slitasje</td>
+            <td>
+                <input type="radio" id="OK" name="clutch" value="OK" />
+                <label for="OK"></label>
+            </td>
+            <td>
+                <input type="radio" id="Bør_skiftes" name="clutch" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            <td>
+                <input type="radio" id="Defekt" name="clutch" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+        </tr>
+        <tr>
+            <td>Sjekk bremser. Bånd/ Pal</td>
+            <td>
+                <input type="radio" id="OK" name="bremser" value="OK" />
+                <label for="OK"></label>
+            </td>
+            <td>
+                <input type="radio" id="Bør_skiftes" name="bremser" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            <td>
+                <input type="radio" id="Defekt" name="bremser" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk lager for trommel</td>
+            <td>
+                <input type="radio" id="OK" name="trommel" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="trommel" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="trommel" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk PTO og opplagring</td>
+            <td>
+                <input type="radio" id="OK" name="PTO" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="PTO" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="PTO" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk kjedestrammer</td>
+            <td>
+                <input type="radio" id="OK" name="kjedestrammer" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="kjedestrammer" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="kjedestrammer" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk wire</td>
+            <td>
+                <input type="radio" id="OK" name="wire" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="wire" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="wire" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk pinion lager</td>
+            <td>
+                <input type="radio" id="OK" name="pinion_lager" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="pinion_lager" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="pinion_lager" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk kile på kjedehjul</td>
+            <td>
+                <input type="radio" id="OK" name="kile_på_kjedehjul" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="kile_på_kjedehjul" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="kile_på_kjedehjul" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        
+        <tr>
+            <td rowspan="7">Hydraulisk</td>
+            <td>Sjekk hydraulikk sylinder for lekkasje</td>
+            <td>
+                <input type="radio" id="OK" name="hydraulikk_sylinder" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="hydraulikk_sylinder" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="hydraulikk_sylinder" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk slanger for skader og lekkasje</td>
+            <td>
+                <input type="radio" id="OK" name="slanger" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="slanger" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="slanger" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Test hydraulikkblokk i testbenk</td>
+            <td>
+                <input type="radio" id="OK" name="hydraulikkblokk" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="hydraulikkblokk" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="hydraulikkblokk" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Skift olje i tank</td>
+            <td>
+                <input type="radio" id="OK" name="olje_i_tank" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="olje_i_tank" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="olje_i_tank" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Skift olje på gir boks</td>
+            <td>
+                <input type="radio" id="OK" name="olje_på_gir_boks" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="olje_på_gir_boks" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="olje_på_gir_boks" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk Ringsylinder åpne og skift tetninger</td>
+            <td>
+                <input type="radio" id="OK" name="ringsylinder" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="ringsylinder" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="ringsylinder" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk bremse sylinder åpne og skift tetninger</td>
+            <td>
+                <input type="radio" id="OK" name="bremse_sylinder" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="bremse_sylinder" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="bremse_sylinder" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td rowspan="3">Elektro</td>
+            <td>Sjekk ledningsnett på vinsj</td>
+            <td>
+                <input type="radio" id="OK" name="ledningsnett" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="ledningsnett" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="ledningsnett" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk og test radio</td>
+            <td>
+                <input type="radio" id="OK" name="radio" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="radio" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="radio" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk og test knappekasse</td>
+            <td>
+                <input type="radio" id="OK" name="knappekasse" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="knappekasse" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="knappekasse" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td rowspan="3">Trykk settinger</td>
+            <td>xx- Bar</td> <!-- Spør nøsted om, og endre -->
+            <td>
+                <input type="radio" id="OK" name="trykk_settinger_xx_Bar" value="OK" /> 
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="trykk_settinger_xx_Bar" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="trykk_settinger_xx_Bar" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>??</td> <!-- Spør nøsted om, og endre -->
+            <td>
+                <input type="radio" id="OK" name="??" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="??" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="??" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>??</td> <!-- Spør nøsted om, og endre -->
+            <td>
+                <input type="radio" id="OK" name="???" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="???" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="???" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td rowspan="3">Funksjonstest</td>
+            <td>Test vinsj og kjør alle funksjoner</td>
+            <td>
+                <input type="radio" id="OK" name="alle_funksjoner" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="alle_funksjoner" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="alle_funksjoner" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Trekkraft KN</td>
+            <td>
+                <input type="radio" id="OK" name="trekkraft" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="trekkraft" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="trekkraft" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Bremsekraft KN</td>
+            <td>
+                <input type="radio" id="OK" name="bremsekraft" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="bremsekraft" value="bør_skiftes" />
+                <label for="bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="bremsekraft" value="Defekt"/>
+                <label for="Defekt"></label>        
+            </td>
+            
+        </tr>
+    </table>
+
+    <br>
+    <label for="freeform">Kommentar:</label>
+    <br> 
+    <textarea id="freeform" name="freeform" rows="6" cols="115"></textarea>
+    <br>
+    <br>
+    <label for="Sign">Signatur:</label>
+    <br>
+    <input type="text" id="Sign" name="Sign">
+    <label for="start">date:</label>
+    <input type="date" id="start" name="trip-start" min="2000-01-01" max="2099-12-31" />
+
+    <br><br/>
+    <button type="submit" class="btn btn-primary">Send inn</button>
+</form>
+</body>
+</html>
+
+
