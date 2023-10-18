@@ -16,13 +16,6 @@
 
 <h2>Sjekkliste</h2>
 
-<form>
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe">
-</form>
-
 
 <table style="width:100%">
   <tr>
@@ -466,6 +459,24 @@
         
     </tr>
 </table>
+
+<form>
+    <label for="Sign">Signatur:</label>
+    <br>
+    <input type="text" id="Sign" name="Sign">
+    <br>
+    <label for="freeform">Kommentar:</label>
+    <br>
+    <textarea id="freeform" name="freeform" rows="4" cols="50">
+    Skriv inn kommentar...
+    </textarea>
+    <label for="start">date:</label>
+    <input type="date" id="start" name="trip-start" value="2023-10-18" min="2000-01-01" max="2099-12-31" />
+</form>
+
+<button type="button">Send inn</button>
+
+
 
 </body>
 </html>
