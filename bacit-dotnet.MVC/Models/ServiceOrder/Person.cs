@@ -5,7 +5,7 @@ namespace bacit_dotnet.MVC.Models
 {
     public class Person
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         
         [Required(ErrorMessage = "Date is required.")]
         public string Dato { get; set; }
