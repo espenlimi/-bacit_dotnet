@@ -9,7 +9,7 @@
 /* Apply styles to the entire body */
 body {
     font-family: "Publico Text", serif;
-    background-color: rgb(16, 24, 32);
+    /*background-color: rgb(16, 24, 32);*/
     margin: 0;
     padding: 0;
 }
