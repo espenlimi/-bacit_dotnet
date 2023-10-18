@@ -1,5 +1,4 @@
-﻿@model bacit_dotnet.MVC.Models.Person> 
-
+﻿@model IEnumerable<bacit_dotnet.MVC.Models.Person>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,40 +8,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ServiceOversikt</title>
-      <link rel="stylesheet" href="/css/Serviceorders.css">
+    <link rel="stylesheet" href="/css/Serviceorders.css">
 </head>
 
 <body>
-<form asp-action="Save" asp-controller="ServiceOrder" method="post">
 <div class="container-order">
-    <div class="table">
-        <h2>Ordreoversikt</h2>
-        <table>
-            <thead>
-            <tr>
-                <th colspan="5">ServiceOrdrer</th>
-            </tr>
-            </thead>
-            <tbody>
+    <h2>Ordreoversikt</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Dato</th>
+            <th>Ordrenummer</th>
+            <th>Kunde</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var person in Model)
+        {
             <tr data-href="https://www.youtube.com/watch?v=6BdKUO2QbA0">
-            <td>Id</td>
-            <td>Dato</td>
-            <td>Ordrenummer</td>
-            <td>Navn</td>
-            <td>status</td>
-            </tr>
-             @foreach (var person in Model)
-             {<tr data-href="https://www.youtube.com/watch?v=6BdKUO2QbA0">
-                <td>@person.Id</td>
+                <td>@person.ID</td>
                 <td>@person.Dato</td>
                 <td>@person.Ordrenummer</td>
-                <td>@person.Kunde</td>
+                <td>@person.Navn</td>
                 <td>@person.Status</td>
             </tr>
-              }
-            </tbody>
-        </table>
-    </div>
+        }
+        </tbody>
+    </table>
 </div>
 <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -55,6 +49,5 @@
             });
         });
     </script>
-</form>
 </body>
 </html>

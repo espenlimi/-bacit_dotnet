@@ -30,7 +30,7 @@ namespace bacit_dotnet.MVC.Models
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<Person>("SELECT * FROM People");
+                return dbConnection.Query<Person>("SELECT * FROM ReficioDB");
             }
         }
 
@@ -39,7 +39,7 @@ namespace bacit_dotnet.MVC.Models
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Execute("INSERT INTO People (Dato, Ordrenummer, Navn, Status) VALUES (@Dato, @Ordrenummer, @Navn, @Status)", person);
+                dbConnection.Execute("INSERT INTO ReficioDB (Dato, Ordrenummer, Navn, Status) VALUES (@Dato, @Ordrenummer, @Navn, @Status)", person);
             }
         }
     }

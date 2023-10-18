@@ -14,8 +14,8 @@ namespace bacit_dotnet.MVC.Controllers
 
         public IActionResult Index()
         {
-            var people = _repository.GetAll();
-            return View(people);
+            var ReficioDB = _repository.GetAll();
+            return View(ReficioDB);
         }
 
         public IActionResult Create()
