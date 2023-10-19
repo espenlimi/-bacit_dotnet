@@ -1,19 +1,18 @@
-using System.Reflection.Metadata.Ecma335;
-using bacit_dotnet.MVC.Models.ServiceOrder;
+using bacit_dotnet.MVC.Models.CheckList;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace bacit_dotnet.MVC.Controllers;
 
-public class NewServiceOrderController : Controller
+public class CheckListController : Controller
 {
+    [HttpGet]
     public IActionResult Index()
     {
         return View();
     }
     
     [HttpPost]
-    public IActionResult Save(NewServiceOrderViewModel model) {
+    public IActionResult Save(CheckListViewModel model) {
         if(ModelState.IsValid)
         {
             var s = "ineedabreakpoint";

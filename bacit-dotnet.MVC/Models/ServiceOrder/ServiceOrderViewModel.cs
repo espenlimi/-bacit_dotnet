@@ -2,15 +2,11 @@
 {
     public class ServiceOrderViewModel
     {
-        public int ServiceOrderId { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public string CustomerName { get; set; }
-        public string CustomerEmail { get; set; }
-        public string CustomerStreet { get; set; }
-        public string CustomerCity { get; set; }
-        public string CustomerZipcode { get; set; }
-        public string CustomerTelephoneNumber { get; set; }
-
+        public int    ID             { get; set; }
+        public string Ordrenummer { get; set; }
+        public DateTime Dato { get; set; }
+        public string Kunde { get; set; }
+        public string Status { get; set; }
     }
 
 }

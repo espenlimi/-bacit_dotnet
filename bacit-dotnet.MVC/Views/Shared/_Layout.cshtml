@@ -7,6 +7,7 @@
     <title>@ViewData["Title"] - Nøsted &</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <!-- <link rel="stylesheet" href="/css/footer.css"> -->
     <link rel="stylesheet" href="~/bacit_dotnet.MVC.styles.css" asp-append-version="true"/>
 </head>
 
@@ -24,25 +25,25 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Hjem</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Brukere</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Suggestions" asp-action="Index">Suggestions</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Suggestions" asp-action="Index">Forslag</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="ServiceOrder" asp-action="Index">Serviceordrer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="NewServiceOrder" asp-action="Index">Ny Serviceordre</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="ServiceOrder" asp-action="Index">Ordreoversikt</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index">Serviceskjema</a> <!-- Add this line -->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOff">Sign out</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="CheckList" asp-action="Index">Sjekkliste</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="SignOut" asp-action="Index">Logg ut</a>
                     </li>
                 </ul>
             </div>

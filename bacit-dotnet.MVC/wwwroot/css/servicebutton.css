@@ -1,0 +1,12 @@
+.servicebutton {
+    position: absolute;
+    top: 60px;
+    left: 1000px;
+    height: 45px;
+    width: 150px;
+    border:2px solid #6495ED;
+    background-color: #badbcc;
+    border-radius: 40px;
+    padding-top: 7px;
+}
+
