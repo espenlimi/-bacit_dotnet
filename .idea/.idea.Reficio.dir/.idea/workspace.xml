@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="950907b9-d004-4393-9170-c99d3545783b" name="Changes" comment="" />
+    <list default="true" id="950907b9-d004-4393-9170-c99d3545783b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Models/ServiceForm/ServiceFormEntry.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Models/ServiceForm/ServiceFormRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/wwwroot/css/ServiceForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.bacit-dotnet/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bacit-dotnet/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Controllers/ServiceFormController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Controllers/ServiceFormController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Models/ServiceForm/ServiceFormViewModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/ServiceForm/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/ServiceForm/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/bacit-dotnet.MVC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/bacit-dotnet.MVC/bacit-dotnet.MVC.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bacit-dotnet.MVC/wwwroot/css/serviceform.css" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +61,7 @@
       <workItem from="1696678398597" duration="1000" />
       <workItem from="1696761585715" duration="17000" />
       <workItem from="1697711329304" duration="36000" />
+      <workItem from="1697713482116" duration="24000" />
     </task>
     <servers />
   </component>
