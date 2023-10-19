@@ -1,0 +1,29 @@
+@model bacit_dotnet.MVC.Models.Person
+
+<h2>Create Person</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Dato" class="control-label">Dato:</label>
+        <input asp-for="Dato" class="form-control"/>
+        <span asp-validation-for="Dato" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Ordrenummer" class="control-label">Ordrenummer:</label>
+        <input asp-for="Ordrenummer" class="form-control"/>
+        <span asp-validation-for="Ordrenummer" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Navn" class="control-label">Navn:</label>
+        <input asp-for="Navn" class="form-control"/>
+        <span asp-validation-for="Navn" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Status" class="control-label">Status:</label>
+        <input asp-for="Status" class="form-control"/>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary"/>
+    </div>
+</form>

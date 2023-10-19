@@ -9,29 +9,17 @@
 /* Apply styles to the entire body */
 body {
     font-family: "Publico Text", serif;
-    /*background-color: rgb(16, 24, 32);*/
+    background-color: rgb(16, 24, 32);
     margin: 0;
     padding: 0;
 }
 
-/* Style for the table headers */
-th {
-    background-color: #3498db;
-    color: white;
-    font-weight: bold;
-    padding: 10px 20px;
-    text-align: center;
-}
+
 
 /* Center the div with the class "table" horizontally */
 table {
     margin: 0 auto;
     width: 50%; /* You can adjust the width as needed */
-    text-align: center;
-}
-
-/* Center the text in the table headers (th) */
-th, h2 {
     text-align: center;
 }
 
@@ -44,18 +32,12 @@ table tbody tr:last-of-type {
 }
 
 /* Align text in table data cells to the left */
-td {
+td, th {
     text-align: left;
 }
 
 tr, td, table [data-href] {
     cursor: pointer;
-}
-
-/* Style for the search input and button */
-.search-order {
-    display: flex;
-    margin: 10px 0;
 }
 
 input[type="text"] {
