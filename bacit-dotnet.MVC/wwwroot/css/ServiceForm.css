@@ -1,0 +1,52 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background-color: #1c1f23;
+}
+
+.form-container {
+    max-width: 210mm;
+    margin: 25px auto 10px auto;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: white;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.form-col {
+    flex-basis: 48%;
+}
+
+.divider {
+    border-top: 1px solid #000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.center-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

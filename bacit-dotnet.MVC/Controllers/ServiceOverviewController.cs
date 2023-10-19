@@ -1,10 +1,10 @@
-﻿using bacit_dotnet.MVC.Models.ServiceOrder;
+﻿using bacit_dotnet.MVC.Models.ServiceOverview;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace bacit_dotnet.MVC.Controllers;
 
-public class ServiceOrderController : Controller
+public class ServiceOverviewController : Controller
 {
     public IActionResult Index()
     {
@@ -12,7 +12,7 @@ public class ServiceOrderController : Controller
     }
     
     [HttpPost]
-    public IActionResult Save(ServiceOrderViewModel model) {
+    public IActionResult Save(ServiceOverviewViewModel model) {
         if(ModelState.IsValid)
         {
             var s = "ineedabreakpoint";
