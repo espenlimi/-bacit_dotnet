@@ -91,5 +91,10 @@ create table if not EXISTS AspNetRoleClaims
         references AspNetRoles(Id)
 ); 
 
-        
+create table if not EXISTS dyr
+(
+    Id int not null unique auto_increment,
+    Name varchar(50),
+    CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
+);        
      

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class UsersController : Controller
     {
         private readonly IUserRepository userRepository;

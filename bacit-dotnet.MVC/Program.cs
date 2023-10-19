@@ -39,9 +39,6 @@ public class Program
 
 
         app.Run();
-
-
-
     }
 
     private static void SetupDataConnections(WebApplicationBuilder builder)
@@ -54,6 +51,7 @@ public class Program
         });
         //builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
         builder.Services.AddScoped<IUserRepository, EFUserRepository>();
+        builder.Services.AddScoped<IDyrRepository, EfDyrRepository>();
         //builder.Services.AddSingleton<IUserRepository, SqlUserRepository>();
         //builder.Services.AddSingleton<IUserRepository, DapperUserRepository>();
     }

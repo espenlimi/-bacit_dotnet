@@ -1,0 +1,25 @@
+﻿@using bacit_dotnet.MVC.Models.Dyrehage;
+@model DyrFullViewModel
+
+<form asp-action="Post" asp-controller="Dyrehage" method="post">
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+    <label asp-for="UpsertModel.Id"></label>
+    <input asp-for="UpsertModel.Id" type="text" /><br />
+
+    <label asp-for="UpsertModel.Name"></label>
+    <input asp-for="UpsertModel.Name" type="text" />
+    <input type="submit" />
+
+</form>
+<ul>
+
+
+@foreach(var dyr in Model.DyrList)
+    {
+        <li>
+        @dyr.Name
+    </li>
+
+}
+</ul>
