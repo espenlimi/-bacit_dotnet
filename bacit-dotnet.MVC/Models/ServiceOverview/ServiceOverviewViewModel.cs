@@ -1,8 +1,8 @@
-﻿namespace bacit_dotnet.MVC.Models.ServiceOrder
+﻿namespace bacit_dotnet.MVC.Models.ServiceOverview
 {
-    public class ServiceOrderViewModel
+    public class ServiceOverviewViewModel
     {
-        public int    ID             { get; set; }
+        public int ID { get; set; }
         public string Ordrenummer { get; set; }
         public DateTime Dato { get; set; }
         public string Kunde { get; set; }
