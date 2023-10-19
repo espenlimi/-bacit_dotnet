@@ -1,38 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using bacit_dotnet.MVC.Models;
+﻿using bacit_dotnet.MVC.Models.ServiceOverview;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace bacit_dotnet.MVC.Controllers
+namespace bacit_dotnet.MVC.Controllers;
+
+public class ServiceOverviewController : Controller
 {
-    public class ServiceOverviewController : Controller
+    public IActionResult Index()
     {
-        private readonly PersonRepository _repository;
-
-        public ServiceOverviewController(PersonRepository repository)
+        return View();
+    }
+    
+    [HttpPost]
+    public IActionResult Save(ServiceOverviewViewModel model) {
+        if(ModelState.IsValid)
         {
-            _repository = repository;
-        }
+            var s = "ineedabreakpoint";
 
-        public IActionResult Index()
-        {
-            var ReficioDB = _repository.GetAll();
-            return View(ReficioDB);
         }
-
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Person person)
-        {
-            if (ModelState.IsValid)
-            {
-                _repository.Insert(person);
-                return RedirectToAction("Index");
-            }
-            return View(person);
-        }
+        return View("Index", model);
     }
 }
