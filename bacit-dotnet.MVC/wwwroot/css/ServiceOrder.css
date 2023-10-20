@@ -23,3 +23,7 @@ table th {
 table td {
     font-size: 14px; 
 }
+
+tr, td, table [data-href] {
+    cursor: pointer;
+}
