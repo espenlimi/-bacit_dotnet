@@ -19,7 +19,7 @@ namespace bacit_dotnet.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ServiceForm(ServiceFormEntry serviceFormEntry)
+        public IActionResult Index(ServiceFormEntry serviceFormEntry)
         {
             if (ModelState.IsValid)
             {
