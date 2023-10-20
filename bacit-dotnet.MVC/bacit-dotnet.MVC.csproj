@@ -32,6 +32,8 @@
 	<ItemGroup>
 	  <_ContentIncludedByDefault Remove="Views\SignOut\index.cshtml" />
 	  <_ContentIncludedByDefault Remove="Views\ServiceForm\Index.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\ServiceOverview\Create.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\ServiceOverview\Index.cshtml" />
 	</ItemGroup>
 
 </Project>
