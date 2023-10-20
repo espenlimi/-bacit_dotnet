@@ -24,7 +24,7 @@
          
             @foreach (var serviceFormEntry in Model)
             {
-                <tr>
+                <tr data-href="">
                     <td>@serviceFormEntry.Id</td>
                     <td>@serviceFormEntry.Customer</td>
                     <td>@Html.DisplayFor(model => serviceFormEntry.DateReceived)</td>
@@ -50,7 +50,7 @@
                     <th>Sign. reparatør:</th>
                 </tr>
                 
-                <tr>
+                <tr data-href="">
                     <td>@serviceFormEntry.SerialNumber</td>
                     <td>@serviceFormEntry.Agreement</td>
                     <td>@Html.DisplayFor(model => serviceFormEntry.CompletionDate)</td>
@@ -66,3 +66,14 @@
             }
         </tbody>
     </table>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const rows = document.querySelectorAll("tr[data-href]");
+
+            rows.forEach(row => {
+                row.addEventListener("click", () => {
+                    window.location.href = row.dataset.href;
+                });
+            });
+        });
+    </script>
