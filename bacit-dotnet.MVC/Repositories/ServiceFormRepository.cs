@@ -25,21 +25,21 @@ namespace bacit_dotnet.MVC.Models.ServiceForm
             }
         }
 
-        public IEnumerable<ServiceFormEntry> GetAll()
+        public IEnumerable<ServiceFormViewModel> GetAll()
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<ServiceFormEntry>("SELECT * FROM ServiceFormEntry");
+                return dbConnection.Query<ServiceFormViewModel>("SELECT * FROM ServiceFormEntry");
             }
         }
 
-        public void Insert(ServiceFormEntry serviceFormEntry)
+        public void Insert(ServiceFormViewModel serviceFormViewModel)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Execute("INSERT INTO ServiceFormEntry (Customer, DateReceived, Address, Email, OrderNumber, Phone, ProductType, Year, Service, Warranty, SerialNumber, Agreement, RepairDescription, UsedParts, WorkHours, CompletionDate,ReplacedPartsReturned, ShippingMethod, CustomerSignature, RepairerSignature) VALUES (@Customer, @DateReceived, @Address, @Email, @OrderNumber, @Phone, @ProductType, @Year, @Service, @Warranty, @SerialNumber, @Agreement, @RepairDescription, @UsedParts, @WorkHours, @CompletionDate, @ReplacedPartsReturned, @ShippingMethod, @CustomerSignature, @RepairerSignature)", serviceFormEntry);
+                dbConnection.Execute("INSERT INTO ServiceFormEntry (Customer, DateReceived, Address, Email, OrderNumber, Phone, ProductType, Year, Service, Warranty, SerialNumber, Agreement, RepairDescription, UsedParts, WorkHours, CompletionDate,ReplacedPartsReturned, ShippingMethod, CustomerSignature, RepairerSignature) VALUES (@Customer, @DateReceived, @Address, @Email, @OrderNumber, @Phone, @ProductType, @Year, @Service, @Warranty, @SerialNumber, @Agreement, @RepairDescription, @UsedParts, @WorkHours, @CompletionDate, @ReplacedPartsReturned, @ShippingMethod, @CustomerSignature, @RepairerSignature)", serviceFormViewModel);
             }
         }
     }

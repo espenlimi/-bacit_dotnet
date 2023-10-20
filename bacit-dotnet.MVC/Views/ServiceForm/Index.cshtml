@@ -1,4 +1,4 @@
-@model bacit_dotnet.MVC.Models.ServiceForm.ServiceFormEntry
+@model bacit_dotnet.MVC.Models.ServiceForm.ServiceFormViewModel
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,7 @@
     <h2>Serviceskjema</h2>
     <hr class="divider">    
 
-    <form asp-action="ServiceForm">
+    <form asp-controller="ServiceForm" asp-action="Index">
         <div class="form-row">
             <div class="form-col">
                 <div class="form-group">

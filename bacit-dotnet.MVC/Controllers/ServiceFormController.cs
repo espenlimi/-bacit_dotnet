@@ -19,14 +19,14 @@ namespace bacit_dotnet.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ServiceForm(ServiceFormEntry serviceFormEntry)
+        public IActionResult Index(ServiceFormViewModel serviceFormViewModel)
         {
             if (ModelState.IsValid)
             {
-                _repository.Insert(serviceFormEntry);
+                _repository.Insert(serviceFormViewModel);
                 return RedirectToAction("Index", "ServiceOrdre");
             }
-            return View(serviceFormEntry);
+            return View(serviceFormViewModel);
         }
         
     }
