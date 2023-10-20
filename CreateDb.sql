@@ -1,7 +1,30 @@
---drop database webAppDatabase;
-create database if not exists webAppDatabase;
-use webAppDatabase;
-create table if not EXISTS users
+--drop database ReficioDB;
+create database if not exists ReficioDB;
+use ReficioDB;
+create table if not EXISTS ServiceFormEntry
+(
+      ServiceFormId INT not null unique auto_increment PRIMARY KEY,
+      Customer NVARCHAR(255) NOT NULL,
+      DateReceived DATE NOT NULL,
+      Address NVARCHAR(255),
+      Email NVARCHAR(255),
+      OrderNumber INT,
+      Phone INT,
+      ProductType NVARCHAR(255),
+      Year INT,
+      Service NVARCHAR(255),
+      Warranty NVARCHAR(255),
+      SerialNumber INT,
+      Agreement NVARCHAR(255),
+      RepairDescription NVARCHAR(255),
+      UsedParts NVARCHAR(255),
+      WorkHours NVARCHAR(255),
+      CompletionDate NVARCHAR(255),
+      ReplacedPartsReturned NVARCHAR(255),
+      ShippingMethod NVARCHAR(255),
+      CustomerSignature NVARCHAR(255),
+      RepairerSignature NVARCHAR(255)
+);
 (
     Id int not null unique auto_increment,
     Name varchar(255),
@@ -9,6 +32,15 @@ create table if not EXISTS users
    
     CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
 );
+
+create table if not exists CheckListEntry
+(
+  CheckListId INT not null unique auto_increment,
+  CheckPoint TEXT,
+  status ENUM('OK', 'Bør Skiftes', 'Defekt'),
+  
+);
+
 
 create table if not EXISTS AspNetRoles
 (

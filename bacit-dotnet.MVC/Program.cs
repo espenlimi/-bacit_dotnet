@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using bacit_dotnet.MVC.Models.ServiceForm;
+using bacit_dotnet.MVC.Repositories;
 using MySqlConnector;
 using System.Data;
 

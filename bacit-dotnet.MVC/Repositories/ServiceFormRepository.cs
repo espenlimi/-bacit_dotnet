@@ -5,8 +5,9 @@ using MySqlConnector;
 //using System.Collections.Generic;
 using System.Data;
 //using System.Linq;
+using bacit_dotnet.MVC.Models.ServiceForm;
 
-namespace bacit_dotnet.MVC.Models.ServiceForm
+namespace bacit_dotnet.MVC.Repositories
 {
     public class ServiceFormRepository
     {
@@ -33,6 +34,15 @@ namespace bacit_dotnet.MVC.Models.ServiceForm
                 return dbConnection.Query<ServiceFormViewModel>("SELECT * FROM ServiceFormEntry");
             }
         }
+        
+        /*public IEnumerable<ServiceFormViewModel> GetSomeOrderInfo()
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+                return dbConnection.Query<ServiceFormViewModel>("SELECT Customer, DateReceived, OrderNumber FROM ServiceFormEntry");
+            }
+        }*/
 
         public void Insert(ServiceFormViewModel serviceFormViewModel)
         {
