@@ -1,4 +1,4 @@
-    @model IEnumerable<bacit_dotnet.MVC.Models.ServiceForm.ServiceFormEntry>
+    @model IEnumerable<bacit_dotnet.MVC.Models.ServiceForm.ServiceFormViewModel>
 
     <h2>Serviceordre</h2>
     
@@ -49,6 +49,7 @@
                     <th>Sign. kunde:</th>
                     <th>Sign. reparatør:</th>
                 </tr>
+                
                 <tr>
                     <td>@serviceFormEntry.SerialNumber</td>
                     <td>@serviceFormEntry.Agreement</td>
@@ -61,6 +62,7 @@
                     <td>@serviceFormEntry.CustomerSignature</td>
                     <td>@serviceFormEntry.RepairerSignature</td>
                 </tr>
+                
             }
         </tbody>
     </table>

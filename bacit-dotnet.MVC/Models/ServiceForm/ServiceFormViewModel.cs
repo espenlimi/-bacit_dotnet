@@ -2,7 +2,7 @@
 
 namespace bacit_dotnet.MVC.Models.ServiceForm
 {
-    public class ServiceFormEntry
+    public class ServiceFormViewModel
     {
         public int Id { get; set; }
 
