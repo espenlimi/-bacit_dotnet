@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-<<<<<<< HEAD
-    <data-source source="LOCAL" name="ReficioDB@localhost" uuid="f6a4811e-06bd-4bd9-a486-db2d273fd966">
-=======
-    <data-source source="LOCAL" name="ReficioDB@localhost" uuid="7164aeae-d6a2-4d85-b3bc-c7677060bc3b">
->>>>>>> pre-main
+    <data-source source="LOCAL" name="ReficioDB@localhost" uuid="9bde3475-59fe-4300-8867-c585f0cf037a">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>

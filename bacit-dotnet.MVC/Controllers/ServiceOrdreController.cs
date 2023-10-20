@@ -17,7 +17,5 @@ namespace bacit_dotnet.MVC.Controllers
             var serviceFormEntry = _repository.GetAll();
             return View(serviceFormEntry);
         }
-
-        // Other service ordre related actions can be added here
     }
 }
