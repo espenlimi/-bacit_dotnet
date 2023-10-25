@@ -19,6 +19,7 @@ th {
     color: white;
 }
 
-input[type="checkbox"] {
+input[type='radio'] {
     transform: scale(1.5);
 }
+
