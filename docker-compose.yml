@@ -1,0 +1,45 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+#create a volume for the my sql container.To ensure Data persists after my sql container is stopped
+volumes:
+  datafiles:
+
+services:
+  #DataBase Service
+  database:
+    #Pull the latest mysql image
+    image: mariadb:latest
+    #Map port 3306 on the mysql container to port 3306 in the host
+    ports:
+      - "3306:3306"
+    #Specify where the persisted Data should be stored
+    volumes:
+      - datafiles:/var/lib/mysql
+      #- ~/PDSA_System/dockerdb:/docker-entrypoint-initdb.d
+    restart: always
+    #Specify Environment Variables for mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Reficio
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Reficio
+      MYSQL_DATABASE: ReficioDB
+  #Api  Service
+  api:
+    build:
+      context: .
+      #Use the DockerFile in that Directory
+      dockerfile: Dockerfile
+    #This Service Depends on the database service specifed above
+    depends_on:
+      - database
+    #Map port 8888 in the docker container to port 80 in the Api
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    #Specify Environment Variables for the Api Service
+    environment:
+      #- DBHOST=database
+      - ASPNETCORE_ENVIRONMENT=Production
