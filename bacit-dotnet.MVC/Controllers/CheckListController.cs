@@ -6,14 +6,12 @@ namespace bacit_dotnet.MVC.Controllers;
 public class CheckListController : Controller
 {
     [HttpGet]
-    [ValidateAntiForgeryToken]
     public IActionResult Index()
     {
         return View();
     }
     
     [HttpPost]
-    [ValidateAntiForgeryToken]
     public IActionResult Save(CheckListViewModel model) {
         if(ModelState.IsValid)
         {

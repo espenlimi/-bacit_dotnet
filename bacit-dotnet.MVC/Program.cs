@@ -57,6 +57,11 @@ namespace bacit_dotnet.MVC
             {
                 options.HeaderName = "X-CSRF-TOKEN";
             });
+            
+            /*WebHost.CreateDefaultBuilder(args)
+                .ConfigureKestrel(c => c.AddServerHeader = false)
+                .UseStartup<Startup>()
+                .Build();*/
         }
     }
 }
