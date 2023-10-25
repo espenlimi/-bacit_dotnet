@@ -27,6 +27,7 @@ namespace bacit_dotnet.MVC.Controllers
                 _repository.Insert(serviceFormViewModel);
                 return RedirectToAction("Index", "ServiceOrdre");
             }
+            
             return View(serviceFormViewModel);
         }
         
