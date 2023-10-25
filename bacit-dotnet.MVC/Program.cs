@@ -7,6 +7,7 @@ using bacit_dotnet.MVC.Models.ServiceForm;
 using bacit_dotnet.MVC.Repositories;
 using MySqlConnector;
 using System.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC
 {
@@ -14,53 +15,53 @@ namespace bacit_dotnet.MVC
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var builder = WebApplication.CreateBuilder(args);
+            builder.WebHost.ConfigureKestrel(x => x.AddServerHeader = false);
+        
+            // Add services to the container.
+            builder.Services.AddControllersWithViews(options =>
+            {
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            });
+            
+            // Configure the database connection.
+            builder.Services.AddScoped<IDbConnection>(_ =>
+            {
+                var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+                return new MySqlConnection(connectionString);
+            });
+            
+            // Register your repository here.
+            builder.Services.AddTransient<ServiceFormRepository>();
+            
+            var app = builder.Build();
+
+            // Configure the HTTP request pipeline.
+            if (!app.Environment.IsDevelopment())
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+
+            app.UseStaticFiles();
+
+            app.UseRouting();
+            
+            app.MapControllerRoute(name: "default", pattern: "{controller=LogIn}/{action=Index}/{id?}");
+            app.MapControllers();
+            
+            app.Run();
+
+            builder.Services.AddAntiforgery(options =>
+            {
+                options.HeaderName = "X-CSRF-TOKEN";
+            });
+            
+            /*WebHost.CreateDefaultBuilder(args)
+                .ConfigureKestrel(c => c.AddServerHeader = false)
+                .UseStartup<Startup>()
+                .Build();*/
         }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.ConfigureServices((hostContext, services) =>
-                    {
-                        // Add services to the container.
-                        services.AddControllersWithViews();
-
-                        // Configure the database connection.
-                        var configuration = hostContext.Configuration;
-                        var connectionString = configuration.GetConnectionString("DefaultConnection");
-                        services.AddScoped<IDbConnection>(_ => new MySqlConnection(connectionString));
-
-                        // Register your repository here.
-                        services.AddTransient<ServiceFormRepository>();
-                    });
-
-                    webBuilder.Configure((appBuilder) =>
-                    {
-                        var env = appBuilder.ApplicationServices.GetRequiredService<IWebHostEnvironment>();
-
-                        if (env.IsDevelopment())
-                        {
-                            appBuilder.UseDeveloperExceptionPage();
-                        }
-                        else
-                        {
-                            appBuilder.UseExceptionHandler("/Home/Error");
-                            appBuilder.UseHsts();
-                        }
-
-                        appBuilder.UseHttpsRedirection();
-                        appBuilder.UseStaticFiles();
-                        appBuilder.UseRouting();
-                        appBuilder.UseAuthorization();
-
-                        appBuilder.UseEndpoints(endpoints =>
-                        {
-                            endpoints.MapControllerRoute(
-                                name: "default",
-                                pattern: "{controller=LogIn}/{action=Index}/{id?}");
-                        });
-                    });
-                });
     }
 }
