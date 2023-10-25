@@ -73,4 +73,4 @@ docker ps
 );
 ```
 Ferdig! Kjør programmet.
-Husk å legge til connectionstring og connect
+Husk å legge til connectionstring og connect to database.
