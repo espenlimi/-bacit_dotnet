@@ -17,24 +17,26 @@
     <hr class="divider">    
 
     <form asp-controller="ServiceForm" asp-action="Index" method="post">
+           @Html.ValidationSummary()
+         @Html.AntiForgeryToken()
         <div class="form-row">
             <div class="form-col">
                 <div class="form-group">
                     <label asp-for="Customer" class="control-label">Kunde:</label>
-                    <input asp-for="Customer" class="form-control" />
+                    <input asp-for="Customer" class="form-control"/>
                     <span asp-validation-for="Customer" class="text-danger"></span>
                 </div>
             </div>
-            
+
             <div class="form-col">
                 <div class="form-group">
                     <label asp-for="DateReceived" class="control-label">Mottatt dato:</label>
-                    <input asp-for="DateReceived" class="form-control" type="date" />
+                    <input asp-for="DateReceived" class="form-control" type="date"/>
                     <span asp-validation-for="DateReceived" class="text-danger"></span>
                 </div>
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="form-row">
                 <div class="form-col">
@@ -49,7 +51,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="form-row">
                 <div class="form-col">
@@ -79,7 +81,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="form-row">
                 <div class="form-col">
@@ -94,7 +96,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="form-row center-row">
                 <div class="form-col">
@@ -105,7 +107,7 @@
             </div>
         </div>
 
-        
+
 
         <div class="form-group">
             <div class="form-col">
@@ -141,7 +143,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="form-row">
                 <div class="form-col">
@@ -177,7 +179,7 @@
                 <input type="submit" value="Send in skjema" class="btn btn-primary custom-button"/>
             </div>
         </div>
-        
+
     </form>
 </div>
 

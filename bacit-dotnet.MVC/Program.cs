@@ -7,6 +7,7 @@ using bacit_dotnet.MVC.Models.ServiceForm;
 using bacit_dotnet.MVC.Repositories;
 using MySqlConnector;
 using System.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC
 {
@@ -18,7 +19,10 @@ namespace bacit_dotnet.MVC
             builder.WebHost.ConfigureKestrel(x => x.AddServerHeader = false);
         
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews(options =>
+            {
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            });
             
             // Configure the database connection.
             builder.Services.AddScoped<IDbConnection>(_ =>
@@ -48,7 +52,11 @@ namespace bacit_dotnet.MVC
             app.MapControllers();
             
             app.Run();
-            
+
+            builder.Services.AddAntiforgery(options =>
+            {
+                options.HeaderName = "X-CSRF-TOKEN";
+            });
         }
     }
 }
