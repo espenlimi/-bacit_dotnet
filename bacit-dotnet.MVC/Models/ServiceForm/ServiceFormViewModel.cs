@@ -1,33 +1,40 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace bacit_dotnet.MVC.Models.ServiceForm;
-
-public class ServiceFormViewModel
+namespace bacit_dotnet.MVC.Models.ServiceForm
 {
-    [Required]
-    public string Kunde { get; set; }
-    
-    public DateTime MottattDato { get; set; }
-    
-    public string Adresse { get; set; }
-    
-    public string Email { get; set; }
-    
-    public int Ordrenummer { get; set; }
-    
-    public int telefon { get; set; }
-    
-    public string Produkttype { get; set; }
-    
-    public int Årsmodell { get; set; }
-    
-    public string Garanti { get; set; }
-    
-    public string Serienummer { get; set; }
-    
-    public string Avtale { get; set; }
-    
-    public string Reparasjonsbeskrivelse { get; set; }
-    
-    public string MedgåtteDeler { get; set; }
+    public class ServiceFormViewModel
+    {
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "Customer is required.")]
+        public string Customer { get; set; }
+
+        [Required(ErrorMessage = "DateReceived is required.")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime DateReceived { get; set; }
+
+        
+        public string Address { get; set; }
+        public string Email { get; set; }
+        public int OrderNumber { get; set; }
+        public int Phone { get; set; }
+        public string ProductType { get; set; }
+        public int Year { get; set; }
+        public int SerialNumber { get; set; }
+
+        public string Service { get; set; }
+        public string Warranty { get; set; }
+        public string Agreement { get; set; }
+        public string RepairDescription { get; set; }
+        public string UsedParts { get; set; }
+        public string WorkHours { get; set; }
+        
+        [Required(ErrorMessage = "CompletionDate is required.")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime CompletionDate { get; set; }
+        public string ReplacedPartsReturned { get; set; }
+        public string ShippingMethod { get; set; }
+        public string CustomerSignature { get; set; }
+        public string RepairerSignature { get; set; }
+    }
 }

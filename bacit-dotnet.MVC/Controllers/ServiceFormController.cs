@@ -1,23 +1,34 @@
-using bacit_dotnet.MVC.Models.ServiceForm;
 using Microsoft.AspNetCore.Mvc;
+using bacit_dotnet.MVC.Models.ServiceForm;
+using bacit_dotnet.MVC.Repositories;
 
-namespace bacit_dotnet.MVC.Controllers;
-
-public class ServiceFormController : Controller
+namespace bacit_dotnet.MVC.Controllers
 {
-    // GET
-    public IActionResult Index()
+    public class ServiceFormController : Controller
     {
-        return View();
-    }
-    
-    [HttpPost]
-    public IActionResult Save(ServiceFormViewModel model) {
-        if(ModelState.IsValid)
-        {
-            var s = "ineedabreakpoint";
+        private readonly ServiceFormRepository _repository;
 
+        public ServiceFormController(ServiceFormRepository repository)
+        {
+            _repository = repository;
         }
-        return View("Index", model);
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index(ServiceFormViewModel serviceFormViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _repository.Insert(serviceFormViewModel);
+                return RedirectToAction("Index", "ServiceOrdre");
+            }
+            return View(serviceFormViewModel);
+        }
+        
     }
 }

@@ -1,0 +1,79 @@
+    @model IEnumerable<bacit_dotnet.MVC.Models.ServiceForm.ServiceFormViewModel>
+
+    <h2>Serviceordre</h2>
+    
+    <link rel="stylesheet" href="/css/ServiceOrder.css">
+    
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Kunde:</th>
+            <th>Mottatt dato:</th>
+            <th>Adresse:</th>
+            <th>E-Mail:</th>
+            <th>Ordrenummer:</th>
+            <th>Telefon:</th>
+            <th>Produkttype:</th>
+            <th>Årsmodell:</th>
+            <th>Service/rep:</th>
+            <th>Garanti:</th>
+        </tr>
+        </thead>
+        <tbody>
+         
+            @foreach (var serviceFormEntry in Model)
+            {
+                <tr data-href="">
+                    <td>@serviceFormEntry.Id</td>
+                    <td>@serviceFormEntry.Customer</td>
+                    <td>@Html.DisplayFor(model => serviceFormEntry.DateReceived)</td>
+                    <td>@serviceFormEntry.Address</td>
+                    <td>@serviceFormEntry.Email</td>
+                    <td>@serviceFormEntry.OrderNumber</td>
+                    <td>@serviceFormEntry.Phone</td>
+                    <td>@serviceFormEntry.ProductType</td>
+                    <td>@serviceFormEntry.Year</td>
+                    <td>@serviceFormEntry.Service</td>
+                    <td>@serviceFormEntry.Warranty</td>
+                </tr>
+                <tr>
+                    <th>Serienummer:</th>
+                    <th>Hva er avtalt med kunden?</th>
+                    <th>Ferdigstilt dato:</th>
+                    <th>Medgåtte deler:</th>
+                    <th>Arbeidstimer:</th>
+                    <th>Reparasjonsbeskrivelse:</th>
+                    <th>Utskiftet deler returnert:</th>
+                    <th>Forsendelsesmåte:</th>
+                    <th>Sign. kunde:</th>
+                    <th>Sign. reparatør:</th>
+                </tr>
+                
+                <tr data-href="">
+                    <td>@serviceFormEntry.SerialNumber</td>
+                    <td>@serviceFormEntry.Agreement</td>
+                    <td>@Html.DisplayFor(model => serviceFormEntry.CompletionDate)</td>
+                    <td>@serviceFormEntry.UsedParts</td>
+                    <td>@serviceFormEntry.WorkHours</td>
+                    <td>@serviceFormEntry.RepairDescription</td>
+                    <td>@serviceFormEntry.ReplacedPartsReturned</td>
+                    <td>@serviceFormEntry.ShippingMethod</td>
+                    <td>@serviceFormEntry.CustomerSignature</td>
+                    <td>@serviceFormEntry.RepairerSignature</td>
+                </tr>
+                
+            }
+        </tbody>
+    </table>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const rows = document.querySelectorAll("tr[data-href]");
+
+            rows.forEach(row => {
+                row.addEventListener("click", () => {
+                    window.location.href = row.dataset.href;
+                });
+            });
+        });
+    </script>

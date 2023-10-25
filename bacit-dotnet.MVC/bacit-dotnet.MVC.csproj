@@ -30,11 +30,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="wwwroot\css\serviceskjema.css" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <_ContentIncludedByDefault Remove="Views\SignOut\index.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\ServiceForm\Index.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\ServiceOverview\Create.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\ServiceOverview\Index.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\Suggestions\index.cshtml" />
 	</ItemGroup>
 
 </Project>

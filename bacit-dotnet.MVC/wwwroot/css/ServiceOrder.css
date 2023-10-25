@@ -1,0 +1,29 @@
+﻿
+body {
+    background-color: #f2f2f2; /* Change the background color as needed */
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff; /* Change the table background color as needed */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Add borders to table cells */
+    padding: 8px;
+    text-align: left;
+}
+table th {
+    font-size: 14px; 
+}
+
+table td {
+    font-size: 14px; 
+}
+
+tr, td, table [data-href] {
+    cursor: pointer;
+}

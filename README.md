@@ -1,50 +1,76 @@
-# -bacit_dotnet
-Base project for IS202 in dotnet
-Text provided by Trym (https://github.com/Nosp1) - Modified slightly to fit this project. 
+![Nøsted logo](.\bacit-dotnet.MVC\wwwroot\nlogo.png)
 
-## Notice
-Please read and understand how the dockerfile works. 
-Understand that all scripts used (`build.*` & `startDb.*`) can be run in the terminal without the scripts.
-I recommend getting familiar with executing docker commands in the terminal before using the scripts.
+## Før du kjører programmet:
+* Lag en database i MariaDB
+    * Du kan installere lokalt i Docker. Se veiledningen 'MariaDb database som Docker container'.
+  
 
-## How to use
-### Prerequisites:
-To make this work, you need to have [Docker](https://www.docker.com/) installed and running on your system.    
+* Sett inn en connection string i filen `appsettings.json`, der du ser `ConnectionString.DefaultConnection`
 
-### Via commandline with docker (Recommended):
-> Note: On Unix and Unix-like systems (Mac and Linux) you might need to run the commands with `sudo` to make them work.
 
-##### 1. Build then start the docker container with the web application:    
-`docker image build -t webapp .`    
-`docker container run --rm -it -d --name webapp --publish 80:80 webapp`
+* Denne skal følge dette formatet:
+    * server=localhost; user=root; database=ReficioDB; port=3306; password=Reficio`
+    * Dersom du kjører database og server på samme maskin, kan du bruke `localhost` eller `127.0.0.1` som IP-adresse
+    * Det er anbefalt å bruke port 3306, da dette er standard for MySQL og MariaDB
 
-##### 2. Start a mariadb container using the localdirectory "database" to store the data:    
 
-|Bash (Mac and Linux)|Powershell (Windows)|
-|--------------------|--------------------|
-|`docker run --rm --name mariadb -p 3308:3306/tcp -v "$(pwd)/database":/var/lib/mysql -e MYSQL_ROOT_PASSWORD=12345 -d mariadb:10.5.11`|`docker run --rm --name mariadb -p 3308:3306/tcp -v "%cd%\database":/var/lib/mysql -e MYSQL_ROOT_PASSWORD=12345 -d mariadb:10.5.11`|
+### MariaDb database som Docker container
 
-##### 3. Enter the database and create the database and table for this skeleton:    
-`docker exec -it mariadb mysql -p`    
-When prompted enter the password (`12345`), then type or copy in the SQL from [this file](CreateDb.sql) (line by line).
+1. Opprett MariaDb container.
 
-##### 4. Test out the code at http://localhost:80/
 
-<br>
+```docker
+docker run --name Reficio -e MYSQL_ROOT_PASSWORD=Reficio -p 3306:3306 -d mariadb:latest
+```
 
-### Via scripts:
-The following takes the above steps and deduce them into scripts. (all the above commands are present in the below scripts).
-The scripts allow us to build and deploy our application faster, which can be beneficial when the core concepts of using docker are understood.
-|Bash (Mac and Linux)|Powershell (Windows)|
-|--------------------|--------------------|
-|Run `build.sh` to compile source code and build tomcat docker image.|Run `build.cmd` to compile source code and build tomcat docker image.|
-|Run `startDb.sh` to start database|Run `startDb.cmd` to start database|
+```
+docker ps
+```
+2. Verifiser at container har status 'Running'
 
-> Note: On Unix and Unix-like systems (Mac and Linux) you might need to run the scripts with `sudo` to make them work.
+3. Koble til container og logg på som root.
 
-<br>
+  ```
+  docker exec -it Reficio bash
+  mariadb -u root –p 
+  ```
 
-#### PS
-Have fun and experiment :)
+4. Skriv inn PASSORD som ble satt ved opprettelse av konteiner. I dette tilfellet: Reficio
 
-Code can be copied freely
+  ```
+  Enter password: Reficio 
+  ```
+5. Bruk SQL kommando 
+
+```
+  USE DATABASE ReficioDB;
+```
+6. Lag en samsvarende tabell for din webapplikasjon f.eks
+```
+  CREATE TABLE ServiceFormEntry (
+    Id INT(11) NOT NULL AUTO_INCREMENT,
+    Customer NVARCHAR(255) NOT NULL,
+    DateReceived DATE NOT NULL,
+    Address NVARCHAR(255),
+    Email NVARCHAR(255),
+    OrderNumber INT(11),
+    Phone INT(11),
+    ProductType NVARCHAR(255),
+    Year INT(11),
+    Service NVARCHAR(255),
+    Warranty NVARCHAR(255),
+    SerialNumber INT(11),
+    Agreement NVARCHAR(255),
+    RepairDescription NVARCHAR(255),
+    UsedParts NVARCHAR(255),
+    WorkHours NVARCHAR(255),
+    CompletionDate DATE NOT NULL,
+    ReplacedPartsReturned NVARCHAR(255),
+    ShippingMethod NVARCHAR(255),
+    CustomerSignature NVARCHAR(255),
+    RepairerSignature NVARCHAR(255),
+    PRIMARY KEY (Id)
+);
+```
+Ferdig! Kjør programmet.
+Husk å legge til connectionstring og connect

@@ -1,109 +1,66 @@
-using bacit_dotnet.MVC.DataAccess;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
+using bacit_dotnet.MVC.Models.ServiceForm;
 using bacit_dotnet.MVC.Repositories;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity.UI.Services;
+using MySqlConnector;
+using System.Data;
 
-public class Program
+namespace bacit_dotnet.MVC
 {
-    static void Main(string[] args)
+    public class Program
     {
-        var builder = WebApplication.CreateBuilder(args);
-        var ConnectionString = "Server=localhost;Port=3306;User ID=root;Password=dotnet;Database=NostedDB;CharSet=utf8";
-
-        // Add services to the container.
-        builder.Services.AddControllersWithViews();
-        
-        SetupDataConnections(builder);
-
-        // SetupAuthentication(builder);
-
-        var app = builder.Build();
-
-        // Configure the HTTP request pipeline.
-        if (!app.Environment.IsDevelopment())
+        public static void Main(string[] args)
         {
-            app.UseExceptionHandler("/Home/Error");
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-            app.UseHsts();
+            CreateHostBuilder(args).Build().Run();
         }
 
-        app.UseStaticFiles();
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.ConfigureServices((hostContext, services) =>
+                    {
+                        // Add services to the container.
+                        services.AddControllersWithViews();
 
-        app.UseRouting();
+                        // Configure the database connection.
+                        var configuration = hostContext.Configuration;
+                        var connectionString = configuration.GetConnectionString("DefaultConnection");
+                        services.AddScoped<IDbConnection>(_ => new MySqlConnection(connectionString));
 
-        //UseAuthentication(app);
+                        // Register your repository here.
+                        services.AddTransient<ServiceFormRepository>();
+                    });
 
-        app.MapControllerRoute(name: "default", pattern: "{controller=LogIn}/{action=Index}/{id?}");
-        app.MapControllers();
+                    webBuilder.Configure((appBuilder) =>
+                    {
+                        var env = appBuilder.ApplicationServices.GetRequiredService<IWebHostEnvironment>();
 
+                        if (env.IsDevelopment())
+                        {
+                            appBuilder.UseDeveloperExceptionPage();
+                        }
+                        else
+                        {
+                            appBuilder.UseExceptionHandler("/Home/Error");
+                            appBuilder.UseHsts();
+                        }
 
-        app.Run();
+                        appBuilder.UseHttpsRedirection();
+                        appBuilder.UseStaticFiles();
+                        appBuilder.UseRouting();
+                        appBuilder.UseAuthorization();
 
-
-
-    }
-
-    private static void SetupDataConnections(WebApplicationBuilder builder)
-    {
-        //builder.Services.AddTransient<ISqlConnector, SqlConnector>();
-
-        //builder.Services.AddDbContext<DataContext>(options =>
-        //{
-        //    options.UseMySql(builder.Configuration.GetConnectionString("MariaDb"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MariaDb")));
-        //});
-        builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
-        //builder.Services.AddScoped<IUserRepository, EFUserRepository>();
-        //builder.Services.AddSingleton<IUserRepository, SqlUserRepository>();
-        //builder.Services.AddSingleton<IUserRepository, DapperUserRepository>();
-    }
-
-    private static void UseAuthentication(WebApplication app)
-    {
-        app.UseAuthentication();
-        app.UseAuthorization();
-    }
-
-    private static void SetupAuthentication(WebApplicationBuilder builder)
-    {
-        //Setup for Authentication
-        builder.Services.Configure<IdentityOptions>(options =>
-        {
-            // Default Lockout settings.
-            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-            options.Lockout.MaxFailedAccessAttempts = 5;
-            options.Lockout.AllowedForNewUsers = false;
-            options.SignIn.RequireConfirmedPhoneNumber = false;
-            options.SignIn.RequireConfirmedEmail = false;
-            options.SignIn.RequireConfirmedAccount = false;
-            options.User.RequireUniqueEmail = true;
-        });
-
-        builder.Services
-            .AddIdentityCore<IdentityUser>()
-            .AddRoles<IdentityRole>()
-            .AddEntityFrameworkStores<DataContext>()
-            .AddSignInManager()
-            .AddDefaultTokenProviders();
-
-        builder.Services.AddAuthentication(o =>
-        {
-            o.DefaultScheme = IdentityConstants.ApplicationScheme;
-            o.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-
-        }).AddIdentityCookies(o => { });
-
-        builder.Services.AddTransient<IEmailSender, AuthMessageSender>();
-    }
-
-    public class AuthMessageSender : IEmailSender
-    {
-        public Task SendEmailAsync(string email, string subject, string htmlMessage)
-        {
-            Console.WriteLine(email);
-            Console.WriteLine(subject);
-            Console.WriteLine(htmlMessage);
-            return Task.CompletedTask;
-        }
+                        appBuilder.UseEndpoints(endpoints =>
+                        {
+                            endpoints.MapControllerRoute(
+                                name: "default",
+                                pattern: "{controller=LogIn}/{action=Index}/{id?}");
+                        });
+                    });
+                });
     }
 }
