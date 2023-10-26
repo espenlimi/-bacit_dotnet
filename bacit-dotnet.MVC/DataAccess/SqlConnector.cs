@@ -16,7 +16,7 @@ namespace bacit_dotnet.MVC.DataAccess
 
         public IDbConnection GetDbConnection()
         {
-            return new MySqlConnection(config.GetConnectionString("NostedDB"));
+            return new MySqlConnection(config.GetConnectionString("DefaultConnection"));
         }
           
     }
