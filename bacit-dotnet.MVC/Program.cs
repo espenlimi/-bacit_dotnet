@@ -34,6 +34,8 @@ namespace bacit_dotnet.MVC
             // Register your repository here.
             builder.Services.AddTransient<ServiceFormRepository>();
             
+            
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

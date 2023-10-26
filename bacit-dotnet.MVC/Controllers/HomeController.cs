@@ -16,11 +16,6 @@ namespace bacit_dotnet.MVC.Controllers
         {
             _logger = logger;
         }
-        
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [HttpGet]
         public IActionResult Index()
