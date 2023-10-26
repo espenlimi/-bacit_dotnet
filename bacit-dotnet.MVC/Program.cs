@@ -48,7 +48,7 @@ namespace bacit_dotnet.MVC
 
             app.UseRouting();
             
-            app.MapControllerRoute(name: "default", pattern: "{controller=LogIn}/{action=Index}/{id?}");
+            app.MapControllerRoute(name: "default", pattern: "{controller=Login}/{action=Index}/{id?}");
             app.MapControllers();
             
             app.Run();

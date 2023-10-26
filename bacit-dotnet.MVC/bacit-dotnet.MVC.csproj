@@ -37,4 +37,8 @@
 	  <_ContentIncludedByDefault Remove="Views\Suggestions\index.cshtml" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <AdditionalFiles Include="Views\Register\Index.cshtml" />
+	</ItemGroup>
+
 </Project>
