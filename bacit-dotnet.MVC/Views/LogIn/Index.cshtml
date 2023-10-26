@@ -1,4 +1,4 @@
-@model bacit_dotnet.MVC.Models.LogIn.LogInViewModel;
+@model bacit_dotnet.MVC.Models.Account.LoginViewModel;
 
 @{
     ViewData["Title"] = "Log Inn";
@@ -6,7 +6,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,6 +31,10 @@
 
         <button type="submit" class="btn btn-primary">Logg inn</button>
     </form>
+
+    <div>
+        <a asp-controller="Register" asp-action="Index">Register an account</a>
+    </div>
     
     <form>
         <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-primary">Gå til hovedside</button></a>
