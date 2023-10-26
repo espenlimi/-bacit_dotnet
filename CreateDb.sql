@@ -121,7 +121,57 @@ create table if not EXISTS AspNetRoleClaims
         references AspNetUsers(Id),
     foreign key(RoleId) 
         references AspNetRoles(Id)
-); 
+);
 
-        
-     
+
+-- Create table checklist, checkpoints, and junction table checklistcheckpoints
+
+-- Table for the main Checklist
+CREATE TABLE IF NOT EXISTS Checklist
+(
+    ChecklistID INT AUTO_INCREMENT PRIMARY KEY,
+    Name        VARCHAR(255),
+    Signature   VARCHAR(255), -- Changed "Signatur" to "Signature"
+    Date        DATE NOT NULL,
+    Comments    TEXT
+);
+
+-- Table for the checkpoints (Checkpoints må muligenss)
+CREATE TABLE IF NOT EXISTS Checkpoints
+(
+    CheckpointID            INT AUTO_INCREMENT PRIMARY KEY,
+    CheckpointName          VARCHAR(255),
+    ClutchCheck             VARCHAR(50),
+    BrakeCheck              VARCHAR(50),
+    DrumBearingCheck        VARCHAR(50),
+    PTOCheck                VARCHAR(50),
+    ChainTensionCheck       VARCHAR(50),
+    WireCheck               VARCHAR(50),
+    PinionBearingCheck      VARCHAR(50),
+    ChainWheelKeyCheck      VARCHAR(50),
+    HydraulicCylinderCheck  VARCHAR(50),
+    HoseCheck               VARCHAR(50),
+    HydraulicBlockTest      VARCHAR(50),
+    TankOilChange           VARCHAR(50),
+    GearboxOilChange        VARCHAR(50),
+    RingCylinderSealsCheck  VARCHAR(50),
+    BrakeCylinderSealsCheck VARCHAR(50),
+    WinchWiringCheck        VARCHAR(50),
+    RadioCheck              VARCHAR(50),
+    ButtonBoxCheck          VARCHAR(50),
+    PressureSettings        VARCHAR(50),
+    FunctionTest            VARCHAR(50),
+    TractionForceKN         VARCHAR(50),
+    BrakeForceKN            VARCHAR(50)
+);
+
+-- Many-to-Many junction Table to connect Checklist to Checkpoint
+CREATE TABLE IF NOT EXISTS ChecklistCheckpoints
+(
+    ChecklistID  INT,
+    CheckpointID INT,
+    Status       VARCHAR(50), -- 'OK', 'BØR Skiftes', 'Defekt'
+    PRIMARY KEY (ChecklistID, CheckpointID),
+    FOREIGN KEY (ChecklistID) REFERENCES Checklist (ChecklistID),
+    FOREIGN KEY (CheckpointID) REFERENCES Checkpoints (CheckpointID)
+);
