@@ -8,6 +8,8 @@ using bacit_dotnet.MVC.Repositories;
 using MySqlConnector;
 using System.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore;
+using bacit_dotnet.MVC;
 
 namespace bacit_dotnet.MVC
 {
@@ -60,10 +62,10 @@ namespace bacit_dotnet.MVC
                 options.HeaderName = "X-CSRF-TOKEN";
             });
             
-            /*WebHost.CreateDefaultBuilder(args)
+            WebHost.CreateDefaultBuilder(args)
                 .ConfigureKestrel(c => c.AddServerHeader = false)
                 .UseStartup<Startup>()
-                .Build();*/
+                .Build();
         }
     }
 }

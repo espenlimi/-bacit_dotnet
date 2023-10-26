@@ -10,7 +10,7 @@
 
 * Denne skal følge dette formatet:
     * server=localhost; user=root; database=ReficioDB; port=3306; password=Reficio`
-    * Dersom du kjører database og server på samme maskin, kan du bruke `localhost` eller `127.0.0.1` som IP-adresse
+    * Dersom du kjører database og server på samme maskin, kan du bruke `localhost` eller `172.17.0.1` som IP-adresse
     * Det er anbefalt å bruke port 3306, da dette er standard for MySQL og MariaDB
 
 
