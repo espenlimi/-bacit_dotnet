@@ -1,7 +1,7 @@
 @model bacit_dotnet.MVC.Models.LogIn.LogInViewModel;
 
 @{
-    ViewData["Title"] = "Log In";
+    ViewData["Title"] = "Log Inn";
 }
 
 <!DOCTYPE html>
@@ -15,10 +15,26 @@
 </head>
 <body>
 <div>
-    <h2>Trykk på knappen for å logge inn</h2>
+    <h2>Log Inn</h2>
+    <form asp-controller="Account" asp-action="Login" method="post">
+        <div class="form-group">
+            <label asp-for="Email">Epost:</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password">Passord:</label>
+            <input asp-for="Password" type="password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Logg inn</button>
+    </form>
+    
     <form>
-        <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-primary">Logg Inn</button></a>
+        <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-primary">Gå til hovedside</button></a>
     </form>
 </div>
-</body>
+</body> 
 </html>
