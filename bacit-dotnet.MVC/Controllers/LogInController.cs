@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace bacit_dotnet.MVC.Controllers;
 
-public class LogInController : Controller
+public class LoginController : Controller
 {
     [HttpGet]
     public IActionResult Index()
