@@ -175,3 +175,14 @@ CREATE TABLE IF NOT EXISTS ChecklistCheckpoints
     FOREIGN KEY (ChecklistID) REFERENCES Checklist (ChecklistID),
     FOREIGN KEY (CheckpointID) REFERENCES Checkpoints (CheckpointID)
 );
+
+
+-- Tabel-for-userAccount 
+CREATE TABLE IF NOT EXISTS userAccount (
+    userID INT PRIMARY KEY auto_increment,
+    password VARCHAR(50) not null,
+    loginStatus bool not null, -- Gjorde om til bool type
+    fullName VARCHAR(100) not null,
+    address VARCHAR(100) not null,
+    email VARCHAR(50) not null
+);
