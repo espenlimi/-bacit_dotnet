@@ -1,12 +1,8 @@
 ﻿@model bacit_dotnet.MVC.Models.CheckList.CheckListViewModel
 
-@{
-    ViewData["Title"] = "Check List";
-}
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +14,7 @@
 
 <h2>Sjekkliste</h2>
 
-<form asp-action="Save" asp-controller="CheckList" method="post">
+ <form asp-controller="CheckList" asp-action="Index" method="post">
     <table>
       <tr>
         <th>Kategorier</th>

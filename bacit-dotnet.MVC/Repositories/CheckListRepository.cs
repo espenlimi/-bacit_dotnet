@@ -14,7 +14,7 @@ namespace bacit_dotnet.MVC.Repositories
     {
         private readonly IConfiguration _config;
 
-        public ChecklistRepository(IConfiguration config)
+        public CheckListRepository(IConfiguration config)
         {
             _config = config;
         }
@@ -36,12 +36,12 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
         
-        /*public IEnumerable<ServiceFormViewModel> GetSomeOrderInfo()
+        /*public IEnumerable<CheckListViewModel> GetSomeOrderInfo()
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<ServiceFormViewModel>("SELECT Customer, DateReceived, OrderNumber FROM ServiceFormEntry");
+                return dbConnection.Query<CheckListViewModel>("SELECT Customer, DateReceived, OrderNumber FROM ServiceFormEntry");
             }
         }*/
 
@@ -50,7 +50,7 @@ namespace bacit_dotnet.MVC.Repositories
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Execute("INSERT INTO Checkpoints () VALUES ()", CheckListViewModel);
+                dbConnection.Execute("INSERT INTO Checkpoints (CheckpointName, ClutchCheck, BrakeCheck, DrumBearingCheck, PTOCheck, ChainTensionCheck, \n                     WireCheck, PinionBearingCheck, ChainWheelKeyCheck, HydraulicCylinderCheck, HoseCheck, \n                     HydraulicBlockTest, TankOilChange, GearboxOilChange, RingCylinderSealsCheck, BrakeCylinderSealsCheck, \n                     WinchWiringCheck, RadioCheck, ButtonBoxCheck, PressureSettings, FunctionTest, TractionForceKN, BrakeForceKN) VALUES (@CheckpointName, @ClutchCheck, @BrakeCheck, @DrumBearingCheck, @PTOCheck, @ChainTensionCheck, \n                     @WireCheck, @PinionBearingCheck, @ChainWheelKeyCheck, @HydraulicCylinderCheck, @HoseCheck, \n                     @HydraulicBlockTest, @TankOilChange, @GearboxOilChange, @RingCylinderSealsCheck, @BrakeCylinderSealsCheck, \n                     @WinchWiringCheck, @RadioCheck, @ButtonBoxCheck, @PressureSettings, @FunctionTest, @TractionForceKN, @BrakeForceKN)", CheckListViewModel);
             }
         }
     }
