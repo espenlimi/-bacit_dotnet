@@ -140,7 +140,6 @@ CREATE TABLE IF NOT EXISTS Checklist
 CREATE TABLE IF NOT EXISTS Checkpoints
 (
     CheckpointID            INT AUTO_INCREMENT PRIMARY KEY,
-    CheckpointName          VARCHAR(255),
     ClutchCheck             VARCHAR(50),
     BrakeCheck              VARCHAR(50),
     DrumBearingCheck        VARCHAR(50),

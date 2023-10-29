@@ -20,15 +20,15 @@ namespace bacit_dotnet.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index(CheckListViewModel CheckListViewModel)
+        public IActionResult Index(CheckListViewModel checkListViewModel)
         {
             if (ModelState.IsValid)
             {
-                _repository.Insert(CheckListViewModel);
+                _repository.Insert(checkListViewModel);
                 return RedirectToAction("Index", "CheckList");
             }
             
-            return View(CheckListViewModel);
+            return View(checkListViewModel);
         }
         
     }
