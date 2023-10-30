@@ -1,38 +1,63 @@
 ﻿using bacit_dotnet.MVC.Models.ServiceOrdre;
 using Microsoft.AspNetCore.Mvc;
+using System.Web;
+using System.Xml.Linq;
 
 namespace bacit_dotnet.MVC.Controllers
 {
     public class ServiceOrderController : Controller
     {
+        public IActionResult Create()
+        {
+            return View();
+        }
 
+        public IActionResult Overview()
+        {
+            return View();
+        }
+
+        public IActionResult Checklist()
+        {
+            return View();
+        }
+
+        public IActionResult WorkDocument()
+        {
+            return View();
+        }
+
+        public IActionResult Edit()
+        {
+            return View();
+        }
+      
+        public IActionResult Details()
+        {
+            return View();
+        }
+
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
+        [HttpPost]
         [HttpGet]
-        public IActionResult Index()
+       
+        public IActionResult Index(string FirstName, string LastName, string PhoneNumber, string Email, string ProductName, string ProductType, string PreferredTimePeriod, string Comment)
         {
             var model = new ServiceOrderViewModel
             {
-                ConsumedHours = 0,
-                CreatedDate = new DateTime(2023, 9,7),
-                CustomerCity="Kristiansand",
-                CustomerComment="Hei og hå, jeg er en kundekommentar",
-                CustomerEmail="customer@thesystem.no",
-                CustomerName="Sattosk Rev",
-                CustomerStreet="Gata 13",
-                CustomerTelephoneNumber="1337",
-                CustomerZipcode="1234",
-                FutureMaintenance="Ingenting å bemerke",
-                ImageUrl="",
-                IsAdministrator=false,
-                JobGroups = new List<ServiceOrderJobGroupModel> { 
-                    new ServiceOrderJobGroupModel {Name ="Mekanisk", Jobs=new List<string>{"Skru på ting", "Bytte slureflapp"} },
-                    new ServiceOrderJobGroupModel{ Name="Elektrisk", Jobs=new List<string>{"Sikringer","Greier" } },
-                    
-                
-                },
-                Mechanic="Espen",
-                MechanicComment="ingen kommentar",
-                SerialNumber="pirepioj123åojå",
-                ServiceOrderId = 1
+                OrderId = 1,
+                FirstName = HttpUtility.HtmlEncode(FirstName),
+                LastName = HttpUtility.HtmlEncode(LastName),
+                PhoneNumber = HttpUtility.HtmlEncode(PhoneNumber),
+                Email = HttpUtility.HtmlEncode(Email),
+                ProductName = HttpUtility.HtmlEncode(ProductName),
+                PreferredTimePeriod = HttpUtility.HtmlEncode(PreferredTimePeriod),
+                Comment = HttpUtility.HtmlEncode(Comment)
+
             };
 
             return View(model);

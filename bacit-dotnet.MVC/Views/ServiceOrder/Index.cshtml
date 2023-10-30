@@ -1,31 +1,42 @@
 ﻿@model bacit_dotnet.MVC.Models.ServiceOrdre.ServiceOrderViewModel
+<h1>Oversikt</h1>
 
-<h1>Saksnummer @Model.ServiceOrderId</h1>
-@if( Model.JobGroups!= null){
-foreach(var jobGroup in Model.JobGroups)
-{
-    <h3>@jobGroup.Name</h3>
-    <ul>
-    @foreach (var group in jobGroup.Jobs)
-    {
-        <li>
-            @group <input type="checkbox">
-        </li>
-    
-    }
-    </ul>
-}
-}
+<p>
+    <a asp-controller="ServiceOrder" asp-action="Create">Create new Serviceform</a>
+</p>
 
-<form asp-action="Save" asp-controller="ServiceOrder" method="post">
-    @Html.ValidationSummary()
-    @Html.AntiForgeryToken()
-    <label asp-for="Mechanic"></label>
-    <input asp-for="Mechanic" type="text" /><br/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
 
-    <label asp-for="ConsumedHours"></label>
-    <input asp-for="ConsumedHours" type="number" />
-    @Html.ValidationMessageFor(x=>x.ConsumedHours)<br/>
-    <input type="submit" />
-
-</form>
+    <tbody>
+              <tr>
+                <td>
+                    @Html.DisplayFor(model => model.OrderId)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.ProductName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-itemid="@Model.OrderId">Edit</a> |
+                    <a asp-action="Details" asp-route-itemid="@Model.OrderId">Details</a> |
+                    <a asp-action="Delete" asp-route-itemid="@Model.OrderId">Delete</a>
+                </td>   
+            </tr>  
+    </tbody>
+</table>

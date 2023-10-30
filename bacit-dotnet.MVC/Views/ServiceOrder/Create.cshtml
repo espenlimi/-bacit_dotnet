@@ -1,0 +1,47 @@
+﻿@model bacit_dotnet.MVC.Models.ServiceOrdre.Serviceform
+
+@{
+    ViewData["Title"] = "Create Serviceform";
+}
+
+<h1> Create a serviceform</h1>
+
+@Html.AntiForgeryToken()
+@Html.ValidationSummary()
+
+<form asp-action="Index" method="post">
+
+    <label asp-for="FirstName">First Name</label>
+    <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+    <br />
+
+    <label asp-for="LastName">Last Name</label>
+    <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+    <br />
+
+    <label asp-for="PhoneNumber">Phone Number</label>
+    <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" />
+    <br />
+
+    <label asp-for="Email">Email</label>
+    <input asp-for="Email" class="form-control" placeholder="Email" />
+    <br />
+
+    <label asp-for="ProductName">Product Name</label>
+    <input asp-for="ProductName" class="form-control" placeholder="Product Name" />
+    <br />
+
+    <label asp-for="ProductType">Product Type</label>
+    <input asp-for="ProductType" class="form-control" placeholder="Product Type" />
+    <br />
+
+    <label asp-for="PreferredTimePeriod">Preferred Time Period</label>
+    <input asp-for="PreferredTimePeriod" class="form-control" placeholder="Preferred Time Period" />
+    <br />
+
+    <label asp-for="Comment">Comment</label>
+    <input asp-for="Comment" class="form-control" placeholder="Comment" />
+    <br />
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
