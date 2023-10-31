@@ -1,0 +1,91 @@
+@model IEnumerable<bacit_dotnet.MVC.Models.ServiceForm.ServiceFormViewModel>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceOrdre</title>
+    <link rel="stylesheet" href="/css/ServiceOrder.css">
+
+</head>
+
+<body>
+<h2>Serviceordre</h2>
+    <form>
+        <table class="table table-hover">
+            <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Kunde:</th>
+                <th>Mottatt dato:</th>
+                <!--<th>Adresse:</th>-->
+                <!--<th>E-Mail:</th>-->
+                <th>Ordrenummer:</th>
+                <!--<th>Telefon:</th>-->
+                <!--<th>Produkttype:</th>-->
+                <!--<th>Årsmodell:</th>-->
+                <!--<th>Service/rep:</th>-->
+                <!--<th>Garanti:</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            
+            @foreach (var serviceFormEntry in Model)
+            {
+                <tr onclick="tableClick()">
+                    <td><a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index">@serviceFormEntry.Id</a></td>
+                    <td><a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index">@serviceFormEntry.Customer</a></td>
+                    <td><a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index">@Html.DisplayFor(model => serviceFormEntry.DateReceived)</a></td>
+                    <!--<td>@serviceFormEntry.Address</td>-->
+                    <!--<td>@serviceFormEntry.Email</td>-->
+                    <td><a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index">@serviceFormEntry.OrderNumber</a></td>
+                    <!--<td>@serviceFormEntry.Phone</td>-->
+                    <!--<td>@serviceFormEntry.ProductType</td>-->
+                    <!--<td>@serviceFormEntry.Year</td>-->
+                    <!--<td>@serviceFormEntry.Service</td>-->
+                    <!--<td>@serviceFormEntry.Warranty</td>-->
+                
+                    <!--
+                    <th>Serienummer:</th>
+                    <th>Hva er avtalt med kunden?</th>
+                    <th>Ferdigstilt dato:</th>
+                    <th>Medgåtte deler:</th>
+                    <th>Arbeidstimer:</th>
+                    <th>Reparasjonsbeskrivelse:</th>
+                    <th>Utskiftet deler returnert:</th>
+                    <th>Forsendelsesmåte:</th>
+                    <th>Sign. kunde:</th>
+                    <th>Sign. reparatør:</th>
+                    </tr>
+                    
+                    <tr>
+                    <td>@serviceFormEntry.SerialNumber</td>
+                    <td>@serviceFormEntry.Agreement</td>
+                    <td>@Html.DisplayFor(model => serviceFormEntry.CompletionDate)</td>
+                    <td>@serviceFormEntry.UsedParts</td>
+                    <td>@serviceFormEntry.WorkHours</td>
+                    <td>@serviceFormEntry.RepairDescription</td>
+                    <td>@serviceFormEntry.ReplacedPartsReturned</td>
+                    <td>@serviceFormEntry.ShippingMethod</td>
+                    <td>@serviceFormEntry.CustomerSignature</td>
+                    <td>@serviceFormEntry.RepairerSignature</td>-->
+                </tr>
+                
+            }
+            
+            </tbody>
+        </table>
+    </form>
+</body>
+<script>
+    function tableClick() { 
+        document.addEventListener("DOMContentLoaded", () => {
+            const rows = document.querySelectorAll("tr[a]");
+
+            rows.forEach(row => {
+                row.addEventListener("click", () => {
+                    window.location = row.dataset;
+                });
+            });
+        });
+    }
+</script>

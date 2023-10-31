@@ -4,18 +4,18 @@ using bacit_dotnet.MVC.Repositories;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-    public class ServiceOrdreController : Controller
+    public class ServiceOrderController : Controller
     {
         private readonly ServiceFormRepository _repository;
 
-        public ServiceOrdreController(ServiceFormRepository repository)
+        public ServiceOrderController(ServiceFormRepository repository)
         {
             _repository = repository;
         }
 
         public IActionResult Index()
         {
-            var serviceFormEntry = _repository.GetAll();
+            var serviceFormEntry = _repository.GetSomeOrderInfo();
             return View(serviceFormEntry);
         }
     }
