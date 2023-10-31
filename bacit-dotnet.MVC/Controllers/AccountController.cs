@@ -28,6 +28,37 @@ namespace bacit_dotnet.MVC.Controllers
             this.userRepository = userRepository;
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
+        // Account/Register/PasswordMatch 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.Password == model.ConfirmPassword)
+                {
+                    var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+                    var result = await _userManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+                else
+                {
+                    // If the password dosen't match with eachother display error message:
+                    ModelState.AddModelError(string.Empty, "Passordene samsvarer ikke.");
+                }
+            }
+
+            return View(model);
+        }
 
         // GET: /Account/Login
         [HttpGet]
@@ -587,48 +618,6 @@ namespace bacit_dotnet.MVC.Controllers
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
-        }
-    }
-
-    public class BrukerKontroller : Controller
-    {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
-
-        public BrukerKontroller(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                if (model.Password == model.ConfirmPassword)
-                {
-                    var user = new IdentityUser { UserName = model.Email, Email = model.Email };
-                    var result = await _userManager.CreateAsync(user, model.Password);
-                    if (result.Succeeded)
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return RedirectToAction("Index", "Home");
-                    }
-
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Passordene samsvarer ikke.");
-                }
-            }
-
-            return View(model);
         }
     }
 }
