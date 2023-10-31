@@ -1,6 +1,7 @@
 --drop database ReficioDB;
 create database if not exists ReficioDB;
 use ReficioDB;
+
 -- Table-for-making-ServiceFormsEntries
 create table if not EXISTS ServiceFormEntry
 (
