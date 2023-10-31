@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS ChecklistCheckpoints
     Status       VARCHAR(50), -- 'OK', 'BØR Skiftes', 'Defekt'
     PRIMARY KEY (ChecklistID, CheckpointID),
     FOREIGN KEY (ChecklistID) REFERENCES Checklist (ChecklistID),
-    FOREIGN KEY (CheckpointID) REFERENCES Checkpoints (CheckpointID)
+    FOREIGN KEY (CheckpointID) REFERENCES CheckpointsEntry (CheckpointID)
 );
 
 
