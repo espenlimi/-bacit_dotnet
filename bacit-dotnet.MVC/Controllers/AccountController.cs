@@ -10,6 +10,7 @@ using bacit_dotnet.MVC.Repositories;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -588,6 +589,7 @@ namespace bacit_dotnet.MVC.Controllers
             }
         }
     }
+<<<<<<< Updated upstream
 
     public class BrukerKontroller : Controller
     {
@@ -631,3 +633,9 @@ namespace bacit_dotnet.MVC.Controllers
         }
     }
 }
+=======
+}
+
+    
+
+>>>>>>> Stashed changes
