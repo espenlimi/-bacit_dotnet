@@ -185,3 +185,15 @@ CREATE TABLE IF NOT EXISTS userAccount (
     address VARCHAR(100) not null,
     email VARCHAR(50) not null
 );
+
+-- Tabel-for-Mekaniker
+CREATE table if not exists mekaniker (
+    userID int,
+    FOREIGN KEY (userID) references userAccount (userID)
+);
+
+-- Tabel-for-Service_ansatt
+CREATE TABLE IF NOT EXISTS service_ansatt (
+    userID int,
+    FOREIGN KEY (userID) references userAccount (userID)
+);
