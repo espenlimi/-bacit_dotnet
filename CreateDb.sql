@@ -1,6 +1,7 @@
 --drop database ReficioDB;
 create database if not exists ReficioDB;
 use ReficioDB;
+-- Table-for-making-ServiceFormsEntries
 create table if not EXISTS ServiceFormEntry
 (
       ServiceFormId INT not null unique auto_increment PRIMARY KEY,
@@ -25,6 +26,7 @@ create table if not EXISTS ServiceFormEntry
       CustomerSignature NVARCHAR(255),
       RepairerSignature NVARCHAR(255)
 );
+
 (
     Id int not null unique auto_increment,
     Name varchar(255),
@@ -70,6 +72,7 @@ create table if not EXISTS AspNetUsers
          AccessFailedCount int not null,
           CONSTRAINT PK_AspNetUsers PRIMARY KEY (Id)
 );
+
 create table if not EXISTS AspNetUserTokens
 (
     UserId varchar(255) not null,
@@ -178,8 +181,7 @@ CREATE TABLE IF NOT EXISTS ChecklistCheckpoints
     FOREIGN KEY (CheckpointID) REFERENCES CheckpointsEntry (CheckpointID)
 );
 
-
--- Tabel-for-userAccount 
+-- Table-for-userAccount 
 CREATE TABLE IF NOT EXISTS userAccount (
     userID INT PRIMARY KEY auto_increment,
     password VARCHAR(50) not null,
@@ -189,13 +191,13 @@ CREATE TABLE IF NOT EXISTS userAccount (
     email VARCHAR(50) not null
 );
 
--- Tabel-for-Mekaniker
+-- Table-for-Mekaniker
 CREATE table if not exists mekaniker (
     userID int,
     FOREIGN KEY (userID) references userAccount (userID)
 );
 
--- Tabel-for-Service_ansatt
+-- Table-for-Service_ansatt
 CREATE TABLE IF NOT EXISTS service_ansatt (
     userID int,
     FOREIGN KEY (userID) references userAccount (userID)
