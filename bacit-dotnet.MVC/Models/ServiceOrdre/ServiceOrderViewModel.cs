@@ -4,60 +4,49 @@ namespace bacit_dotnet.MVC.Models.ServiceOrdre
 {
     public class ServiceOrderViewModel
     {
-        public List<Serviceform> Serviceforms { get; set; }
+        //Serviceform
+        [Key]
         public int OrderId { get; set; }
-        public string FirstName { get; set; } = string.Empty;
-        public string LastName { get; set; } = string.Empty;
-        public string PhoneNumber { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string ProductName { get; set; } = string.Empty;
-        public string ProductType { get; set; } = string.Empty;
-        public string PreferredTimePeriod { get; set; } = string.Empty;
-
-
-
-
-        public string Comment { get; set; } = string.Empty;
-        public string Mechanic { get; set; } = string.Empty;
-        public bool IsAdministrator { get; set; }
-        public string SerialNumber { get; set; } = string.Empty;
-        public DateTime CreatedDate { get; set; }
-        [Range(0,100000,ErrorMessage ="Hei sveis, denne verdien er rar, bruk heltall mellom 0 og 100 000")]
-        public decimal ConsumedHours { get; set; }
-        public string ImageUrl { get; set; }
-        public string MechanicComment { get; set; }
-        public string CustomerComment { get; set; }
-
-        public string FutureMaintenance { get; set; }
-        public int ServiceOrderId { get; set; }
-        public List<ServiceOrderJobGroupModel> JobGroups { get; set; }
-
-        public string CustomerName { get; set; }
-        public string CustomerEmail { get; set; }
-        public string CustomerStreet { get; set; }
-        public string CustomerCity { get; set; }
-        public string CustomerZipcode { get; set; }
-        public string CustomerTelephoneNumber { get; set; }
-
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string ProductName { get; set; }
+        public string ProductType { get; set; } 
+        public string PreferredTimePeriod { get; set; } 
+        public string Comment { get; set; }
     }
-  
+
+    public class WorkDocumentViewModel
+    {
+        public string Order { get; set; }
+        public string Week { get; set; }
+        public string Inquiry { get; set; }
+        public bool CaseCompleted { get; set; }
+        public string CustomerInfo { get; set; }
+        public DateTime? PlannedDelivery { get; set; }
+        public DateTime? ProductReceivedDate { get; set; }
+        public DateTime? AgreedCompletionDate { get; set; }
+        public DateTime? ServiceCompletedDate { get; set; }
+        public string ServiceHours { get; set; }
+        public bool HasOrderNumber { get; set; }
+        public bool HasServiceForm { get; set; }
+    }
+
+
+    public class ChecklistViewModel
+    {
+        public string? Kategorier { get; set; }
+        public string? Sjekkpunkter { get; set; }
+        public bool OK { get; set; }
+        public bool BørSkiftes { get; set; }
+        public bool Defekt { get; set; }
+    }
+
     public class ServiceOrderJobGroupModel
     {
         public string Name { get; set; }
 
         public List<string> Jobs { get; set; }
-    }
-
-    public class Serviceform
-    {
-        public int OrderId { get; set; }
-        public string FirstName { get; set; } = string.Empty;
-        public string LastName { get; set; } = string.Empty;
-        public string PhoneNumber { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string ProductName { get; set; } = string.Empty;
-        public string ProductType { get; set; } = string.Empty;
-        public string PreferredTimePeriod { get; set; } = string.Empty;
-        public string Comment { get; set; } = string.Empty;
     }
 }

@@ -1,0 +1,142 @@
+﻿@model List<bacit_dotnet.MVC.Models.ServiceOrdre.ChecklistViewModel>
+
+
+@{
+    ViewData["Title"] = "Checklist";
+}
+
+<link rel="stylesheet" href="~/css/ServiceOrder/Checklist.css" asp-append-version="true" />
+@{
+    //Mekanisk sjekkliste
+    var mekanisk = new string[] {
+        "Sjekk clutch lameller for slitasje",
+        "Sjekk bremser. Bånd/Pal",
+        "Sjekk lager for trommel",
+        "Sjekk PTO og opplagring",
+        "Sjekk kjedestrammer",
+        "Sjekk wire",
+        "Sjekk pinion lager",
+        "Sjekk kile på kjedehjul"
+    };
+
+    //Hydraulisk sjekkliste
+    var hydraulikk = new string[] {
+        "Sjekk hydraulikk sylinder for lekkasje",
+        "Sjekk slanger for skader og lekkasje",
+        "Test hydraulikkblokk i testbenk",
+        "Skift olje i tank",
+        "Skift olje på gir boks",
+        "Sjekk Ringsylinder åpne og skift tetninger",
+        "Sjekk bremse sylinder åpne og skift tetninger"
+    };
+
+    //Elektro sjekkliste
+    var elektro = new string[] {
+        "Sjekk ledningsnett på vinsj",
+        "Sjekk og test radio",
+        "Sjekk og test knappekasse"
+    };
+
+    //Trykk settinger sjekkliste
+    var trykkSettinger = new string[] {
+        "xx-Bar"
+    };
+
+    //Funksjonstest sjekkliste
+    var funksjonsTest = new string[] {
+        "Test vinsj og kjør alle funksjoner",
+        "Trekkraft KN",
+        "Bremse kraft KN"
+    };
+}
+
+<h1>Checklist</h1>
+
+<form asp-action="CreateChecklist" method="post">
+    <table>
+        <thead>
+            <tr>
+                <th>Kategorier</th>
+                <th>Sjekkpunkter</th>
+                <th>OK</th>
+                <th>Bør skiftes</th>
+                <th>Defekt</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < mekanisk.Length; i++) //For Mekanisk sjekkliste
+            {
+                <tr>
+                    @if (i == 0)
+                    {
+                        <td rowspan="@mekanisk.Length">Mekanisk</td>
+                    }
+                    <td>@mekanisk[i]</td>
+                    <td><input type="checkbox" asp-for="@Model[i + mekanisk.Length].OK" value="OK" name="Mekanisk"/></td>
+                    <td><input type="checkbox" asp-for="@Model[i + mekanisk.Length].BørSkiftes" value="BørSkiftes" name="Mekanisk"/></td>
+                    <td><input type="checkbox" asp-for="@Model[i + mekanisk.Length].Defekt" value="Defekt" name="Mekanisk"/></td>
+                </tr>
+            }
+
+            @for (int i = 0; i < hydraulikk.Length; i++) //For Hydraulikk sjekkliste
+            {
+                <tr>
+                    @if (i == 0)
+                    {
+                        <td rowspan="@hydraulikk.Length">Hydraulikk</td>
+                    }
+                    <td>@hydraulikk[i]</td>
+                    <td><input type="checkbox" asp-for="@Model[i + hydraulikk.Length].OK" value="OK" name="Hydraulikk" /></td>
+                    <td><input type="checkbox" asp-for="@Model[i + hydraulikk.Length].BørSkiftes" value="BørSkiftes" name="Hydraulikk" /></td>
+                    <td><input type="checkbox" asp-for="@Model[i + hydraulikk.Length].Defekt" value="Defekt" name="Hydraulikk" /></td>
+                </tr>
+            }
+
+            @for (int i = 0; i < elektro.Length; i++) //For Elektro sjekkliste
+            {
+              <tr>
+                  @if (i == 0)
+                    {
+                        <td rowspan="@elektro.Length">Elektro</td>
+                    }
+                    <td>@elektro[i]</td>
+                    <td><input type="checkbox" asp-for="@Model[i + elektro.Length].OK" value="OK" name="Elektro"/></td>
+                    <td><input type="checkbox" asp-for="@Model[i + elektro.Length].BørSkiftes" value="BørSkiftes" name="Elektro"/></td>
+                    <td><input type="checkbox" asp-for="@Model[i + elektro.Length].Defekt" value="Defekt" name="Elektro"/></td>
+                </tr>  
+            }
+
+            @for (int i = 0; i < trykkSettinger.Length; i++) //For Trykk Settinger
+            {
+                <tr>
+                    @if (i == 0)
+                    {
+                        <td rowspan="@trykkSettinger.Length">Trykk Settinger</td>
+                    }
+                    <td>@trykkSettinger[i]</td>
+                    <td><input type="checkbox" asp-for="@Model[i + trykkSettinger.Length].OK" value="OK" name="Trykk Settinger" /></td>
+                    <td><input type="checkbox" asp-for="@Model[i + trykkSettinger.Length].BørSkiftes" value="BørSkiftes" name="Trykk Settinger" /></td>
+                    <td><input type="checkbox" asp-for="@Model[i + trykkSettinger.Length].BørSkiftes" value="Defekt" name="Trykk Settinger" /></td>
+                </tr>
+            }
+
+            @for (int i = 0; i <funksjonsTest.Length; i++)
+            {
+                <tr>
+                    @if (i == 0)
+                    {
+                        <td rowspan="@funksjonsTest.Length">Funksjonstest</td>
+                    }
+                    <td>@funksjonsTest[i]</td>
+                    <td><input type="checkbox" asp-for="@Model[i + funksjonsTest.Length].OK" value="OK" name="Funksjonstest" /></td>
+                    <td><input type="checkbox" asp-for="@Model[i + funksjonsTest.Length].BørSkiftes" value="BørSkiftes" name="Funksjonstest" /></td>
+                    <td><input type="checkbox" asp-for="@Model[i + funksjonsTest.Length].BørSkiftes" value="Defekt" name="Funksjonstest" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+

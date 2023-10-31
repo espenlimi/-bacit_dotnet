@@ -1,0 +1,81 @@
+﻿@model bacit_dotnet.MVC.Models.ServiceOrdre.WorkDocumentViewModel
+
+@{
+    ViewData["Title"] = "Work Document";
+}
+
+<h1>Work Document</h1>
+
+@Html.AntiForgeryToken()
+@Html.ValidationSummary()
+
+<form asp-action="CreateWorkDocument" method="post">
+    <label asp-for="Week">Booket service til Uke:</label>
+    <input asp-for="Week" class="form-control" placeholder="Skriv inn Uke her" />
+    <br />
+
+    <label asp-for="Inquiry">Henvendelse mottat og reg. ddmmåå:</label>
+    <input asp-for="Inquiry" class="form-control" />
+    <br />
+
+    <label asp-for="Order">Bestilling/feilbeskrivelse fra kunde</label>
+    <input asp-for="Order" class="form-control" />
+    <br />
+
+    <label asp-for="CustomerInfo">KundeInfo</label>
+    <input asp-for="CustomerInfo" class="form-control" />
+    <br />
+
+    <label asp-for="PlannedDelivery">Avtalt levering (dd.mm.åå)</label>
+    <input type="date" asp-for="PlannedDelivery" class="form-control" />
+    <br />
+
+    <label asp-for="ProductReceivedDate">Produkt mottatt (dd.mm.åå)</label>
+    <input type="date" asp-for="ProductReceivedDate" class="form-control" />
+    <br />
+
+    <label asp-for="AgreedCompletionDate">Avtalt ferdigstillelse innen dd.mm.åå</label>
+    <input type="date" asp-for="AgreedCompletionDate" class="form-control" />
+    <br />
+
+    <label asp-for="ServiceCompletedDate">Service ferdig. (dd.mm.åå)</label>
+    <input type="date" asp-for="ServiceCompletedDate" class="form-control" />
+    <br />
+
+    <label asp-for="ServiceHours"> Antall timer på utført service</label>
+    <input asp-for="ServiceHours" class="form-control" />
+    <br />
+
+    <label asp-for="CaseCompleted">Case ferdig?</label>
+    <br />
+    <select asp-for="CaseCompleted">
+        <option value="" selected disabled></option>
+        <option value="True">Ja</option>
+        <option value="False">Nei</option>
+    </select>
+    <br />
+
+    <label asp-for="HasOrderNumber">Ordrenr</label>
+    <br />
+    <select asp-for="HasOrderNumber">
+        <option value="" selected disabled></option>
+        <option value="True">Ja</option>
+        <option value="False">Nei</option>
+    </select>
+    <br />
+
+    <label asp-for="HasServiceForm">Serviceskjema</label>
+    <br />
+    <select asp-for="HasServiceForm">
+        <option value="" selected disabled></option>
+        <option value="True">Ja</option>
+        <option value="False">Nei</option>
+    </select>
+    <br />
+
+    <br />
+    <button type="submit" class="btn btn-primary">Create</button>
+
+</form>
+
+
