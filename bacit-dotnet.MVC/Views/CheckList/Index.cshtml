@@ -138,17 +138,17 @@
         <tr>
             <td>Sjekk pinion lager</td>
             <td>
-                <input type="radio" id="OK" name="pinion_lager" value="OK" />
+                <input type="radio" id="OK" name="PinionBearingCheck" value="OK" />
                 <label for="OK"></label>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="pinion_lager" value="bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="PinionBearingCheck" value="bør_skiftes" />
                 <label for="bør_skiftes"></label>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="pinion_lager" value="Defekt"/>
+                <input type="radio" id="Defekt" name="PinionBearingCheck" value="Defekt"/>
                 <label for="Defekt"></label>      
                 <input type="hidden" asp-for="PinionBearingCheck" />
             </td>
@@ -454,8 +454,9 @@
     <label for="Sign">Signatur:</label>
     <br>
     <input type="text" id="Sign" name="Sign">
-    <label for="start">date:</label>
-    <input type="date" id="start" name="trip-start" min="2000-01-01" max="2099-12-31" />
+    <br>
+    <label for="CompletionDate">date:</label>
+    <input type="date" id="CompletionDate" name="trip-CompletionDate" min="2000-01-01" max="2099-12-31" />
 
     <br><br/>
     <button type="submit" class="btn btn-primary">Send inn</button>
