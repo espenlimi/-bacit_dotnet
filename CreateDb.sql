@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS Checklist
     Comments    TEXT
 );
 
--- Table for the checkpoints (Checkpoints må muligenss)
+-- Table for the checkpoints (Checkpoints brukes kun for øyeblikket )
 CREATE TABLE IF NOT EXISTS Checkpoints
 (
     CheckpointID            INT AUTO_INCREMENT PRIMARY KEY,
@@ -161,7 +161,10 @@ CREATE TABLE IF NOT EXISTS Checkpoints
     PressureSettings        VARCHAR(50),
     FunctionTest            VARCHAR(50),
     TractionForceKN         VARCHAR(50),
-    BrakeForceKN            VARCHAR(50)
+    BrakeForceKN            VARCHAR(50),
+    freeform                VARCHAR(50),
+    Sign                    VARCHAR(50),
+    date            DATE NOT NULL
 );
 
 -- Many-to-Many junction Table to connect Checklist to Checkpoint
