@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS Checkpoints
     BrakeForceKN            VARCHAR(50),
     freeform                VARCHAR(50),
     Sign                    VARCHAR(50),
-    date            DATE NOT NULL
+    CompletionDate           DATE NOT NULL
 );
 
 -- Many-to-Many junction Table to connect Checklist to Checkpoint

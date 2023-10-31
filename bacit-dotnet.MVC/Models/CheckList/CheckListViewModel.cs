@@ -31,4 +31,10 @@ public class CheckListViewModel
     public string freeform { get; set; }
     
     public string Sign { get; set; }
+    
+    [Required(ErrorMessage = "CompletionDate is required.")]
+    [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+    public DateTime CompletionDate { get; set; }
+    
+    
 }
