@@ -1,0 +1,28 @@
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<div class="row justify-content-center">
+    <div class="col-5 mt-5">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Logg inn">
+                        Logg inn
+                    </a>
+                </li>
+                 <li class="nav-item">
+                                    <a class="nav-link" href="/Home">
+                                        Home
+                                    </a>
+                                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="row justify-content-center">
+                <div class="col-10 my-4">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

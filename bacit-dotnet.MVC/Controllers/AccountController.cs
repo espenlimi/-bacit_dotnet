@@ -18,7 +18,8 @@ namespace bacit_dotnet.MVC.Controllers
         private readonly IUserRepository userRepository;
         private readonly ILogger _logger;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IEmailSender emailSender, ILoggerFactory loggerFactory, IUserRepository userRepository)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,
+            IEmailSender emailSender, ILoggerFactory loggerFactory, IUserRepository userRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -44,21 +45,25 @@ namespace bacit_dotnet.MVC.Controllers
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            
+
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe,
+                    lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
                     return RedirectToLocal(returnUrl);
                 }
+
                 if (result.RequiresTwoFactor)
                 {
-                    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction(nameof(SendCode),
+                        new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 }
+
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning(2, "User account locked out.");
@@ -95,7 +100,11 @@ namespace bacit_dotnet.MVC.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = model.Email, Email = model.Email, EmailConfirmed = true, LockoutEnabled = false,LockoutEnd = null };
+                var user = new IdentityUser
+                {
+                    UserName = model.Email, Email = model.Email, EmailConfirmed = true, LockoutEnabled = false,
+                    LockoutEnd = null
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -111,12 +120,13 @@ namespace bacit_dotnet.MVC.Controllers
                     //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
-                    
+
                     _logger.LogInformation(3, "User created a new account with password.");
 
 
                     return RedirectToLocal(returnUrl);
                 }
+
                 AddErrors(result);
             }
 
@@ -124,7 +134,7 @@ namespace bacit_dotnet.MVC.Controllers
             return View(model);
         }
 
-   
+
         public async Task<IActionResult> LogOff()
         {
             await _signInManager.SignOutAsync();
@@ -156,6 +166,7 @@ namespace bacit_dotnet.MVC.Controllers
                 ModelState.AddModelError(string.Empty, $"Error from external provider: {remoteError}");
                 return View(nameof(Login));
             }
+
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
@@ -163,7 +174,9 @@ namespace bacit_dotnet.MVC.Controllers
             }
 
             // Sign in the user with this external login provider if the user already has a login.
-            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false);
+            var result =
+                await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey,
+                    isPersistent: false);
             if (result.Succeeded)
             {
                 // Update any authentication tokens if login succeeded
@@ -172,10 +185,12 @@ namespace bacit_dotnet.MVC.Controllers
                 _logger.LogInformation(5, "User logged in with {Name} provider.", info.LoginProvider);
                 return RedirectToLocal(returnUrl);
             }
+
             if (result.RequiresTwoFactor)
             {
                 return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl });
             }
+
             if (result.IsLockedOut)
             {
                 return View("Lockout");
@@ -195,7 +210,8 @@ namespace bacit_dotnet.MVC.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl = null)
+        public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model,
+            string returnUrl = null)
         {
             if (ModelState.IsValid)
             {
@@ -205,6 +221,7 @@ namespace bacit_dotnet.MVC.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
+
                 var user = new IdentityUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -221,6 +238,7 @@ namespace bacit_dotnet.MVC.Controllers
                         return RedirectToLocal(returnUrl);
                     }
                 }
+
                 AddErrors(result);
             }
 
@@ -237,11 +255,13 @@ namespace bacit_dotnet.MVC.Controllers
             {
                 return View("Error");
             }
+
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 return View("Error");
             }
+
             var result = await _userManager.ConfirmEmailAsync(user, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
@@ -313,17 +333,20 @@ namespace bacit_dotnet.MVC.Controllers
             {
                 return View(model);
             }
+
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
                 return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
             }
+
             var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
             if (result.Succeeded)
             {
                 return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
             }
+
             AddErrors(result);
             return View();
         }
@@ -348,9 +371,12 @@ namespace bacit_dotnet.MVC.Controllers
             {
                 return View("Error");
             }
+
             var userFactors = await _userManager.GetValidTwoFactorProvidersAsync(user);
-            var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
-            return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
+            var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose })
+                .ToList();
+            return View(new SendCodeViewModel
+                { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
         //
@@ -373,7 +399,8 @@ namespace bacit_dotnet.MVC.Controllers
 
             if (model.SelectedProvider == "Authenticator")
             {
-                return RedirectToAction(nameof(VerifyAuthenticatorCode), new { ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+                return RedirectToAction(nameof(VerifyAuthenticatorCode),
+                    new { ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
             }
 
             // Generate the token and send it
@@ -389,7 +416,8 @@ namespace bacit_dotnet.MVC.Controllers
                 await _emailSender.SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message);
             }
 
-            return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            return RedirectToAction(nameof(VerifyCode),
+                new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
 
         //
@@ -404,7 +432,9 @@ namespace bacit_dotnet.MVC.Controllers
             {
                 return View("Error");
             }
-            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
+
+            return View(new VerifyCodeViewModel
+                { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
         //
@@ -422,11 +452,13 @@ namespace bacit_dotnet.MVC.Controllers
             // The following code protects for brute force attacks against the two factor codes.
             // If a user enters incorrect codes for a specified amount of time then the user account
             // will be locked out for a specified amount of time.
-            var result = await _signInManager.TwoFactorSignInAsync(model.Provider, model.Code, model.RememberMe, model.RememberBrowser);
+            var result = await _signInManager.TwoFactorSignInAsync(model.Provider, model.Code, model.RememberMe,
+                model.RememberBrowser);
             if (result.Succeeded)
             {
                 return RedirectToLocal(model.ReturnUrl);
             }
+
             if (result.IsLockedOut)
             {
                 _logger.LogWarning(7, "User account locked out.");
@@ -451,6 +483,7 @@ namespace bacit_dotnet.MVC.Controllers
             {
                 return View("Error");
             }
+
             return View(new VerifyAuthenticatorCodeViewModel { ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
@@ -469,11 +502,14 @@ namespace bacit_dotnet.MVC.Controllers
             // The following code protects for brute force attacks against the two factor codes.
             // If a user enters incorrect codes for a specified amount of time then the user account
             // will be locked out for a specified amount of time.
-            var result = await _signInManager.TwoFactorAuthenticatorSignInAsync(model.Code, model.RememberMe, model.RememberBrowser);
+            var result =
+                await _signInManager.TwoFactorAuthenticatorSignInAsync(model.Code, model.RememberMe,
+                    model.RememberBrowser);
             if (result.Succeeded)
             {
                 return RedirectToLocal(model.ReturnUrl);
             }
+
             if (result.IsLockedOut)
             {
                 _logger.LogWarning(7, "User account locked out.");
@@ -498,6 +534,7 @@ namespace bacit_dotnet.MVC.Controllers
             {
                 return View("Error");
             }
+
             return View(new UseRecoveryCodeViewModel { ReturnUrl = returnUrl });
         }
 
@@ -549,6 +586,48 @@ namespace bacit_dotnet.MVC.Controllers
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
+        }
+    }
+
+    public class BrukerKontroller : Controller
+    {
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+
+        public BrukerKontroller(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.Password == model.ConfirmPassword)
+                {
+                    var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+                    var result = await _userManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Passordene samsvarer ikke.");
+                }
+            }
+
+            return View(model);
         }
     }
 }

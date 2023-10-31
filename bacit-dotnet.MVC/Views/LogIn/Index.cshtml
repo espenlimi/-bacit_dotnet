@@ -5,7 +5,6 @@
 }
 
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,7 +17,7 @@
     <h2>Log inn</h2>
     <form asp-controller="Account" asp-action="Login" method="post">
         <div class="form-group">
-            <label asp-for="Email">Epost:</label>
+            <label asp-for="Email">Email:</label>
             <input asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
@@ -29,7 +28,7 @@
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
 
-        <button type="submit" class="btn btn-primary">Logg inn</button>
+        <button type="submit" class="btn btn-primary" onclick="window.location.href='https://localhost:7064/Home'">Logg inn</button>
     </form>
 
     <div>

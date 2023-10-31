@@ -10,35 +10,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logg inn</title>
+    <title>Registrer</title>
     <link rel="stylesheet" href="/css/register.css">
 </head>
 <body>
 <div>
-<h2>Register</h2>
+    <h2>Registrer</h2>
 
     <form asp-controller="Account" asp-action="Register" method="post">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="Email"></label>
+            <label asp-for="Email">Email:</label>
             <input asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Password"></label>
-            <input asp-for="Password" class="form-control" />
+            <label asp-for="Password">Passord:</label>
+            <input asp-for="Password" type="password" class="form-control" />
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="ConfirmPassword"></label>
-            <input asp-for="ConfirmPassword" class="form-control" />
+            <label asp-for="ConfirmPassword">Bekreft passord:</label>
+            <input asp-for="ConfirmPassword" type="password" class="form-control" />
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary">Registrer</button>
     </form>
+
     <div>
-            <a asp-controller="Login" asp-action="Index">Logg inn</a>
-        </div>
+        <a asp-controller="Login" asp-action="Index">Logg inn</a>
+    </div>
 </div>
-</body> 
+
+<script>
+    const password = document.querySelector("input[name='Password']");
+    const confirmPassword = document.querySelector("input[name='ConfirmPassword']");
+
+    function validatePassword() {
+        if (password.value !== confirmPassword.value) {
+            confirmPassword.setCustomValidity("Passordene samsvarer ikke");
+        } else {
+            confirmPassword.setCustomValidity("");
+        }
+    }
+
+    password.addEventListener('change', validatePassword);
+    confirmPassword.addEventListener('keyup', validatePassword);
+</script>
+
+</body>
 </html>
