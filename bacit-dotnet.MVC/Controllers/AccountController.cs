@@ -589,7 +589,6 @@ namespace bacit_dotnet.MVC.Controllers
             }
         }
     }
-<<<<<<< Updated upstream
 
     public class BrukerKontroller : Controller
     {
@@ -633,9 +632,3 @@ namespace bacit_dotnet.MVC.Controllers
         }
     }
 }
-=======
-}
-
-    
-
->>>>>>> Stashed changes
