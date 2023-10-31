@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS Checklist
 );
 
 -- Table for the checkpoints (Checkpoints brukes kun for øyeblikket )
-CREATE TABLE IF NOT EXISTS Checkpoints
+CREATE TABLE IF NOT EXISTS CheckpointsEntry
 (
     CheckpointID            INT AUTO_INCREMENT PRIMARY KEY,
     ClutchCheck             VARCHAR(50),
