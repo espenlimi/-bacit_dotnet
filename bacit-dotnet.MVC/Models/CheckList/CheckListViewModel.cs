@@ -27,4 +27,14 @@ public class CheckListViewModel
     public string FunctionTest { get; set; }
     public string TractionForceKN { get; set; }
     public string BrakeForceKN { get; set; }
+    
+    public string freeform { get; set; }
+    
+    public string Sign { get; set; }
+    
+    [Required(ErrorMessage = "CompletionDate is required.")]
+    [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+    public DateTime CompletionDate { get; set; }
+    
+    
 }

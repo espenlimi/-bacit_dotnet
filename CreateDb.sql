@@ -1,6 +1,8 @@
 --drop database ReficioDB;
 create database if not exists ReficioDB;
 use ReficioDB;
+
+-- Create table ServiceFormEntry, if it doesn't exists
 create table if not EXISTS ServiceFormEntry
 (
       ServiceFormId INT not null unique auto_increment PRIMARY KEY,
@@ -32,15 +34,6 @@ create table if not EXISTS ServiceFormEntry
    
     CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
 );
-
-create table if not exists CheckListEntry
-(
-  CheckListId INT not null unique auto_increment,
-  CheckPoint TEXT,
-  status ENUM('OK', 'Bør Skiftes', 'Defekt'),
-  
-);
-
 
 create table if not EXISTS AspNetRoles
 (
@@ -136,8 +129,8 @@ CREATE TABLE IF NOT EXISTS Checklist
     Comments    TEXT
 );
 
--- Table for the checkpoints (Checkpoints må muligenss)
-CREATE TABLE IF NOT EXISTS Checkpoints
+-- Table for the checkpoints (Checkpoints brukes kun for øyeblikket )
+CREATE TABLE IF NOT EXISTS CheckpointsEntry
 (
     CheckpointID            INT AUTO_INCREMENT PRIMARY KEY,
     ClutchCheck             VARCHAR(50),
@@ -161,7 +154,10 @@ CREATE TABLE IF NOT EXISTS Checkpoints
     PressureSettings        VARCHAR(50),
     FunctionTest            VARCHAR(50),
     TractionForceKN         VARCHAR(50),
-    BrakeForceKN            VARCHAR(50)
+    BrakeForceKN            VARCHAR(50),
+    freeform                VARCHAR(50),
+    Sign                    VARCHAR(50),
+    CompletionDate           DATE NOT NULL
 );
 
 -- Many-to-Many junction Table to connect Checklist to Checkpoint
@@ -172,7 +168,7 @@ CREATE TABLE IF NOT EXISTS ChecklistCheckpoints
     Status       VARCHAR(50), -- 'OK', 'BØR Skiftes', 'Defekt'
     PRIMARY KEY (ChecklistID, CheckpointID),
     FOREIGN KEY (ChecklistID) REFERENCES Checklist (ChecklistID),
-    FOREIGN KEY (CheckpointID) REFERENCES Checkpoints (CheckpointID)
+    FOREIGN KEY (CheckpointID) REFERENCES CheckpointsEntry (CheckpointID)
 );
 
 
