@@ -1,6 +1,8 @@
 --drop database ReficioDB;
 create database if not exists ReficioDB;
 use ReficioDB;
+
+-- Create table ServiceFormEntry, if it doesn't exists
 create table if not EXISTS ServiceFormEntry
 (
       ServiceFormId INT not null unique auto_increment PRIMARY KEY,
@@ -32,15 +34,6 @@ create table if not EXISTS ServiceFormEntry
    
     CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
 );
-
-create table if not exists CheckListEntry
-(
-  CheckListId INT not null unique auto_increment,
-  CheckPoint TEXT,
-  status ENUM('OK', 'Bør Skiftes', 'Defekt'),
-  
-);
-
 
 create table if not EXISTS AspNetRoles
 (
