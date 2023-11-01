@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Org.BouncyCastle.Bcpg;
+using System.ComponentModel.DataAnnotations;
 
 namespace bacit_dotnet.MVC.Models.ServiceOrdre
 {
@@ -36,11 +37,39 @@ namespace bacit_dotnet.MVC.Models.ServiceOrdre
 
     public class ChecklistViewModel
     {
-        public string? Kategorier { get; set; }
-        public string? Sjekkpunkter { get; set; }
-        public bool OK { get; set; }
-        public bool BørSkiftes { get; set; }
-        public bool Defekt { get; set; }
+        //For mekaniske delen av sjekklisten
+        public string? mekanisk1 { get; set; }
+        public string? mekanisk2 { get; set; }
+        public string? mekanisk3 { get; set; }
+        public string? mekanisk4 { get; set; }
+        public string? mekanisk5 { get; set; }
+        public string? mekanisk6 { get; set; }
+        public string? mekanisk7 { get; set; }
+        public string? mekanisk8 { get; set; }
+
+        //For elektrodelen av sjekklisten
+        public string? elektro1 { get; set; }
+        public string? elektro2 { get; set; }
+        public string? elektro3 { get; set; }
+
+        //For hydraulikkdelen av sjekklisten
+        public string? hydraulikk1 { get; set; }
+        public string? hydraulikk2 { get; set; }
+        public string? hydraulikk3 { get; set; }
+        public string? hydraulikk4 { get; set; }
+        public string? hydraulikk5 { get; set; }
+        public string? hydraulikk6 { get; set; }
+        public string? hydraulikk7 { get; set; }
+        public string? hydraulikk8 { get; set; }
+
+        //For Trykksettinger av sjekklisten
+        public string? XXBar1 { get; set; }
+
+        //For Funksjonstestdelen av sjekklisten
+        public string? funksjonstest1 { get; set; }
+        public string? funksjonstest2 { get; set; }
+        public string? funksjonstest3 { get; set; }
+
     }
 
     public class ServiceOrderJobGroupModel

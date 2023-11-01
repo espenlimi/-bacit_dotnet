@@ -86,15 +86,12 @@ namespace bacit_dotnet.MVC.Controllers
 
         [HttpPost]
         [HttpGet]
-        public IActionResult CreateChecklist(string? Kategorier, string? Sjekkpunkter, bool OK, bool BørSkiftes, bool Defekt)
+        public IActionResult CreateChecklist(string? mekanisk1, string? mekanisk2, string? mekanisk3, string? mekanisk4, string? mekanisk5, string? mekanisk6, string? mekanisk7, string? mekanisk8)
         {
             var model = new ChecklistViewModel
             {
-                Kategorier = Kategorier,
-                Sjekkpunkter = Sjekkpunkter,
-                OK = OK,
-                BørSkiftes = BørSkiftes,
-                Defekt = Defekt
+                mekanisk1 = mekanisk1,
+                mekanisk2 = mekanisk2,
             };
 
             return View();

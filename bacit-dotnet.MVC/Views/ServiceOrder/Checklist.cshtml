@@ -5,7 +5,6 @@
     ViewData["Title"] = "Checklist";
 }
 
-<link rel="stylesheet" href="~/css/ServiceOrder/Checklist.css" asp-append-version="true" />
 @{
     //Mekanisk sjekkliste
     var mekanisk = new string[] {
@@ -52,89 +51,90 @@
 
 <h1>Checklist</h1>
 
+<h2>Sjekkliste</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label>Mekanisk</label>
+            </th>
+            <th>
+                <label>OK</label>
+            </th>
+            <th>
+                <label>Bør Skiftes</label>
+            </th>
+            <th>
+                <label>Defekt</label>
+            </th> 
+        </tr>
+    </thead>
+ </table>
+
 <form asp-action="CreateChecklist" method="post">
-    <table>
-        <thead>
-            <tr>
-                <th>Kategorier</th>
-                <th>Sjekkpunkter</th>
-                <th>OK</th>
-                <th>Bør skiftes</th>
-                <th>Defekt</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (int i = 0; i < mekanisk.Length; i++) //For Mekanisk sjekkliste
-            {
-                <tr>
-                    @if (i == 0)
-                    {
-                        <td rowspan="@mekanisk.Length">Mekanisk</td>
-                    }
-                    <td>@mekanisk[i]</td>
-                    <td><input type="checkbox" asp-for="@Model[i + mekanisk.Length].OK" value="OK" name="Mekanisk"/></td>
-                    <td><input type="checkbox" asp-for="@Model[i + mekanisk.Length].BørSkiftes" value="BørSkiftes" name="Mekanisk"/></td>
-                    <td><input type="checkbox" asp-for="@Model[i + mekanisk.Length].Defekt" value="Defekt" name="Mekanisk"/></td>
-                </tr>
-            }
+        <fieldset id="mekanisk1">
+            <label>Sjekk crutch lameller for slitasje</label>
+                <input type="radio" value="OK" name="mekanisk1">
+                <input type="radio" value="BørSkiftes" name="mekanisk1">
+                <input type="radio" value="Defekt" name="mekanisk1">
+        </fieldset>
 
-            @for (int i = 0; i < hydraulikk.Length; i++) //For Hydraulikk sjekkliste
-            {
-                <tr>
-                    @if (i == 0)
-                    {
-                        <td rowspan="@hydraulikk.Length">Hydraulikk</td>
-                    }
-                    <td>@hydraulikk[i]</td>
-                    <td><input type="checkbox" asp-for="@Model[i + hydraulikk.Length].OK" value="OK" name="Hydraulikk" /></td>
-                    <td><input type="checkbox" asp-for="@Model[i + hydraulikk.Length].BørSkiftes" value="BørSkiftes" name="Hydraulikk" /></td>
-                    <td><input type="checkbox" asp-for="@Model[i + hydraulikk.Length].Defekt" value="Defekt" name="Hydraulikk" /></td>
-                </tr>
-            }
+        <fieldset id="mekanisk2">
+            <label>Sjekk brenser. Bånd/Pal</label>
+                <input type="radio" value="OK" name="mekanisk2">
+                <input type="radio" value="BørSkiftes" name="mekanisk2">
+                <input type="radio" value="Defekt" name="mekanisk2">
+        </fieldset>
 
-            @for (int i = 0; i < elektro.Length; i++) //For Elektro sjekkliste
-            {
-              <tr>
-                  @if (i == 0)
-                    {
-                        <td rowspan="@elektro.Length">Elektro</td>
-                    }
-                    <td>@elektro[i]</td>
-                    <td><input type="checkbox" asp-for="@Model[i + elektro.Length].OK" value="OK" name="Elektro"/></td>
-                    <td><input type="checkbox" asp-for="@Model[i + elektro.Length].BørSkiftes" value="BørSkiftes" name="Elektro"/></td>
-                    <td><input type="checkbox" asp-for="@Model[i + elektro.Length].Defekt" value="Defekt" name="Elektro"/></td>
-                </tr>  
-            }
+        <fieldset id="mekanisk3">
+            <label>Sjekk lager for trommel</label>
+                <input type="radio" value="OK" name="mekanisk3">
+                <input type="radio" value="BørSkiftes" name="mekanisk3">
+                <input type="radio" value="Defekt" name="mekanisk3">
+        </fieldset>
 
-            @for (int i = 0; i < trykkSettinger.Length; i++) //For Trykk Settinger
-            {
-                <tr>
-                    @if (i == 0)
-                    {
-                        <td rowspan="@trykkSettinger.Length">Trykk Settinger</td>
-                    }
-                    <td>@trykkSettinger[i]</td>
-                    <td><input type="checkbox" asp-for="@Model[i + trykkSettinger.Length].OK" value="OK" name="Trykk Settinger" /></td>
-                    <td><input type="checkbox" asp-for="@Model[i + trykkSettinger.Length].BørSkiftes" value="BørSkiftes" name="Trykk Settinger" /></td>
-                    <td><input type="checkbox" asp-for="@Model[i + trykkSettinger.Length].BørSkiftes" value="Defekt" name="Trykk Settinger" /></td>
-                </tr>
-            }
+        <fieldset id="mekanisk4">
+            <label>Sjekk PTO og opplagring</label>
+                <input type="radio" value="OK" name="mekanisk4">
+                <input type="radio" value="BørSkiftes" name="mekanisk4">
+                <input type="radio" value="Defekt" name="mekanisk4">
+        </fieldset>
 
-            @for (int i = 0; i <funksjonsTest.Length; i++)
-            {
-                <tr>
-                    @if (i == 0)
-                    {
-                        <td rowspan="@funksjonsTest.Length">Funksjonstest</td>
-                    }
-                    <td>@funksjonsTest[i]</td>
-                    <td><input type="checkbox" asp-for="@Model[i + funksjonsTest.Length].OK" value="OK" name="Funksjonstest" /></td>
-                    <td><input type="checkbox" asp-for="@Model[i + funksjonsTest.Length].BørSkiftes" value="BørSkiftes" name="Funksjonstest" /></td>
-                    <td><input type="checkbox" asp-for="@Model[i + funksjonsTest.Length].BørSkiftes" value="Defekt" name="Funksjonstest" /></td>
-                </tr>
-            }
-        </tbody>
-    </table>
+        <fieldset id="mekanisk5">
+            <label>Sjekk kjedestrammer</label>
+                <input type="radio" value="OK" name="mekanisk5">
+                <input type="radio" value="BørSkiftes" name="mekanisk5">
+                <input type="radio" value="Defekt" name="mekanisk5">
+        </fieldset>
+
+        <fieldset id="mekanisk6">
+            <label>Sjekk wire</label>
+                <input type="radio" value="OK" name="mekanisk6">
+                <input type="radio" value="BørSkiftes" name="mekanisk6">
+                <input type="radio" value="Defekt" name="mekanisk6">
+        </fieldset>
+
+        <fieldset id="mekanisk7">
+            <label>Sjekk pinion lager</label>
+                <input type="radio" value="OK" name="mekanisk7">
+                <input type="radio" value="BørSkiftes" name="mekanisk7">
+                <input type="radio" value="Defekt" name="mekanisk7">
+        </fieldset>
+
+        <fieldset id="mekanisk8">
+            <label>Sjekk kile på kjedehjul</label>
+                <input type="radio" value="OK" name="mekanisk8">
+                <input type="radio" value="BørSkiftes" name="mekanisk8">
+                <input type="radio" value="Defekt" name="mekanisk8">
+        </fieldset>
+        <br />
+
+    <label>Elektro</label><br />
+
+    <label>Hydraulikk</label><br />
+    <label>Trykk Settinger</label><br />
+    <label>Funksjonstest</label><br />
     <br />
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
