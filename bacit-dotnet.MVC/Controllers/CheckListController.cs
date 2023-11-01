@@ -1,23 +1,35 @@
 using bacit_dotnet.MVC.Models.CheckList;
 using Microsoft.AspNetCore.Mvc;
+using bacit_dotnet.MVC.Repositories;
 
-namespace bacit_dotnet.MVC.Controllers;
-
-public class CheckListController : Controller
+namespace bacit_dotnet.MVC.Controllers
 {
-    [HttpGet]
-    public IActionResult Index()
+    public class CheckListController : Controller
     {
-        return View();
-    }
-    
-    [HttpPost]
-    public IActionResult Save(CheckListViewModel model) {
-        if(ModelState.IsValid)
-        {
-            var s = "ineedabreakpoint";
+        private readonly CheckListRepository _repository;
 
+        public CheckListController (CheckListRepository repository)
+        {
+            _repository = repository;
         }
-        return View("Index", model);
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index(CheckListViewModel checkListViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _repository.Insert(checkListViewModel);
+                return RedirectToAction("Index", "CheckList");
+            }
+            
+            return View(checkListViewModel);
+        }
+        
     }
 }

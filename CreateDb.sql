@@ -129,11 +129,10 @@ CREATE TABLE IF NOT EXISTS Checklist
     Comments    TEXT
 );
 
--- Table for the checkpoints (Checkpoints må muligenss)
-CREATE TABLE IF NOT EXISTS Checkpoints
+-- Table for the checkpoints (Checkpoints brukes kun for øyeblikket )
+CREATE TABLE IF NOT EXISTS CheckpointsEntry
 (
     CheckpointID            INT AUTO_INCREMENT PRIMARY KEY,
-    CheckpointName          VARCHAR(255),
     ClutchCheck             VARCHAR(50),
     BrakeCheck              VARCHAR(50),
     DrumBearingCheck        VARCHAR(50),
@@ -155,7 +154,10 @@ CREATE TABLE IF NOT EXISTS Checkpoints
     PressureSettings        VARCHAR(50),
     FunctionTest            VARCHAR(50),
     TractionForceKN         VARCHAR(50),
-    BrakeForceKN            VARCHAR(50)
+    BrakeForceKN            VARCHAR(50),
+    freeform                VARCHAR(50),
+    Sign                    VARCHAR(50),
+    CompletionDate           DATE NOT NULL
 );
 
 -- Many-to-Many junction Table to connect Checklist to Checkpoint
@@ -166,5 +168,28 @@ CREATE TABLE IF NOT EXISTS ChecklistCheckpoints
     Status       VARCHAR(50), -- 'OK', 'BØR Skiftes', 'Defekt'
     PRIMARY KEY (ChecklistID, CheckpointID),
     FOREIGN KEY (ChecklistID) REFERENCES Checklist (ChecklistID),
-    FOREIGN KEY (CheckpointID) REFERENCES Checkpoints (CheckpointID)
+    FOREIGN KEY (CheckpointID) REFERENCES CheckpointsEntry (CheckpointID)
+);
+
+
+-- Tabel-for-userAccount 
+CREATE TABLE IF NOT EXISTS userAccount (
+    userID INT PRIMARY KEY auto_increment,
+    password VARCHAR(50) not null,
+    loginStatus bool not null, -- Gjorde om til bool type
+    fullName VARCHAR(100) not null,
+    address VARCHAR(100) not null,
+    email VARCHAR(50) not null
+);
+
+-- Tabel-for-Mekaniker
+CREATE table if not exists mekaniker (
+    userID int,
+    FOREIGN KEY (userID) references userAccount (userID)
+);
+
+-- Tabel-for-Service_ansatt
+CREATE TABLE IF NOT EXISTS service_ansatt (
+    userID int,
+    FOREIGN KEY (userID) references userAccount (userID)
 );
