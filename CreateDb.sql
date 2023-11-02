@@ -2,7 +2,7 @@
 create database if not exists ReficioDB;
 use ReficioDB;
 
--- Table-for-making-ServiceFormsEntries
+-- Create table ServiceFormEntry, if it doesn't exists
 create table if not EXISTS ServiceFormEntry
 (
       ServiceFormId INT not null unique auto_increment PRIMARY KEY,
@@ -27,7 +27,6 @@ create table if not EXISTS ServiceFormEntry
       CustomerSignature NVARCHAR(255),
       RepairerSignature NVARCHAR(255)
 );
-
 (
     Id int not null unique auto_increment,
     Name varchar(255),
@@ -35,15 +34,6 @@ create table if not EXISTS ServiceFormEntry
    
     CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
 );
-
-create table if not exists CheckListEntry
-(
-  CheckListId INT not null unique auto_increment,
-  CheckPoint TEXT,
-  status ENUM('OK', 'Bør Skiftes', 'Defekt'),
-  
-);
-
 
 create table if not EXISTS AspNetRoles
 (
@@ -73,7 +63,6 @@ create table if not EXISTS AspNetUsers
          AccessFailedCount int not null,
           CONSTRAINT PK_AspNetUsers PRIMARY KEY (Id)
 );
-
 create table if not EXISTS AspNetUserTokens
 (
     UserId varchar(255) not null,
@@ -141,7 +130,7 @@ CREATE TABLE IF NOT EXISTS Checklist
 );
 
 -- Table for the checkpoints (Checkpoints brukes kun for øyeblikket )
-CREATE TABLE IF NOT EXISTS Checkpoints
+CREATE TABLE IF NOT EXISTS CheckpointsEntry
 (
     CheckpointID            INT AUTO_INCREMENT PRIMARY KEY,
     ClutchCheck             VARCHAR(50),
@@ -182,7 +171,8 @@ CREATE TABLE IF NOT EXISTS ChecklistCheckpoints
     FOREIGN KEY (CheckpointID) REFERENCES CheckpointsEntry (CheckpointID)
 );
 
--- Table-for-userAccount 
+
+-- Tabel-for-userAccount 
 CREATE TABLE IF NOT EXISTS userAccount (
     userID INT PRIMARY KEY auto_increment,
     password VARCHAR(50) not null,
@@ -192,13 +182,13 @@ CREATE TABLE IF NOT EXISTS userAccount (
     email VARCHAR(50) not null
 );
 
--- Table-for-Mekaniker
+-- Tabel-for-Mekaniker
 CREATE table if not exists mekaniker (
     userID int,
     FOREIGN KEY (userID) references userAccount (userID)
 );
 
--- Table-for-Service_ansatt
+-- Tabel-for-Service_ansatt
 CREATE TABLE IF NOT EXISTS service_ansatt (
     userID int,
     FOREIGN KEY (userID) references userAccount (userID)

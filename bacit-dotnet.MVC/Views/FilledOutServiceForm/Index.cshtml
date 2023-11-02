@@ -1,0 +1,63 @@
+@using bacit_dotnet.MVC.Models.ServiceForm
+@model IEnumerable<bacit_dotnet.MVC.Models.ServiceForm.ServiceFormViewModel>
+
+
+@{
+    ViewData["Title"] = "Utfylt ServiceSkjema";
+    var Limit = 1;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utfylt ServiceSkjema</title>
+</head>
+<body>
+<form asp-controller="FilledOutServiceForm" asp-action="Index">
+    <div class="form-container">
+        <h2>Utfylt Serviceskjema</h2>
+        <hr class="divider">
+    
+        @foreach (var serviceFormEntry in Model.Take(Limit))
+        {
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label for="Customer" class="control-label">Kunde:</label>
+                        <input for="Customer" class="form-control" type="text" value="@serviceFormEntry.Customer" readonly/>
+                        <span validation-for="Customer" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                <div class="form-col">
+                    <div class="form-group">
+                        <label for="DateReceived" class="control-label">Mottatt dato:</label>
+                        <input for="DateReceived" class="form-control" type="date" value="@Html.DisplayFor(model => serviceFormEntry.DateReceived)" readonly/>
+                        <span validation-for="DateReceived" class="text-danger"></span>
+                        <p>@Html.DisplayFor(model => serviceFormEntry.DateReceived)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="Address" class="control-label">Adresse:</label>
+                        <input for="Address" class="form-control" type="text" value="@serviceFormEntry.Address" readonly/>
+                        <span validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-col">
+                        <label for="Email" class="control-label">E-Mail:</label>
+                        <input for="Email" class="form-control" type="text" value="@serviceFormEntry.Email" readonly/>
+                        <span validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        }    
+    </div>
+</form>
+</body>
+</html>
