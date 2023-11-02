@@ -5,7 +5,7 @@ use ReficioDB;
 -- Create table ServiceFormEntry, if it doesn't exists
 create table if not EXISTS ServiceFormEntry
 (
-      ServiceFormId INT not null unique auto_increment PRIMARY KEY,
+      Id INT not null unique auto_increment PRIMARY KEY,
       Customer NVARCHAR(255) NOT NULL,
       DateReceived DATE NOT NULL,
       Address NVARCHAR(255),
