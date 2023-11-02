@@ -10,7 +10,7 @@ using bacit_dotnet.MVC.Models.CheckList;
 
 namespace bacit_dotnet.MVC.Repositories
 {
-    public class CheckListRepository
+    public class CheckListRepository : ICheckListRepository
     {
         private readonly IConfiguration _config;
 
