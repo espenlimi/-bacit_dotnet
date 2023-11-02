@@ -12,9 +12,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Utfylt ServiceSkjema</title>
 </head>
+
 <body>
 <form asp-controller="FilledOutServiceForm" asp-action="Index">
     <div class="form-container">
@@ -55,8 +56,19 @@
                         <span validation-for="Email" class="text-danger"></span>
                     </div>
                 </div>
+                
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="OrderNumber" class="control-label"> Ordrenummer:</label>
+                            <input for="OrderNumber" class="form-control" type="text" value="@serviceFormEntry.OrderNumber" readonly/>
+                            <span validation-for="Address" class="text-danger"></span>
+                        </div>
+                    </div>  
+                </div>
             </div>
-        }    
+        }
+        
     </div>
 </form>
 </body>
