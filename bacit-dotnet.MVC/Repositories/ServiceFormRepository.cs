@@ -9,7 +9,7 @@ using bacit_dotnet.MVC.Models.ServiceForm;
 
 namespace bacit_dotnet.MVC.Repositories
 {
-    public class ServiceFormRepository
+    public class ServiceFormRepository : IServiceFormRepository
     {
         private readonly IConfiguration _config;
 
