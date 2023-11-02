@@ -14,7 +14,7 @@ public class FilledOutServiceFormController : Controller
     
     public IActionResult Index()
     {
-        var serviceFormEntry = _repository.GetSomeOrderInfo();
+        var serviceFormEntry = _repository.GetAll();
         return View(serviceFormEntry);
     }
 }
