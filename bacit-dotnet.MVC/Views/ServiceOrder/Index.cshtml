@@ -36,12 +36,12 @@
             @foreach (var serviceFormEntry in Model)
             {
                 <tr onclick="tableClick()">
-                    <td><a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index">@serviceFormEntry.Id</a></td>
-                    <td><a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index">@serviceFormEntry.Customer</a></td>
-                    <td><a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index">@Html.DisplayFor(model => serviceFormEntry.DateReceived)</a></td>
+                    <td><a class="nav-link text-dark" asp-area="" asp-controller="FilledOutServiceForm" asp-action="Index">@serviceFormEntry.Id</a></td>
+                    <td><a class="nav-link text-dark" asp-area="" asp-controller="FilledOutServiceForm" asp-action="Index">@serviceFormEntry.Customer</a></td>
+                    <td><a class="nav-link text-dark" asp-area="" asp-controller="FilledOutServiceForm" asp-action="Index">@Html.DisplayFor(model => serviceFormEntry.DateReceived)</a></td>
                     <!--<td>@serviceFormEntry.Address</td>-->
                     <!--<td>@serviceFormEntry.Email</td>-->
-                    <td><a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index">@serviceFormEntry.OrderNumber</a></td>
+                    <td><a class="nav-link text-dark" asp-area="" asp-controller="FilledOutServiceForm" asp-action="Index">@serviceFormEntry.OrderNumber</a></td>
                     <!--<td>@serviceFormEntry.Phone</td>-->
                     <!--<td>@serviceFormEntry.ProductType</td>-->
                     <!--<td>@serviceFormEntry.Year</td>-->
