@@ -12,6 +12,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrer</title>
     <link rel="stylesheet" href="/css/register.css">
+    <style>
+        .button-container {
+            margin-top: 10px;
+        }
+
+        .button-container button {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
 <div>
@@ -21,24 +30,25 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="Email">Email:</label>
-            <input asp-for="Email" class="form-control" />
+            <input asp-for="Email" class="form-control" placeholder="Skriv inn Email" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Password">Passord:</label>
-            <input asp-for="Password" type="password" class="form-control" />
+            <input asp-for="Password" type="password" class="form-control" placeholder="Skriv inn passord" />
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="ConfirmPassword">Bekreft passord:</label>
-            <input asp-for="ConfirmPassword" type="password" class="form-control" />
+            <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Bekreft passord" />
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Registrer</button>
     </form>
 
-    <div>
-        <a asp-controller="Login" asp-action="Index">Logg inn</a>
+    <div class="button-container">
+        <a asp-controller="Login" asp-action="Index"><button type="button" class="btn btn-primary">Logg inn</button></a>
+        <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-primary">Gå til hovedside</button></a>
     </div>
 </div>
 

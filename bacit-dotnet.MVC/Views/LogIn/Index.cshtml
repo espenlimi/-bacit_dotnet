@@ -1,9 +1,3 @@
-@model bacit_dotnet.MVC.Models.Account.LoginViewModel;
-
-@{
-    ViewData["Title"] = "Logg inn";
-}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,33 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logg Inn</title>
     <link rel="stylesheet" href="/css/login.css">
+    <style>
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .button-container button {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
 <div>
-    <h2>Log inn</h2>
+    <h2>Logg inn</h2>
     <form asp-controller="Account" asp-action="Login" method="post">
         <div class="form-group">
-            <label asp-for="Email">Email:</label>
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
+            <label for="Email">Email:</label>
+            <input name="Email" class="form-control" placeholder="Skriv inn Email" />
         </div>
 
         <div class="form-group">
-            <label asp-for="Password">Passord:</label>
-            <input asp-for="Password" type="password" class="form-control" />
-            <span asp-validation-for="Password" class="text-danger"></span>
+            <label for="Password">Passord:</label>
+            <input name="Password" type="password" class="form-control" style="margin-bottom: 10px;" placeholder="Skriv inn passord" />
         </div>
 
-        <button type="submit" class="btn btn-primary" onclick="window.location.href='https://localhost:7064/Home'">Logg inn</button>
+        <button type="submit" class="btn btn-primary">Logg inn</button>
     </form>
 
-    <div>
-        <a asp-controller="Register" asp-action="Index">Register an account</a>
+    <div class="button-container">
+        <form action="/Register/Index">
+            <button type="submit" class="btn btn-primary">Register an account</button>
+        </form>
+        <a href="/Home/Index"><button type="button" class="btn btn-primary">Gå til hovedside</button></a>
     </div>
-    
-    <form>
-        <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-primary">Gå til hovedside</button></a>
-    </form>
 </div>
 </body> 
 </html>
