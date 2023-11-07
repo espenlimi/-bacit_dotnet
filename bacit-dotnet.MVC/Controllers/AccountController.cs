@@ -15,7 +15,7 @@ namespace bacit_dotnet.MVC.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IEmailSender _emailSender;
-        private readonly IUserRepository userRepository;
+        //private readonly IUserRepository userRepository;
         private readonly ILogger _logger;
 
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IEmailSender emailSender, ILoggerFactory loggerFactory, IUserRepository userRepository)
@@ -23,7 +23,7 @@ namespace bacit_dotnet.MVC.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
-            this.userRepository = userRepository;
+            //this.userRepository = userRepository;
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
 
@@ -99,10 +99,10 @@ namespace bacit_dotnet.MVC.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    userRepository.Add(new UserEntity
-                    {
-                        Email = model.Email
-                    });
+                    //userRepository.Add(new UserEntity
+                    //{
+                    //    Email = model.Email
+                    //});
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

@@ -1,17 +1,21 @@
 ﻿using bacit_dotnet.MVC.Entities;
 using bacit_dotnet.MVC.Models.Dyrehage;
 using bacit_dotnet.MVC.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    [Authorize]
     public class DyrehageController : Controller
     {
         private readonly IDyrRepository _dyrRepository;
+        private readonly ILogger<DyrehageController> _logger;
 
-        public DyrehageController(IDyrRepository dyrRepository)
+        public DyrehageController(IDyrRepository dyrRepository, ILogger<DyrehageController> logger)
         {
             _dyrRepository = dyrRepository;
+            _logger = logger;
         }
         public IActionResult Index()
         {

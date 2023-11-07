@@ -16,6 +16,12 @@ public class Program
         
         SetupDataConnections(builder);
 
+        //builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
+        builder.Services.AddScoped<IUserRepository, EFUserRepository>();
+        builder.Services.AddScoped<IDyrRepository, EfDyrRepository>();
+        //builder.Services.AddSingleton<IUserRepository, SqlUserRepository>();
+        //builder.Services.AddSingleton<IUserRepository, DapperUserRepository>();
+
         SetupAuthentication(builder);
 
         var app = builder.Build();
@@ -49,11 +55,7 @@ public class Program
         {
             options.UseMySql(builder.Configuration.GetConnectionString("MariaDb"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MariaDb")));
         });
-        //builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
-        builder.Services.AddScoped<IUserRepository, EFUserRepository>();
-        builder.Services.AddScoped<IDyrRepository, EfDyrRepository>();
-        //builder.Services.AddSingleton<IUserRepository, SqlUserRepository>();
-        //builder.Services.AddSingleton<IUserRepository, DapperUserRepository>();
+
     }
 
     private static void UseAuthentication(WebApplication app)
