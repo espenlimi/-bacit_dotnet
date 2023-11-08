@@ -16,8 +16,19 @@
             gap: 10px;
         }
 
-        .button-container button {
+        /* Styling for the buttons */
+        .button-container button, 
+        .btn-primary {
             flex: 1;
+            background-color: #003380; /* Set your preferred color here */
+            color: white; /* Set the text color to contrast with the background color */
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -35,14 +46,14 @@
             <input name="Password" type="password" class="form-control" style="margin-bottom: 10px;" placeholder="Skriv inn passord" />
         </div>
 
-        <button type="submit" class="btn btn-primary">Logg inn</button>
+        <button type="submit" class="btn-primary">Logg inn</button>
     </form>
 
     <div class="button-container">
         <form action="/Register/Index">
-            <button type="submit" class="btn btn-primary">Register an account</button>
+            <button type="submit" class="btn-primary">Register an account</button>
         </form>
-        <a href="/Home/Index"><button type="button" class="btn btn-primary">Gå til hovedside</button></a>
+        <a href="/Home/Index"><button type="button" class="btn-primary">Gå til hovedside</button></a>
     </div>
 </div>
 </body> 
